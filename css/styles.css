@@ -13,7 +13,8 @@
   font-family: "Times New Roman", Times, serif;
 
 }
-
+body, html{ width:100%; height:100%; padding: 0; margin: 0;}
+section{ width: 100%; height: 100%;}
 .btn-default{
 	margin-bottom: 8px;
 }
@@ -23,7 +24,14 @@
   background-size: 100% 50%;
   background-color: #cccccc;
 }
-
+.test{
+  color:red;
+}
+.content-homepage{
+  background-image: url("../images/Home_Background.jpg");
+  background-size: 100% 130%;
+  background-color: #cccccc;
+}
 .container {
   padding-right: 25px;
   padding-left: 25px;
