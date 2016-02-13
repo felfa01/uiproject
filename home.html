@@ -4,18 +4,59 @@
 	<meta charset="UTF-8">
 	<title>Proj Test</title>
 	<link rel="stylesheet" href="css/styles.css">
+	<script src="jquery/jquery-1.12.0.min.js"></script>
+	<script src="javascript/functions.js"></script>
+
 </head>
 <body>
-<section class="content-homepage">
-<div class="container">
-	<div class="col-offset-4 col-2">
-	<button><a href="users/index.html">User </a></button>
-	</div>
-	<div class="col-2">
-	<button><a href="admins/admin.html">Admin </a></button>
-	</div>
-</div>
+	<section class="content-homepage">
+		<div class="container">
+			<div id="choice">
+				<div class="col-12">
+					<div class="col-offset-4 col-2">
+						<!--<button onclick="fadein()" class="btn">VIP </button> -->
+						<!-- Trigger/Open The Modal -->
 
-</section>
+						<!-- Trigger/Open The Modal -->
+						<button id="myBtn">Open Modal</button>
+
+						<!-- The Modal -->
+						<div id="myModal" class="modal">
+
+							<!-- Modal content -->
+							<div class="modal-content">
+								<span class="close">×</span>
+								<p>Some text in the Modal..</p>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-2">
+						<a href="admins/admin.html" class="btn">Admin </a>
+					</div>
+				</div>
+				<div class="col-12">
+					<center><a href="users/guest.html">Guest </a></center>
+				</div>
+			</div>
+			<div id="login" >
+				<div class="col-12">
+					<form class="myform" action="action_page.php">
+					<div class="label-form">
+						First name: 
+						</div>
+
+						<br> <input class="text-form" type="text" name="firstname" value="Mickey"><br>
+						
+						Last name:<br>
+						<input type="text" name="lastname" value="Mouse"><br><br>
+						<input type="submit" value="Submit">
+					</form>	
+				</div>
+			</div>
+		</div>
+
+
+	</section>
 
 </body>
