@@ -10,53 +10,88 @@
 </head>
 <body>
 	<section class="content-homepage">
+
 		<div class="container">
+			<center>
+				<div class="col-12">
+					<div class="title-home">
+						<img src="images/Title.png" alt="portrait">
+					</div>
+				</div>
+			</center>
 			<div id="choice">
 				<div class="col-12">
-					<div class="col-offset-4 col-2">
-						<!--<button onclick="fadein()" class="btn">VIP </button> -->
-						<!-- Trigger/Open The Modal -->
-
-						<!-- Trigger/Open The Modal -->
-						<button id="myBtn">Open Modal</button>
-
-						<!-- The Modal -->
-						<div id="myModal" class="modal">
-
-							<!-- Modal content -->
-							<div class="modal-content">
-								<span class="close">×</span>
-								<p>Some text in the Modal..</p>
+					<div class="col-6">
+						<center>
+							<div class="grow pic">
+								<img  id="admBtn" src="images/Pirate_Admin.png" alt="portrait">
 							</div>
+						</center>
+					</div>
+					
+					<div class="col-6">
+						<center>
+							<div class="grow pic">
+								<img id="vipBtn" src="images/Pirate_VIP.png" alt="portrait">
+							</div>
+						</center>
+					</div>
+					<div class="col-12">
+						<center>
+							<div class="grow pic">
+								<a href="users/index.html">
+									<img src="images/Pirate_Guest.png" alt="portrait">
+								</a>
+							</div>
+						</center>
+					</div>
 
-						</div>
-					</div>
-					<div class="col-2">
-						<a href="admins/admin.html" class="btn">Admin </a>
-					</div>
-				</div>
-				<div class="col-12">
-					<center><a href="users/guest.html">Guest </a></center>
 				</div>
 			</div>
-			<div id="login" >
-				<div class="col-12">
-					<form class="myform" action="action_page.php">
-					<div class="label-form">
-						First name: 
-						</div>
 
-						<br> <input class="text-form" type="text" name="firstname" value="Mickey"><br>
-						
-						Last name:<br>
-						<input type="text" name="lastname" value="Mouse"><br><br>
-						<input type="submit" value="Submit">
-					</form>	
-				</div>
-			</div>
 		</div>
 
 
 	</section>
+	<div id="vipModal" class="modal">
+		<div class="modal-content">
+			<span class="close">×</span>
+			<div class="container"></div>
+			<p>Example of LOGIN FORM</p>
+				<div class="col-offset-5 col-6">
+					<form class="myform" action="users/index.html">
+						<div class="label-form">
+							First name: 
+						</div>
 
+						<br> <input class="text-form" type="text" name="firstname" value="Mickey"><br>
+
+						Last name:<br>
+						<input type="text" name="lastname" value="Mouse"><br><br>
+						<input type="submit" value="Submit">
+					</form>	
+			</div> 
+		</div>
+	</div>
+	<div id="admModal" class="modal">
+		<div class="modal-content">
+			<span class="close">×</span>
+			<div class="container"></div>
+			<p>Example of LOGIN FORM</p>
+				<div class="col-offset-5 col-6">
+					<form class="myform" action="admins/admin.html">
+						<div class="label-form">
+							First name: 
+						</div>
+
+						<br> <input class="text-form" type="text" name="firstname" value="Mickey"><br>
+
+						Last name:<br>
+						<input type="text" name="lastname" value="Mouse"><br><br>
+						<input type="submit" value="Submit">
+					</form>	
+			</div> 
+		</div>
+
+	</div>
 </body>

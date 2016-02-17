@@ -32,28 +32,35 @@ function fadein(){
 
 $( document ).ready(function() {
 // Get the modal
-var modal = document.getElementById('myModal');
+var modalAdm = document.getElementById('admModal');
+var modalVip = document.getElementById('vipModal');
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
+var btnAdm = document.getElementById("admBtn");
+var btnVIP = document.getElementById("vipBtn");
+var AdmOrVip;
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
+btnAdm.onclick = function() {
+    modalAdm.style.display = "block";
 }
 
+btnVIP.onclick = function() {
+    modalVip.style.display = "block";
+}
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-    modal.style.display = "none";
+    $(".modal").hide();
+    //modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
-        modal.style.display = "none";
+    	$(".modal").hide();
+        //modal.style.display = "none";
     }
 }
 });
