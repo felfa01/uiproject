@@ -40,7 +40,7 @@ var btnAdm = document.getElementById("admBtn");
 var btnVIP = document.getElementById("vipBtn");
 var AdmOrVip;
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close");
 
 // When the user clicks on the button, open the modal 
 btnAdm.onclick = function() {
@@ -51,15 +51,16 @@ btnVIP.onclick = function() {
     modalVip.style.display = "block";
 }
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    $(".modal").hide();
+//span.onclick = function() {
+$(".close").on("click", function(){
+    $(".modal").css('display','none');
     //modal.style.display = "none";
-}
+});
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
-    	$(".modal").hide();
+    if (event.target == modalAdm || event.target == modalVip) {
+    	$(".modal").css('display','none');
         //modal.style.display = "none";
     }
 }
