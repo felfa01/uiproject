@@ -5,6 +5,8 @@
   top: 0;
   min-height: 50px;
   margin-bottom: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border: 1px solid transparent;
   z-index: 9999;
   border-width: 0 0 1px;
@@ -15,7 +17,7 @@
 }
 
 .navbar-home{
-  min-height: 30px;
+  min-height: 40px;
 }
 
 body, html{ width:100%; height:100%; padding: 0; margin: 0;}
@@ -92,6 +94,13 @@ section{ width: 100%; height: 100%;}
   cursor: pointer;
 }
 
+.radio-img{
+  width:20px;
+  height:15px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
 .container-fluid {
   padding-right: 30px;
   padding-left: 30px;
@@ -106,6 +115,10 @@ section{ width: 100%; height: 100%;}
 
 .myform{
   font-size: 20px;
+}
+
+.language-form{
+  margin-top: 2px;
 }
 
 .form-group{
@@ -130,7 +143,9 @@ section{ width: 100%; height: 100%;}
   background-color: #fefefe;
   color:black;
 }
-
+.form-submit:hover{
+  background-color: slategray;
+}
 .form-picture-admin{
     height: 150px;
     width: 150px;
@@ -241,13 +256,22 @@ section{ width: 100%; height: 100%;}
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+.modal-header {
+  background-color: #fefefe;
+  margin: auto;
+  height: 50px;
+  overflow:hidden;
+  padding: 5px 0px 5px 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #888;
+}
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
   margin: auto;
   height:auto;
   overflow:auto;
-  padding: 20px;
+  padding: 10px 30px 40px 30px;
   border: 1px solid #888;
   width: 80%;
 }

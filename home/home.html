@@ -3,18 +3,18 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Proj Test</title>
-		<link rel="stylesheet" href="css/styles.css">
-		<script src="jquery/jquery-1.12.0.min.js"></script>
-		<script src="javascript/functions.js"></script>
+		<link rel="stylesheet" href="../css/styles.css">
+		<script src="../jquery/jquery-1.12.0.min.js"></script>
+		<script src="../javascript/functions.js"></script>
 		<script src="../javascript/translate.js"></script>
 	</head>
 	<body>
 		<nav class="fixed-navbar navbar-home">
 			<div class="container-fluid">
 				<div class="col-offset-9 col-3">
-					<form class="language-form">
-						<input type="radio" name="lang" value="eng" checked> English
-						<input type="radio" name="lang" value="swe" > Swedish
+					<form class="myform language-form">
+						<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
+						<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
 					</form>
 				</div>
 			</div>
@@ -24,7 +24,7 @@
 				<center>
 					<div class="col-12">
 						<div class="title-home">
-							<img src="images/Title.png" alt="portrait">
+							<img src="../images/Title.png" alt="portrait">
 						</div>
 					</div>
 				</center>
@@ -33,14 +33,14 @@
 						<div class="col-6">
 							<center>
 								<div class="grow pic">
-									<img  id="admBtn" src="images/Pirate_Admin.png" alt="portrait">
+									<img  id="admBtn" src="../images/Pirate_Admin.png" alt="portrait">
 								</div>
 							</center>
 						</div>
 						<div class="col-6">
 							<center>
 								<div class="grow pic">
-									<img id="vipBtn" src="images/Pirate_VIP.png" alt="portrait">
+									<img id="vipBtn" src="../images/Pirate_VIP.png" alt="portrait">
 								</div>
 							</center>
 						</div>
@@ -48,7 +48,7 @@
 							<center>
 								<div class="grow pic">
 									<a href="users/index.html">
-										<img src="images/Pirate_Guest.png" alt="portrait">
+										<img class="translateImg" data-translate="PirateGuest" src="../images/Pirate_Guest.png" alt="portrait">
 									</a>
 								</div>
 							</center>
@@ -59,43 +59,47 @@
 		</section>
 		<div id="vipModal" class="modal">
 			<div class="modal-content">
-				<span class="close">×</span>
+				<div class="modal-header">
+					<span class="close">×</span>
+				</div>
 				<div class="container"></div>
 				<div class="myform"></div>
 				<p>Please enter user name and password</p>
-				<div class="col-6">
-					<form class="myform" action="users/index.html">
+				<div class="col-8">
+					<form class="myform" action="../users/index.html">
 						<div class="col-12 form-group" >
-							<div class="form-label col-2">
+							<div class="form-label col-4">
 								User Name:
 							</div>
-							<div class="col-8">
+							<div class="col-6">
 								<input style="width:100%;" class="form-text" type="text" name="username" value="Mickey">
 							</div>
 						</div>
 						<div class="col-12 form-group" >
-							<div class="form-label col-2">
+							<div class="form-label col-4">
 								Password:
 							</div>
-							<div class="col-8">
+							<div class="col-6">
 								<input class="form-text" type="text" name="password" value="Mouse"><br><br>
 							</div>
 						</div>
-						<div class="col-offset-2 col-8">
+						<div class="col-offset-4 col-8">
 							<input class="form-submit" type="submit" value="Submit" class="myform">
 						</div>
 					</form>
 				</div>
-				<div class="col-6">
-					<img id="vipBtn2" src="images/Pirate_VIP.png" class="form-picture-admin">
+				<div class="col-4">
+					<img id="vipBtn2" src="../images/Pirate_VIP.png" class="form-picture-admin">
 				</div>
 			</div>
 		</div>
 		<div id="admModal" class="modal">
 			<div class="modal-content">
-				<span class="close">×</span>
 				<div class="col-12">
-					<form class="myform" action="admins/admin.html" >
+					<span class="close">×</span>
+				</div>
+				<div class="col-12">
+					<form class="myform" action="../admins/admin.html" >
 						<p>Please enter user name and password</p>
 						<div class="col-12 form-group" >
 							<div class="form-label col-2">
