@@ -101,7 +101,7 @@ section{ width: 100%; height: 100%;}
 }
 
 .myform{
-  font-size: 20px; 
+  font-size: 20px;
 }
 
 .form-group{
@@ -111,7 +111,8 @@ section{ width: 100%; height: 100%;}
 .form-text{
   font-size: 15px;
   width: 100%;
-  border-color: blue;
+  border-style: solid;
+  border-color: slategrey;
 }
 
 .form-label{
@@ -120,9 +121,19 @@ section{ width: 100%; height: 100%;}
 }
 
 .form-submit{
-  border-color: green;
-  color:red;
+  border-style: solid;
+  border-color: slategray;
+  background-color: #fefefe;
+  color:black;
 }
+
+.form-picture-admin{
+    height: 150px;
+    width: 150px;
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
   float: left;
