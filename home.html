@@ -52,15 +52,27 @@
 			<div class="container"></div>
 			<p>Example of LOGIN FORM/No CSS done (VIP)</p>
 			
-				<form class="myform" action="users/index.html">					
-						First name: 				
-					<br>
-						<input class="text-form" type="text" name="firstname" value="Mickey"><br>
-					<br>
-					Last name:<br>
-					<input type="text" name="lastname" value="Mouse"><br><br>
-					<input type="submit" value="Submit">
-				</form>	
+			<form class="myform" action="users/index.html">					
+				<div class="col-12 form-group" >				
+					<div class="form-label col-2">
+						First name: 
+					</div>
+					<div class="col-8">
+						<input style="width:100%;" class="form-text" type="text" name="firstname" value="Mickey">
+					</div>					
+				</div>
+				<div class="col-12 form-group" >
+					<div class="form-label col-2">
+						Last name: 
+					</div>
+					<div class="col-8">
+						<input class="form-text" type="text" name="lastname" value="Mouse"><br><br>
+					</div>
+				</div>
+				<div class="col-offset-2 col-8">
+				<input class="form-submit" type="submit" value="Submit">
+				</div>
+			</form>	
 			
 		</div>
 	</div>
@@ -71,21 +83,25 @@
 			<p>Example of LOGIN FORM/No CSS done (ADMIN)</p>			
 			<div class="col-12">
 				<form class="myform" action="admins/admin.html" >
-					<div class="col-12" style="margin-bottom:10px;">				
-						<div class="col-2" style="text-align:right; padding-right:60px;">
+					<div class="col-12 form-group" >				
+						<div class="form-label col-2">
 							First name: 
 						</div>
 						<div class="col-8">
-							<input style="width:100%;" class="text-form" type="text" name="firstname" value="Mickey">
+							<input style="width:100%;" class="form-text" type="text" name="firstname" value="Mickey">
 						</div>					
 					</div>
-					<div class="label-form col-2">
-						Last name: 
+					<div class="col-12 form-group" >
+						<div class="form-label col-2">
+							Last name: 
+						</div>
+						<div class="col-8">
+							<input class="form-text" type="text" name="lastname" value="Mouse"><br><br>
+						</div>
 					</div>
-					<div class="col-10">
-						<input style="width:100%" type="text" name="lastname" value="Mouse"><br><br>
+					<div class="col-offset-2 col-8">
+						<input type="submit" value="Submit">
 					</div>
-					<input type="submit" value="Submit">
 				</form>	
 			</div> 			
 		</div>
