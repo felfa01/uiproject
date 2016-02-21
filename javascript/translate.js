@@ -1,11 +1,23 @@
 $( document ).ready(function() {
-	translateInner("eng");
-	translateImages("eng")
-$("input[name=lang]:radio").change(function () {
-	translateInner($('.language-form input[type=radio]:checked').val());
-	translateImages($('.language-form input[type=radio]:checked').val());
-	translateInputs($('.language-form input[type=radio]:checked').val());
- });
+	if(sessionStorage.language != null){
+		$("input[name=lang][value='"+sessionStorage.language+"']").prop("checked",true);
+		translateInner(sessionStorage.language);
+		translateImages(sessionStorage.language);
+		translateInputs(sessionStorage.language);
+
+	}else{
+		translateInner("eng");
+		translateImages("eng");
+		translateInputs("eng");
+		sessionStorage.language="eng";
+		$("input[name=lang][value='eng']").prop("checked",true);
+	}
+	$("input[name=lang]:radio").change(function () {
+		sessionStorage.language = $('.language-form input[type=radio]:checked').val();
+		translateInner($('.language-form input[type=radio]:checked').val());
+		translateImages($('.language-form input[type=radio]:checked').val());
+		translateInputs($('.language-form input[type=radio]:checked').val());
+	});
 
 });
 
