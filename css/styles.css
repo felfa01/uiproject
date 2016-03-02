@@ -130,6 +130,13 @@ figcaption{
   margin-left: 5px;
 }
 
+.edit-row{
+  width:20px;
+  height:15px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
 .container-fluid {
   padding-right: 30px;
   padding-left: 30px;
@@ -237,6 +244,30 @@ figcaption{
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd;
+}
+
+table {
+    width:100%;
+    font-size: 15px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table tr:nth-child(even) {
+    background-color: #eee;
+}
+table tr:nth-child(odd) {
+   background-color:#fff;
+}
+table th  {
+    background-color: black;
+    color: white;
 }
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
