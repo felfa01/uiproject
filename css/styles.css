@@ -40,10 +40,11 @@ section{ width: 100%; height: 100%;}
 }
 
 .content {
-  margin-top: 50px;
+  padding-top: 50px;
   background-image: url("../images/World_Map.jpg");
   background-size: 100% 130%;
   background-color: #cccccc;
+  overflow: auto;
 }
 
 .content-homepage{
@@ -51,6 +52,16 @@ section{ width: 100%; height: 100%;}
   background-size: 100% 130%;
   background-color: #cccccc;
 }
+
+.content-main{
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  overflow: auto;
+  background-color: #FFF;
+  min-height: 90%;
+}
+
 
 .title-home img{
   padding-top: 30px;
@@ -108,10 +119,6 @@ section{ width: 100%; height: 100%;}
   margin-left: auto;
 }
 
-.content-main{
-	padding-top: 20px;
-	background-color: #FFF;
-}
 
 .myform{
   font-size: 20px;
@@ -147,12 +154,72 @@ section{ width: 100%; height: 100%;}
   background-color: slategray;
 }
 .form-picture-admin{
-    height: 150px;
-    width: 150px;
-    float: center;
-    margin: 0 0 10px 10px;
+  height: 150px;
+  width: 150px;
+  float: center;
+  margin: 0 0 10px 10px;
 }
 
+.button-group{
+  float:left;
+  padding-left: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.button-group button{
+  margin-left: 5px;
+}
+.panel{
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.panel-heading{
+  text-align: left;
+  padding: 10px;
+  margin: auto;
+  font-size: 20px;
+  border-bottom: 1px solid;
+}
+
+.panel-content{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  font-size: 10px;
+}
+
+.beer-list{
+  font-size: 15px;
+  border: 2px double gray;
+  padding: 0px;
+}
+
+.beer-list li{
+  border: 1px solid black;
+  white-space: nowrap;
+  display: block;
+  overflow: auto;
+}
+
+.beer-list li a{
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  min-width: 33%;
+  overflow: hidden;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
   float: left;
@@ -254,40 +321,40 @@ section{ width: 100%; height: 100%;}
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 1s; /* Firefox < 16 */
-        -ms-animation: fadein 1s; /* Internet Explorer */
-         -o-animation: fadein 1s; /* Opera < 12.1 */
-            animation: fadein 1s;
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s; /* Firefox < 16 */
+  -ms-animation: fadein 1s; /* Internet Explorer */
+  -o-animation: fadein 1s; /* Opera < 12.1 */
+  animation: fadein 1s;
 }
 
 @keyframes fadein {
-    from { padding-top: 0; }
-    to   { padding-top: 100px; }
+  from { padding-top: 0; }
+  to   { padding-top: 100px; }
 }
 
 /* Firefox < 16 */
 @-moz-keyframes fadein {
-    from { padding-top: 0; }
-    to   { padding-top: 100px; }
+  from { padding-top: 0; }
+  to   { padding-top: 100px; }
 }
 
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
-    from { padding-top: 0; }
-    to   { padding-top: 100px; }
+  from { padding-top: 0; }
+  to   { padding-top: 100px; }
 }
 
 /* Internet Explorer */
 @-ms-keyframes fadein {
-    from { padding-top: 0; }
-    to   { padding-top: 100px; }
+  from { padding-top: 0; }
+  to   { padding-top: 100px; }
 }
 
 /* Opera < 12.1 */
 @-o-keyframes fadein {
-    from { padding-top: 0; }
-    to   { padding-top: 100px; }
+  from { padding-top: 0; }
+  to   { padding-top: 100px; }
 }
 
 .modal-header {
