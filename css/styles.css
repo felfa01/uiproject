@@ -217,6 +217,7 @@ figcaption{
   padding-right: 10px;
   width: 100%;
   font-size: 10px;
+  overflow: auto;
 }
 
 .beer-list{
@@ -259,6 +260,11 @@ th, td {
     padding: 5px;
     text-align: left;
 }
+
+td > i{
+  margin-left: 10px;
+  cursor: pointer;
+}
 table tr:nth-child(even) {
     background-color: #eee;
 }
@@ -269,6 +275,7 @@ table th  {
     background-color: black;
     color: white;
 }
+
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
   float: left;
