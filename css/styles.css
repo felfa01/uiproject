@@ -5,7 +5,7 @@
   top: 0;
   min-height: 50px;
   margin-bottom: 20px;
-  padding-top: 5px;
+  padding-top: 15px;
   padding-bottom: 5px;
   border: 1px solid transparent;
   z-index: 9999;
@@ -65,7 +65,7 @@ figure{
   overflow: auto;
   background-color: #FFF;
   min-height: 90%;
-  width:1000px;
+  width:1100px;
   border-style: solid;
   border-color: brown;
 }
@@ -256,10 +256,25 @@ table, th, td {
     border-collapse: collapse;
 }
 
+#stock-table td, #stock-table th{
+  max-width: 100px;
+  word-break: keep-all;
+}
+
+#stock-table input{
+  margin-top  : 5px;
+  margin-bottom: 5px;
+  max-width: 100px;
+}
+
+
 th, td {
     padding: 5px;
-    text-align: left;
+    text-align: left;    
 }
+
+
+
 
 td > i{
   margin-left: 10px;
@@ -470,4 +485,18 @@ table th  {
   border: 5px solid #09324a;
   position: relative;
 
+}
+
+#collapse-sidebar{
+  float:right;
+  cursor: pointer;
+}
+
+#sidebar {
+    display: none;
+    position:absolute;
+    top:50px; bottom:0; right:0;
+    width:30%;
+    border: 5px solid #09324a;
+    background: black;
 }

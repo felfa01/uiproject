@@ -1,18 +1,7 @@
 
-var creditAdd = 0;
+
 $( document ).ready(function() {
 	getUsers(urlParams["username"], urlParams["password"]);
-	$(".close").on("click", function(){
-		$(".modal").css('display','none');	
-		$('form').trigger("reset");	
-	});
-	window.onclick = function(event) {
-		if (event.target == document.getElementById('usrModal') || event.target == document.getElementById('creditModal') ) {
-			$(".modal").css('display','none');
-			$('form').trigger("reset");
-			creditAdd = 0;
-		}
-	}
 	$( ".usrForm" ).submit(function( event ) {
 		event.preventDefault();
 		$.ajax({
@@ -60,16 +49,16 @@ function getUsers(username, pwd){
 				+"</td><td><i class='editUsr fa fa-pencil-square-o'></i><i class='addCredit fa fa-credit-card-alt'></i><i class='deleteUsr fa fa-user-times'></i></td></tr>");
 		});
 		$(".editUsr").on("click", function(){
-			$("input[name='new_username']").val($(this).closest("tr").children("#username").html());
-			$("input[name='first_name']").val($(this).closest("tr").children("#firstname").html());
-			$("input[name='last_name']").val($(this).closest("tr").children("#lastname").html());
+			$("input[name='new_username']").attr("value",$(this).closest("tr").children("#username").html());
+			$("input[name='first_name']").attr("value",$(this).closest("tr").children("#firstname").html());
+			$("input[name='last_name']").attr("value",$(this).closest("tr").children("#lastname").html());
 			
 			$('#usrModal').css('display','block');
 		});
 		$(".addCredit").on("click", function(){
-			$("input[name='new_credit']").val($(this).closest("tr").children("#assets").html());
+			$("input[name='new_credit']").attr("value",$(this).closest("tr").children("#assets").html());
 			creditAdd =	$(this).closest("tr").children("#assets").html();
-			$("input[name='add_credit']").val("0");		
+			$("input[name='add_credit']").attr("value","0");		
 			$('#creditModal').css('display','block');
 		});
 		$(".deleteUsr").on("click", function(){
