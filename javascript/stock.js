@@ -58,19 +58,19 @@ function getStock(username, pwd, brand, name){
 			});
 		}else if(brand != "" && name != ""){
 			jQuery.each(data.payload, function(i, beer) {
-				if(beer.namn2.includes(name) && beer.namn.includes(brand)){
+				if(beer.namn2.toLowerCase().includes(name.toLowerCase()) && beer.namn.toLowerCase().includes(brand.toLowerCase())){
 					fillStock(i, beer);
 				}
 			});			
 		}else if(brand != "" && name == ""){
 			jQuery.each(data.payload, function(i, beer) {
-				if( beer.namn.includes(brand)){
+				if( beer.namn.toLowerCase().includes(brand.toLowerCase())){
 					fillStock(i, beer);
 				}
 			});
 		}else{
 				jQuery.each(data.payload, function(i, beer) {
-				if( beer.namn2.includes(name)){
+				if( beer.namn2.toLowerCase().includes(name.toLowerCase())){
 					fillStock(i, beer);
 				}
 			});

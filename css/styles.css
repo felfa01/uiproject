@@ -496,7 +496,8 @@ table th  {
     display: none;
     position:absolute;
     top:50px; bottom:0; right:0;
-    width:30%;
+    width:40%;
     border: 5px solid #09324a;
     background: black;
+    overflow: auto;
 }
