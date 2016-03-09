@@ -1,0 +1,118 @@
+<!---
+File: Spirograph.html
+
+This page shows different statistics for the bar with different graphs choosen by the user.
+
+Version 1.0
+Author: Mikael Holmberg
+
+Requires the following files:
+
+styles.css
+jquery-1.12.0.min.js
+translate.js
+shared.js"
+statistics.js
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Proj Test</title>
+	<link rel="stylesheet" href="../css/styles.css">
+	<script src="../jquery/jquery-1.12.0.min.js"></script>
+	<script src="../javascript/translate.js"></script>
+	<script src="../javascript/shared.js"></script>
+	<script src="../javascript/statistics.js"></script>
+	
+</head>
+<body>
+	<nav class="fixed-navbar">
+		<div class="container-fluid">
+			<div class="col-3">TEST - PUB</div>
+			<span id="collapse-sidebar">
+				<i class="fa fa-beer fa-2x"></i>
+			</span>
+		</div>
+	</nav>
+	<section class="content">
+		<div class=" content-main">
+			<div class="container-fluid">
+				<div class="col-12">
+					<div class="panel ">
+						<div class="panel-heading">
+							Stock
+						</div>
+						<div class="panel-content">
+							<div class="col-offset-3 col-6">
+							<!---
+							This canvas is used to visualize different(pie chart, bar chart) statistics for the barm depended on choice
+							and parameters from the user. Generated through javascript and jquery. 
+						-->
+
+						<canvas id="cvs" width="400" height="400"></canvas>
+					</div>
+					<div class="col-12">
+						<div id="graph-info"></div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>
+
+
+
+</section>
+<div id="sidebar">
+	<div class="panel">
+		<div class="panel-heading">
+			Quick Order
+		</div>
+		<div class="panel-content">
+			<div class="col-12">
+				<table id="QO-table">
+					<!---
+						This table shows the most popular for the moment and gives the user the possibility to order from these. The beers are taken from the current purchases made by the users. Generated from javascript and jquery.
+						-->
+					<thead>
+						<tr>
+							<th hidden>
+								ID
+							</th>
+							<th>
+								Brand
+							</th>
+							<th>
+								Name
+							</th>											
+							<th>
+								Price
+							</th>	
+							<th>
+								#
+							</th>										
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+					<tfoot></tfoot>
+				</table>
+				<div class="col-12">
+					<div class="button-group">
+						<button id="qo-submit" class="translateInner form-submit" >Order</button>
+						<button id="qo-reset" class="translateInner form-submit" >Reset</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+<!---
+END of file statistics.html
+-->

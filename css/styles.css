@@ -1,3 +1,12 @@
+/*
+
+File: styles.css
+
+Version 1.0
+Author: Mikael Holmberg
+
+*/
+
 .fixed-navbar {
   position: fixed;
   right: 0;
@@ -520,3 +529,37 @@ height:50vh;
 
   margin-top: 10px;
 }
+
+.borderimg { 
+   border: 10px solid transparent;
+
+    padding: 30px;
+    -webkit-border-image: url("../images/border-image.png") 40 round; /* Safari 3.1-5 */
+    -o-border-image: url("../images/border-image.png") 40 round; /* Opera 11-12.1 */
+    border-image: url("../images/border-image.png") 40 round;
+}
+
+.graph-info-box { 
+    font-size: 17px;
+    height: 50px;
+
+}
+#cvs{
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.graph-color-box {   
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin: 2px 5px 5px 1px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0,0,0,.2);
+}
+
+
+/*
+END of file styles.css
+*/
