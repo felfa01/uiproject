@@ -230,32 +230,7 @@ figcaption{
   overflow: hidden;
 }
 
-.beer-list{
-  font-size: 15px;
-  border: 2px double gray;
-  padding: 0px;
-}
 
-.beer-list li{
-  border: 1px solid black;
-  white-space: nowrap;
-  display: block;
-  overflow: auto;
-}
-
-.beer-list li a{
-  position: relative;
-  float: left;
-  padding: 6px 12px;
-  margin-left: -1px;
-  min-width: 33%;
-  overflow: hidden;
-  line-height: 1.42857143;
-  color: #337ab7;
-  text-decoration: none;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
 
 table {
   width:100%;
@@ -628,6 +603,19 @@ table th  {
   margin-top: 10px;
 }
 
+
+.beer-list{
+     list-style-type:none;
+   font-size: 20px;
+}
+
+.beer-list li{
+    margin-top: 10px;
+}
+
+.beer-list li span{
+    margin-left: 10px;
+}
 
 /*
 END of file styles.css

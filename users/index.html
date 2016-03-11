@@ -6,6 +6,9 @@
 	<link rel="stylesheet" href="../css/styles.css">
 	<script src="../jquery/jquery-1.12.0.min.js"></script>
 	<script src="../javascript/translate.js"></script>
+	<script src="../javascript/shared.js"></script>
+	<script src="../javascript/order_page.js"></script>
+	<script src="../javascript/drag_and_drop.js"></script>
 
 </head>
 <body>
@@ -21,27 +24,17 @@
 					<div class="panel-heading">
 						Panel-Test-Beer List
 					</div>
-					<div class="panel-content" style="min-height: 300px;">
-					<ul class="beer-list">
-						<li>
-						<a>
-							Sofiero
-							</a>
+					<div class="panel-content">
+					<ul id = "beer-list" class="beer-list">
+<!--
 
-						<a>
-							Cheap beer
-							</a>
+						<li id = "beer1" draggable="true" ondragstart="drag(event)">Item 1</li>
+						<li id = "beer2" draggable="true" ondragstart="drag(event)">Item 2</li>
+						<li id = "beer3" draggable="true" ondragstart="drag(event)">Item 3</li>
+						<li id = "beer4" draggable="true" ondragstart="drag(event)">Item 4</li>
+						<li id = "beer5" draggable="true" ondragstart="drag(event)">Item 5</li>
+-->
 
-						<a>
-Dangerous
-							</a>	
-							<a>
-							Sofiero
-							</a>	
-						</li>
-						<li>
-							Arboga
-						</li>
 					</ul>
 
 
@@ -53,11 +46,21 @@ Dangerous
 					<div class="panel-heading">
 						Panel-Test-Shopping List
 					</div>
-					<div class="panel-content" style="min-height: 200px;">
+					<div class="col-8">
+					<div class="panel-content" style="min-height: 200px;"id="bartable1">
+						<ul id = "order-list" class="beer-list" ondragover="allowDrop(event)" ondrop="drop(event)" style="min-height: 200px;">
 
-
-
+						</ul>
 					</div>
+					</div>
+					<div class = "col-offset-8">
+					<div class="panel-content" style="min-height: 200px;">
+						<ul id = "counterList" class ="connectedSortable">
+
+						</ul>
+					</div>
+					</div>
+
 				</div>
 				<div class="button-group">
 				<div class="col-offset-9 col-3">
