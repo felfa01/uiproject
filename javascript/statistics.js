@@ -11,13 +11,16 @@
 // When the document has been loaded and initialised, we get the beers available in the bar.
 //
 $( document ).ready(function() {
-	getInventory(urlParams["username"], urlParams["password"]);
+	getInventory(urlParams["username"], urlParams["password"], $('.statistic-form input[type=radio]:checked').val());
+$("input[name=stat]:radio").change(function () {
+	getInventory(urlParams["username"], urlParams["password"], $('.statistic-form input[type=radio]:checked').val());
 
+});
 
 });
 
 
-function getInventory(username, pwd){
+function getInventory(username, pwd, choice){
 	url = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+pwd+"&action=inventory_get";
 	var beersToShow=[];
 	$.getJSON( url, {
@@ -37,34 +40,100 @@ function getInventory(username, pwd){
 				delete data.payload[i]
 			}
 
-		});
+		});		
 		colorArr = distinctColors(beersToShow.length) // Get the colors
+		switch(choice){
+			case "1":
 		fillPieChart(totalCount, colorArr, beersToShow); // Fill the pie chart
+		break;
+		case "2":
+		fillBarChart(totalCount, colorArr, beersToShow); // Fill the pie chart
+		break;
+		default:
+		alert("No choice taken!");
+		break;
+
+	}
 	});
 }
 
 //Fills the pie chart with the procentage of each beer in the stock
 function fillPieChart(totCount, colorArr, beers){
+$("#cvs2").hide();
+$("#graph-info").html("");
+$("#graph-info").show();
+$("#cvs").show();
 var canvas;
 var ctx;
 var lastend = 0;
 console.log(totCount)
 console.log(colorArr)
 canvas = document.getElementById("cvs");
+var height = canvas.height/2;
+var width = canvas.width/2;
 ctx = canvas.getContext("2d");
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 jQuery.each(beers, function(i, beer) {
 ctx.fillStyle = colorArr[i]; // Color to fill the area with
 ctx.beginPath();
-ctx.moveTo(200,150); //Start point of path
-ctx.arc(200,150,150,lastend,lastend+
+ctx.moveTo(height,width); //Start point of path
+ctx.arc(height,width,width,lastend,lastend+
   (Math.PI*2*(parseInt(beer.count)/totCount)),false);  // context.arc(x-center,y-center,radius,starting angle,ending angle);
-ctx.lineTo(200,150); // make line to startpoint
+ctx.lineTo(height,width); // make line to startpoint
 ctx.fill(); // fill canvas
 lastend += Math.PI*2*(parseInt(beer.count)/totCount); // save end point of last slice
-$("#graph-info").append("<span class='col-4 graph-info-box'><span class='graph-color-box' style='background-color:" + colorArr[i]+"'></span>"+ beer.namn +", " + beer.namn2+"</span>");
+$("#graph-info").append("<li class='graph-info-box'><span class='graph-color-box' style='background-color:" + colorArr[i]+"'></span>- "+ beer.namn +", " + beer.namn2 + "<strong> - " + ((parseInt(beer.count)/totCount)*100).toFixed(2) +"%<strong></li>");
 });
+}
+
+function fillBarChart(totCount, colorArr, beers){
+$("#cvs").hide();
+$("#cvs2").show();
+$("#graph-info").hide();
+var canvas;
+var ctx;
+var lastend = 0;
+
+var width = 70;
+var spacing = 10;
+var totWidth = (beers.length) * (width+spacing);
+
+canvas = document.getElementById("cvs2");
+canvas.width = totWidth;
+
+ctx = canvas.getContext("2d");
+ctx.textAlign = "center";
+ctx.font = "10px Arial";
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+jQuery.each(beers, function(i, beer) {
+	ctx.fillStyle = colorArr[i];
+ctx.fillRect(lastend, 300, width, -((parseInt(beer.count)/totCount)*3000));
+//ctx.fillText( beer.namn,lastend,400);
+ctx.fillStyle = "black";
+wrapText(ctx, beer.namn + " " +((parseInt(beer.count)/totCount)*100).toFixed(2) +"%", lastend + spacing + (width/3), 320, (width), 15)
+lastend += width + spacing;
+});
+console.log(totWidth);
+}
+
+function wrapText(context, text, x, y, maxWidth, lineHeight) {
+        var words = text.split(" ");
+        var line = "";
+        for(var n = 0; n < words.length; n++) {
+          var testLine = line + words[n] + " ";
+          var metrics = context.measureText(testLine);
+          var testWidth = metrics.width;
+          if(testWidth > maxWidth) {
+            context.fillText(line, x, y);
+            line = words[n] + " ";
+            y += lineHeight;
+          }
+          else {
+            line = testLine;
+          }
+        }
+        context.fillText(line, x, y);
 }
 
 // Create color from the hsv color model for each beer in the jsonobj

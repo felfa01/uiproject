@@ -217,6 +217,7 @@ figcaption{
   margin: auto;
   font-size: 20px;
   border-bottom: 1px solid;
+  overflow: auto;
 }
 
 .panel-content{
@@ -226,7 +227,7 @@ figcaption{
   padding-right: 10px;
   width: 100%;
   font-size: 10px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .beer-list{
@@ -257,12 +258,12 @@ figcaption{
 }
 
 table {
-    width:100%;
-    font-size: 15px;
+  width:100%;
+  font-size: 15px;
 }
 table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 
 #stock-table td, #stock-table th{
@@ -278,8 +279,8 @@ table, th, td {
 
 
 th, td {
-    padding: 5px;
-    text-align: left;    
+  padding: 5px;
+  text-align: left;    
 }
 
 
@@ -290,14 +291,14 @@ td > i{
   cursor: pointer;
 }
 table tr:nth-child(even) {
-    background-color: #eee;
+  background-color: #eee;
 }
 table tr:nth-child(odd) {
-   background-color:#fff;
+ background-color:#fff;
 }
 table th  {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 
@@ -496,29 +497,30 @@ table th  {
 
 }
 
-#collapse-sidebar{
+.collapse-sidebar{
   float:right;
+  margin-left: 20px;
   cursor: pointer;
 }
 
-#sidebar {
-    display: none;
-    position:absolute;
-    top:50px; bottom:0; right:0;
-    width:40%;
-    border: 5px solid #09324a;
-    background: black;
-    overflow: auto;
+.sidebar {
+  display: none;
+  position:absolute;
+  top:50px; bottom:0; right:0;
+  width:40%;
+  border: 5px solid #09324a;
+  background: black;
+  overflow: auto;
 }
 
 
 #beerlist{
   list-style-type: none;
   font-size: 20px;
-height:50vh;
+  height:50vh;
   overflow: auto;
-    border-top: 2px solid #800000;
-    padding-top: 5px;
+  border-top: 2px solid #800000;
+  padding-top: 5px;
 }
 
 #beerlist li{
@@ -531,32 +533,99 @@ height:50vh;
 }
 
 .borderimg { 
-   border: 10px solid transparent;
+ border: 10px solid transparent;
 
-    padding: 30px;
-    -webkit-border-image: url("../images/border-image.png") 40 round; /* Safari 3.1-5 */
-    -o-border-image: url("../images/border-image.png") 40 round; /* Opera 11-12.1 */
-    border-image: url("../images/border-image.png") 40 round;
+ padding: 30px;
+ -webkit-border-image: url("../images/border-image.png") 40 round; /* Safari 3.1-5 */
+ -o-border-image: url("../images/border-image.png") 40 round; /* Opera 11-12.1 */
+ border-image: url("../images/border-image.png") 40 round;
 }
 
 .graph-info-box { 
-    font-size: 17px;
-    height: 50px;
+  font-size: 17px;
+  overflow: auto;
+  margin-bottom: 10px;
 
+}
+.canvas-wrapper{
+  padding-bottom: 20px;
+  padding:10px;
+  overflow: auto;
 }
 #cvs{
   margin-top: 10px;
   padding: 15px;
 }
 
+#graph-info{
+  list-style-type:none;
+  overflow: auto;
+  max-height: 370px;
+}
+
 .graph-color-box {   
-    float: left;
-    width: 15px;
-    height: 15px;
-    margin: 2px 5px 5px 1px;
-    border-width: 1px;
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+  margin-right: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0,0,0,.2);
+}
+
+
+
+.tooltip .tooltip-panel {
+  display: none;
+  width: 300px;
+  color: black;
+  background-color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index:1;
+  top: 100%;
+  left: 0%;
+  overflow: none;
+  max-height: 500px;
+  margin-top:5px;
+  margin-left: 0px;
+  border: 1px solid black;
+}
+
+.tooltip .tooltip-content {
+  background-color: #fefefe;
+  margin: auto;
+  height:auto;
+  overflow:auto;
+  max-height: 300px;
+  padding-right: 10px;
+}
+
+
+.tooltip .tooltip-panel::before {
+ content: " ";
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 10%;
+    margin-left: -5px;
+    border-width: 5px;
     border-style: solid;
-    border-color: rgba(0,0,0,.2);
+    border-color: transparent transparent white transparent;
+}
+
+#stock-menu{
+  list-style-type:none;
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+
+#stock-menu li{
+  margin-top: 10px;
 }
 
 

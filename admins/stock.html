@@ -1,3 +1,22 @@
+<!---
+File: stock.html
+
+This page gives information about the current stock for the bar. As well as the possibility to alter price and nr of stock.
+
+Version 1.0
+Author: Mikael Holmberg
+
+Requires the following files:
+
+styles.css
+font-awesome.min.css
+jquery-1.12.0.min.js
+translate.js
+shared.js"
+stock.js
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +33,23 @@
 <body>
 	<nav class="fixed-navbar">
 		<div class="container-fluid">
-			<div class="col-3">TEST - PUB</div>
-			<span id="collapse-sidebar">
+			<div class="container-fluid">
+				<div class="col-offset-3 col-3">TEST - PUB</div>
+					<div class="col-3">
+				<div class="tooltip">Stock
+					<div class="tooltip-panel" id="tooltip-stock">
+						<div class="tooltip-content"><p>These beers are (running) out of stock: </p><ul id="stock-menu"></ul></div>
+
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			<span class="collapse-sidebar" id="collapse-qo">
 				<i class="fa fa-beer fa-2x"></i>
+			</span>
+			<span class="collapse-sidebar" id="collapse-credit">
+				<i class="fa fa-credit-card fa-2x"></i>
 			</span>
 		</div>
 	</nav>
@@ -30,6 +63,9 @@
 						</div>
 						<div class="panel-content">
 							<div class="col-12">
+							<!-- This table shows the stock (the nameless beers are filtered out)
+								 and edit options for each one.
+								-->
 								<table id="stock-table">
 									<thead>
 										<tr>
@@ -113,7 +149,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="sidebar">
+	<div class="sidebar" id="sidebar-qo">
 		<div class="panel">
 			<div class="panel-heading">
 				Quick Order
@@ -146,11 +182,60 @@
 						<tfoot></tfoot>
 					</table>
 					<div class="col-12">
-					<div class="button-group">
-						<button id="qo-submit" class="translateInner form-submit" >Order</button>
-						<button id="qo-reset" class="translateInner form-submit" >Reset</button>
+						<div class="button-group">
+							<button id="qo-submit" class="translateInner form-submit" >Order</button>
+							<button id="qo-reset" class="translateInner form-submit" >Reset</button>
+						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="sidebar" id="sidebar-credit">
+		<div class="panel">
+			<div class="panel-heading">
+				Add Credit
+			</div>
+			<div class="panel-content">
+				<div class="col-12">					
+					<form class="" ="quick_creditForm">
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="Usr">
+							User Name
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_username_credit" required>
+						</div>
 					</div>
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="Pwd">
+							Password
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_pwd_credit" required>
+						</div>
+					</div>
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="credit">
+							Add Credit
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_add_credit" required>
+						</div>
+					</div>
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="curent_credit">
+							New Credit
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_new_credit" disabled required>
+						</div>
+					</div>
+					<div class="col-offset-5 col-8 form-group">
+						<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
+						<button type="reset" value="Reset">Reset</button>
+					</div>
+				</form>
 				</div>
 			</div>
 		</div>

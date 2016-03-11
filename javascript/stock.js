@@ -51,10 +51,11 @@ $( document ).ready(function() {
 // Fills the table with name, nr in stock and different prices for each beer. Also adds a edit button for each row
 //
 function fillStock(i, beer){
-	$("#stock-table tbody").append("<tr id='"+ i +"'><td id='beer_id' hidden>"+ beer.beer_id+"</td><td id='namn'>"+ beer.namn
+
+	$("#stock-table tbody").append(((beer.count < 10) ? "<tr style='color:orange;' id='":"<tr id='") + i +"'><td id='beer_id' hidden>"+ beer.beer_id+"</td><td id='namn'>"+ beer.namn
 		+"</td><td id='namn2'>"+ beer.namn2
 		+"</td><td id='sbl_price'>"+ beer.sbl_price +"</td><td id='pub_price'>"+ beer.pub_price 
-		+"</td><td id='price'>"+ beer.price +"</td><td id='count'>"+ beer.count
+		+"</td><td id='price'>"+ beer.price +  "</td><td id='count'>" + beer.count
 		+"</td><td><i class='editStock fa fa-pencil-square-o fa-2x'></i></td></tr>");
 
 }

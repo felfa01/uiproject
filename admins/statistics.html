@@ -1,7 +1,7 @@
 <!---
 File: Spirograph.html
 
-This page shows different statistics for the bar with different graphs choosen by the user.
+This page shows different statistics for the bar with different graphs choosen by the users.
 
 Version 1.0
 Author: Mikael Holmberg
@@ -31,7 +31,15 @@ statistics.js
 <body>
 	<nav class="fixed-navbar">
 		<div class="container-fluid">
-			<div class="col-3">TEST - PUB</div>
+			<div class="col-offset-3 col-3">TEST - PUB</div>
+			<div class="col-3">
+				<div class="tooltip">Stock
+					<div class="tooltip-panel" id="tooltip-stock">
+					<div class="tooltip-content"><p>These beers are (running) out of stock: </p><ul id="stock-menu"></ul></div>
+
+					</div>
+				</div>
+			</div>
 			<span id="collapse-sidebar">
 				<i class="fa fa-beer fa-2x"></i>
 			</span>
@@ -43,20 +51,42 @@ statistics.js
 				<div class="col-12">
 					<div class="panel ">
 						<div class="panel-heading">
-							Stock
+							<div class="col-9">
+								Stock
+							</div>
+
+
 						</div>
 						<div class="panel-content">
-							<div class="col-offset-3 col-6">
+							<div class="col-offset-9 col-3">
+								<form class="myform statistic-form">
+									<label>
+										<input type="radio" name="stat" value="2" > Bar Chart
+									</label>
+									<label>
+										<input type="radio" name="stat" value="1" checked> Pie Chart
+									</label>
+								</form>
+							</div>
+							<div class="col-12 canvas-wrapper">
+
 							<!---
 							This canvas is used to visualize different(pie chart, bar chart) statistics for the barm depended on choice
 							and parameters from the user. Generated through javascript and jquery. 
 						-->
-
-						<canvas id="cvs" width="400" height="400"></canvas>
+						<div class="col-12">
+							<div class="col-offset-1 col-6">
+								<canvas id="cvs" width="300" height="300" style=""></canvas>
+							</div>
+							<div class="col-5">
+								<ul id="graph-info"></ul>
+							</div>
+						</div>
+						<div class="col-12">
+							<canvas id="cvs2" width="900" height="400"></canvas>
+						</div>
 					</div>
-					<div class="col-12">
-						<div id="graph-info"></div>
-					</div>
+					
 				</div>
 			</div>
 		</div>		
@@ -76,7 +106,7 @@ statistics.js
 				<table id="QO-table">
 					<!---
 						This table shows the most popular for the moment and gives the user the possibility to order from these. The beers are taken from the current purchases made by the users. Generated from javascript and jquery.
-						-->
+					-->
 					<thead>
 						<tr>
 							<th hidden>
