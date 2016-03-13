@@ -155,7 +155,7 @@ figcaption{
 
 
 .myform{
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .language-form{
@@ -188,6 +188,13 @@ figcaption{
   background-color: slategray;
 }
 .form-picture-admin{
+  height: 150px;
+  width: 150px;
+  float: center;
+  margin: 0 0 10px 10px;
+}
+
+.form-picture-vip{
   height: 150px;
   width: 150px;
   float: center;
@@ -231,7 +238,6 @@ figcaption{
 }
 
 
-
 table {
   width:100%;
   font-size: 15px;
@@ -257,8 +263,6 @@ th, td {
   padding: 5px;
   text-align: left;    
 }
-
-
 
 
 td > i{
