@@ -1,3 +1,12 @@
+/*
+
+File: styles.css
+
+Version 1.0
+Author: Mikael Holmberg
+
+*/
+
 .fixed-navbar {
   position: fixed;
   right: 0;
@@ -5,7 +14,7 @@
   top: 0;
   min-height: 50px;
   margin-bottom: 20px;
-  padding-top: 5px;
+  padding-top: 15px;
   padding-bottom: 5px;
   border: 1px solid transparent;
   z-index: 9999;
@@ -22,6 +31,9 @@
 
 body, html{ width:100%; height:100%; padding: 0; margin: 0;}
 section{ width: 100%; height: 100%;}
+figure{
+  display: inline-block;
+}
 
 .btn-default{
 	margin-bottom: 8px;
@@ -40,10 +52,11 @@ section{ width: 100%; height: 100%;}
 }
 
 .content {
-  margin-top: 50px;
+  padding-top: 50px;
   background-image: url("../images/World_Map.jpg");
   background-size: 100% 130%;
   background-color: #cccccc;
+  overflow: auto;
 }
 
 .content-homepage{
@@ -51,6 +64,21 @@ section{ width: 100%; height: 100%;}
   background-size: 100% 130%;
   background-color: #cccccc;
 }
+
+.content-main{
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: auto;
+  background-color: #FFF;
+  min-height: 90%;
+  width:1100px;
+  border-style: solid;
+  border-color: brown;
+}
+
 
 .title-home img{
   padding-top: 30px;
@@ -66,6 +94,11 @@ section{ width: 100%; height: 100%;}
   margin-left: auto;
   width: 760px;
 }
+
+.content-main > .container{
+  width: 900px;
+}
+
 
 /*Container for select image */
 .pic {
@@ -94,7 +127,19 @@ section{ width: 100%; height: 100%;}
   cursor: pointer;
 }
 
+figcaption{
+  text-align: center;
+  font-size: 20px;
+}
+
 .radio-img{
+  width:20px;
+  height:15px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.edit-row{
   width:20px;
   height:15px;
   margin-right: 10px;
@@ -108,13 +153,9 @@ section{ width: 100%; height: 100%;}
   margin-left: auto;
 }
 
-.content-main{
-	padding-top: 20px;
-	background-color: #FFF;
-}
 
 .myform{
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .language-form{
@@ -146,13 +187,6 @@ section{ width: 100%; height: 100%;}
 .form-submit:hover{
   background-color: slategray;
 }
-.form-picture-vip{
-    height: 150px;
-    width: 150px;
-    float: center;
-    margin: 0 0 10px 10px;
-}
-
 .form-picture-admin{
   height: 150px;
   width: 150px;
@@ -160,12 +194,85 @@ section{ width: 100%; height: 100%;}
   margin: 0 0 10px 10px;
 }
 
-.nav {
-  list-style-type: none;
-  margin: 0;
-  padding: 20px;
-  display: inline;
-  float: left;
+.button-group{
+  float:left;
+  padding-left: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.button-group button{
+  margin-left: 5px;
+}
+.panel{
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.panel-heading{
+  text-align: left;
+  padding: 10px;
+  margin: auto;
+  font-size: 20px;
+  border-bottom: 1px solid;
+  overflow: auto;
+}
+
+.panel-content{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  font-size: 10px;
+  overflow: hidden;
+}
+
+
+
+table {
+  width:100%;
+  font-size: 15px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+#stock-table td, #stock-table th{
+  max-width: 100px;
+  word-break: keep-all;
+}
+
+#stock-table input{
+  margin-top  : 5px;
+  margin-bottom: 5px;
+  max-width: 100px;
+}
+
+
+th, td {
+  padding: 5px;
+  text-align: left;    
+}
+
+
+
+
+td > i{
+  margin-left: 10px;
+  cursor: pointer;
+}
+table tr:nth-child(even) {
+  background-color: #eee;
+}
+table tr:nth-child(odd) {
+ background-color:#fff;
+}
+table th  {
+  background-color: black;
   color: white;
 }
 
@@ -270,40 +377,40 @@ section{ width: 100%; height: 100%;}
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 1s; /* Firefox < 16 */
-        -ms-animation: fadein 1s; /* Internet Explorer */
-         -o-animation: fadein 1s; /* Opera < 12.1 */
-            animation: fadein 1s;
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s; /* Firefox < 16 */
+  -ms-animation: fadein 1s; /* Internet Explorer */
+  -o-animation: fadein 1s; /* Opera < 12.1 */
+  animation: fadein 1s;
 }
 
 @keyframes fadein {
-    from { padding-top: 0; }
-    to   { padding-top: 100px; }
+  from { padding-top: 0; }
+  to   { padding-top: 100px; }
 }
 
 /* Firefox < 16 */
 @-moz-keyframes fadein {
-    from { padding-top: 0; }
-    to   { padding-top: 100px; }
+  from { padding-top: 0; }
+  to   { padding-top: 100px; }
 }
 
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
-    from { padding-top: 0; }
-    to   { padding-top: 100px; }
+  from { padding-top: 0; }
+  to   { padding-top: 100px; }
 }
 
 /* Internet Explorer */
 @-ms-keyframes fadein {
-    from { padding-top: 0; }
-    to   { padding-top: 100px; }
+  from { padding-top: 0; }
+  to   { padding-top: 100px; }
 }
 
 /* Opera < 12.1 */
 @-o-keyframes fadein {
-    from { padding-top: 0; }
-    to   { padding-top: 100px; }
+  from { padding-top: 0; }
+  to   { padding-top: 100px; }
 }
 
 .modal-header {
@@ -364,3 +471,152 @@ section{ width: 100%; height: 100%;}
   position: relative;
 
 }
+
+.collapse-sidebar{
+  float:right;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.sidebar {
+  display: none;
+  position:absolute;
+  top:50px; bottom:0; right:0;
+  width:40%;
+  border: 5px solid #09324a;
+  background: black;
+  overflow: auto;
+}
+
+
+#beerlist{
+  list-style-type: none;
+  font-size: 20px;
+  height:50vh;
+  overflow: auto;
+  border-top: 2px solid #800000;
+  padding-top: 5px;
+}
+
+#beerlist li{
+  margin-top: 5px;
+}
+
+#beerlist input{
+
+  margin-top: 10px;
+}
+
+.borderimg { 
+ border: 10px solid transparent;
+
+ padding: 30px;
+ -webkit-border-image: url("../images/border-image.png") 40 round; /* Safari 3.1-5 */
+ -o-border-image: url("../images/border-image.png") 40 round; /* Opera 11-12.1 */
+ border-image: url("../images/border-image.png") 40 round;
+}
+
+.graph-info-box { 
+  font-size: 17px;
+  overflow: auto;
+  margin-bottom: 10px;
+
+}
+.canvas-wrapper{
+  padding-bottom: 20px;
+  padding:10px;
+  overflow: auto;
+}
+#cvs{
+  margin-top: 10px;
+  padding: 15px;
+}
+
+#graph-info{
+  list-style-type:none;
+  overflow: auto;
+  max-height: 370px;
+}
+
+.graph-color-box {   
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+  margin-right: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0,0,0,.2);
+}
+
+
+
+.tooltip .tooltip-panel {
+  display: none;
+  width: 300px;
+  color: black;
+  background-color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index:1;
+  top: 100%;
+  left: 0%;
+  overflow: none;
+  max-height: 500px;
+  margin-top:5px;
+  margin-left: 0px;
+  border: 1px solid black;
+}
+
+.tooltip .tooltip-content {
+  background-color: #fefefe;
+  margin: auto;
+  height:auto;
+  overflow:auto;
+  max-height: 300px;
+  padding-right: 10px;
+}
+
+
+.tooltip .tooltip-panel::before {
+ content: " ";
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 10%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}
+
+#stock-menu{
+  list-style-type:none;
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+
+#stock-menu li{
+  margin-top: 10px;
+}
+
+
+.beer-list{
+     list-style-type:none;
+   font-size: 20px;
+}
+
+.beer-list li{
+    margin-top: 10px;
+}
+
+.beer-list li span{
+    margin-left: 10px;
+}
+
+/*
+END of file styles.css
+*/

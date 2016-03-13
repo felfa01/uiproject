@@ -1,0 +1,148 @@
+<!---
+File: Spirograph.html
+
+This page shows different statistics for the bar with different graphs choosen by the users.
+
+Version 1.0
+Author: Mikael Holmberg
+
+Requires the following files:
+
+styles.css
+jquery-1.12.0.min.js
+translate.js
+shared.js"
+statistics.js
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Proj Test</title>
+	<link rel="stylesheet" href="../css/styles.css">
+	<script src="../jquery/jquery-1.12.0.min.js"></script>
+	<script src="../javascript/translate.js"></script>
+	<script src="../javascript/shared.js"></script>
+	<script src="../javascript/statistics.js"></script>
+	
+</head>
+<body>
+	<nav class="fixed-navbar">
+		<div class="container-fluid">
+			<div class="col-offset-3 col-3">TEST - PUB</div>
+			<div class="col-3">
+				<div class="tooltip">Stock
+					<div class="tooltip-panel" id="tooltip-stock">
+					<div class="tooltip-content"><p>These beers are (running) out of stock: </p><ul id="stock-menu"></ul></div>
+
+					</div>
+				</div>
+			</div>
+			<span id="collapse-sidebar">
+				<i class="fa fa-beer fa-2x"></i>
+			</span>
+		</div>
+	</nav>
+	<section class="content">
+		<div class=" content-main">
+			<div class="container-fluid">
+				<div class="col-12">
+					<div class="panel ">
+						<div class="panel-heading">
+							<div class="col-9">
+								Stock
+							</div>
+
+
+						</div>
+						<div class="panel-content">
+							<div class="col-offset-9 col-3">
+								<form class="myform statistic-form">
+									<label>
+										<input type="radio" name="stat" value="2" > Bar Chart
+									</label>
+									<label>
+										<input type="radio" name="stat" value="1" checked> Pie Chart
+									</label>
+								</form>
+							</div>
+							<div class="col-12 canvas-wrapper">
+
+							<!---
+							This canvas is used to visualize different(pie chart, bar chart) statistics for the barm depended on choice
+							and parameters from the user. Generated through javascript and jquery. 
+						-->
+						<div class="col-12">
+							<div class="col-offset-1 col-6">
+								<canvas id="cvs" width="300" height="300" style=""></canvas>
+							</div>
+							<div class="col-5">
+								<ul id="graph-info"></ul>
+							</div>
+						</div>
+						<div class="col-12">
+							<canvas id="cvs2" width="900" height="400"></canvas>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>
+
+
+
+</section>
+<div id="sidebar">
+	<div class="panel">
+		<div class="panel-heading">
+			Quick Order
+		</div>
+		<div class="panel-content">
+			<div class="col-12">
+				<table id="QO-table">
+					<!---
+						This table shows the most popular for the moment and gives the user the possibility to order from these. The beers are taken from the current purchases made by the users. Generated from javascript and jquery.
+					-->
+					<thead>
+						<tr>
+							<th hidden>
+								ID
+							</th>
+							<th>
+								Brand
+							</th>
+							<th>
+								Name
+							</th>											
+							<th>
+								Price
+							</th>	
+							<th>
+								#
+							</th>										
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+					<tfoot></tfoot>
+				</table>
+				<div class="col-12">
+					<div class="button-group">
+						<button id="qo-submit" class="translateInner form-submit" >Order</button>
+						<button id="qo-reset" class="translateInner form-submit" >Reset</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+<!---
+END of file statistics.html
+-->

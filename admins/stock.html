@@ -1,0 +1,243 @@
+<!---
+File: stock.html
+
+This page gives information about the current stock for the bar. As well as the possibility to alter price and nr of stock.
+
+Version 1.0
+Author: Mikael Holmberg
+
+Requires the following files:
+
+styles.css
+font-awesome.min.css
+jquery-1.12.0.min.js
+translate.js
+shared.js"
+stock.js
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Proj Test</title>
+	<link rel="stylesheet" href="../css/styles.css">
+	<link rel="stylesheet" href="../css/font-awesome.min.css">
+	<script src="../jquery/jquery-1.12.0.min.js"></script>
+	<script src="../javascript/translate.js"></script>
+	<script src="../javascript/shared.js"></script>
+	<script src="../javascript/stock.js"></script>
+	
+</head>
+<body>
+	<nav class="fixed-navbar">
+		<div class="container-fluid">
+			<div class="container-fluid">
+				<div class="col-offset-3 col-3">TEST - PUB</div>
+					<div class="col-3">
+				<div class="tooltip">Stock
+					<div class="tooltip-panel" id="tooltip-stock">
+						<div class="tooltip-content"><p>These beers are (running) out of stock: </p><ul id="stock-menu"></ul></div>
+
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			<span class="collapse-sidebar" id="collapse-qo">
+				<i class="fa fa-beer fa-2x"></i>
+			</span>
+			<span class="collapse-sidebar" id="collapse-credit">
+				<i class="fa fa-credit-card fa-2x"></i>
+			</span>
+		</div>
+	</nav>
+	<section class="content">
+		<div class=" content-main">
+			<div class="container-fluid">
+				<div class="col-12">
+					<div class="panel borderimg">
+						<div class="panel-heading">
+							Stock
+						</div>
+						<div class="panel-content">
+							<div class="col-12">
+							<!-- This table shows the stock (the nameless beers are filtered out)
+								 and edit options for each one.
+								-->
+								<table id="stock-table">
+									<thead>
+										<tr>
+											<th hidden>
+												ID
+											</th>
+											<th>
+												<input type="text" name="brand_search" placeholder="Brand">
+											</th>
+											<th>
+												<input type="text" name="name_search" placeholder="Name">
+											</th>
+											<th>
+												Supplier Price
+											</th>
+											<th>
+												Pub Price
+											</th>
+											<th>
+												Price
+											</th>
+											<th>
+												# in stock
+											</th>
+											<th>
+
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>		
+			</div>
+		</div>
+		
+		
+
+	</section>
+	<div id="stockModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">×</span>
+			</div>
+			<p class="translateInner" id="beer_name"></p>
+			<div class="col-8">
+				<form class="stockForm">
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="beer_id">
+							Beer ID
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="beer_id" required disabled>
+						</div>
+					</div>
+					<div class="col-12 form-group" >
+						<div  class="translateInner form-label col-5" data-translate="price">
+							Price
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="price" required>
+						</div>
+					</div>
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="amount">
+							Amount
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="amount" required>
+						</div>
+					</div>
+					<div class="col-offset-5 col-8 form-group">
+						<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
+						<button type="reset" value="Reset">Reset</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar" id="sidebar-qo">
+		<div class="panel">
+			<div class="panel-heading">
+				Quick Order
+			</div>
+			<div class="panel-content">
+				<div class="col-12">
+					<table id="QO-table">
+						<thead>
+							<tr>
+								<th hidden>
+									ID
+								</th>
+								<th>
+									Brand
+								</th>
+								<th>
+									Name
+								</th>											
+								<th>
+									Price
+								</th>	
+								<th>
+									#
+								</th>										
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+						<tfoot></tfoot>
+					</table>
+					<div class="col-12">
+						<div class="button-group">
+							<button id="qo-submit" class="translateInner form-submit" >Order</button>
+							<button id="qo-reset" class="translateInner form-submit" >Reset</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="sidebar" id="sidebar-credit">
+		<div class="panel">
+			<div class="panel-heading">
+				Add Credit
+			</div>
+			<div class="panel-content">
+				<div class="col-12">					
+					<form class="quick_creditForm">
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="Usr">
+							User Name
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_username_credit" required>
+						</div>
+					</div>
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="Pwd">
+							Password
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_pwd_credit" required>
+						</div>
+					</div>
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="credit">
+							Add Credit
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_add_credit" required>
+						</div>
+					</div>
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="curent_credit">
+							New Credit
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_new_credit" disabled required>
+						</div>
+					</div>
+					<div class="col-offset-5 col-8 form-group">
+						<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
+						<button type="reset" value="Reset">Reset</button>
+					</div>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
