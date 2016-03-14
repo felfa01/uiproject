@@ -55,7 +55,9 @@ var jsonObject = {
 		"UsrPwd": "Please enter user name and password.",	
 		"PirateGuest":"../images/Pirate_Guest.png",
 		"BeerList":"Beer List",
-		"OrderList": "Your choice of beverages"
+		"OrderList": "Your choice of beverages",
+        "Order": "Order",
+        "Brand": "Brand"
 
 	},
 	"swe":{
@@ -67,7 +69,9 @@ var jsonObject = {
 		"UsrPwd": "Var god ange dit användarnamn och lösenord.",
 		"PirateGuest": "../images/Pirate_Guest_Swe.png",
 		"BeerList":"Öllista",
-		"OrderList": "Dina val av dryck"
+		"OrderList": "Dina val av dryck",
+        "Order": "Beställ",
+        "Brand": "Märke"
 	}
 };
 
