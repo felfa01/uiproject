@@ -227,16 +227,16 @@ figcaption{
   padding-right: 10px;
   width: 100%;
   font-size: 10px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 
 
-table {
+#stock-table  {
   width:100%;
   font-size: 15px;
 }
-table, th, td {
+#stock-table , #stock-table th, #stock-table td {
   border: 1px solid black;
   border-collapse: collapse;
 }
@@ -253,7 +253,7 @@ table, th, td {
 }
 
 
-th, td {
+#stock-table th, #stock-table td {
   padding: 5px;
   text-align: left;    
 }
@@ -261,17 +261,17 @@ th, td {
 
 
 
-td > i{
+#stock-table td > i{
   margin-left: 10px;
   cursor: pointer;
 }
-table tr:nth-child(even) {
+#stock-table tr:nth-child(even) {
   background-color: #eee;
 }
-table tr:nth-child(odd) {
+#stock-table tr:nth-child(odd) {
  background-color:#fff;
 }
-table th  {
+#stock-table th  {
   background-color: black;
   color: white;
 }
@@ -582,14 +582,14 @@ table th  {
 
 .tooltip .tooltip-panel::before {
  content: " ";
-    content: " ";
-    position: absolute;
-    bottom: 100%;  /* At the top of the tooltip */
-    left: 10%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent white transparent;
+ content: " ";
+ position: absolute;
+ bottom: 100%;  /* At the top of the tooltip */
+ left: 10%;
+ margin-left: -5px;
+ border-width: 5px;
+ border-style: solid;
+ border-color: transparent transparent white transparent;
 }
 
 #stock-menu{
@@ -603,19 +603,81 @@ table th  {
   margin-top: 10px;
 }
 
-
-.beer-list{
-     list-style-type:none;
-   font-size: 20px;
+.list-table{
+  font-size: 15px;
+  font-weight: bold;
 }
 
-.beer-list li{
-    margin-top: 10px;
+.list-table td{
+  padding: 2px;
+  vertical-align:top;
+
 }
 
-.beer-list li span{
-    margin-left: 10px;
+.list-table tr{
+  display: block;
+ padding-top: 20px;
 }
+
+.order-list{
+ list-style-type:none;
+ min-height: 200px;
+ font-size: 20px;
+}
+
+.order-list li{
+  margin-top: 10px;
+}
+
+.order-list li span{
+  margin-left: 10px;
+}
+
+.beer-element{
+   text-align: center;
+   padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 33.3%;
+  height:auto;
+}
+
+td.beer-element:focus{
+ outline: none;
+ border-radius: 15px;
+ border-style: solid;
+ border-color: transparent transparent black transparent;
+ border-width: 0px 0px 4px 0px;
+}
+
+.beer-element img, .beer-collapse img{
+ padding-right: 25%;
+ padding-left: 25%;
+ padding-bottom: 5%;
+ width: 100%;
+ height:auto;
+ margin-bottom: 10px;
+}
+
+.beer-element .label{
+  font-weight: normal;
+font-size: 17px;
+}
+
+.beer-element ul{
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.beer-collapse{
+  border-style: ridge;
+  border-width: 0px 0px 4px 0px;
+}
+.beer-collapse td{
+width: 50%;
+}
+
 
 /*
 END of file styles.css
