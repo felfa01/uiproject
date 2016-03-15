@@ -12,6 +12,7 @@
 var creditAdd=0;
 var quick_creditAdd =0;
 var urlParams;
+
 // Function calls every time the history of the page changes and creates parameters from the url
 // that is used through out the homepage.
 //
@@ -33,9 +34,9 @@ $( document ).ready(function() {
 //
 
 setInterval(function(){
-if($(".tooltip-panel").is(":hidden")){
-checkStock(urlParams["username"], urlParams["password"])
-}
+	if($(".tooltip-panel").is(":hidden")){
+		checkStock(urlParams["username"], urlParams["password"])
+	}
 }, 3000); 
 
 
@@ -98,21 +99,21 @@ $("input[name='quick_add_credit']").bind('input', function() {
 });
 
 $( ".quick_creditForm" ).submit(function( event ) {
-		event.preventDefault();
-		$.ajax({
-			url: "http://pub.jamaica-inn.net/fpdb/api.php?username="+$("input[name='quick_username_credit']").val()
-			+"&password="+$("input[name='quick_pwd_credit']").val()+"&amount="+$("input[name='quick_new_credit']").val()+"&action=payments_append",
-			type: 'post',
-			success: function(data) {
-				if(data.type === "error"){
-					alert("error!!")
-				}else{
-					alert(data);
-					$('.quick_creditForm').trigger("reset");
-				}
-			}	
-		});
+	event.preventDefault();
+	$.ajax({
+		url: "http://pub.jamaica-inn.net/fpdb/api.php?username="+$("input[name='quick_username_credit']").val()
+		+"&password="+$("input[name='quick_pwd_credit']").val()+"&amount="+$("input[name='quick_new_credit']").val()+"&action=payments_append",
+		type: 'post',
+		success: function(data) {
+			if(data.type === "error"){
+				alert("error!!")
+			}else{
+				alert(data);
+				$('.quick_creditForm').trigger("reset");
+			}
+		}	
 	});
+});
 
 
 });
@@ -133,7 +134,7 @@ function getQuickOrder(username, pwd){
 			alert(data.payload[0].msg)
 		}else{
 			var beers = countBeer(data.payload);
-
+			beers = extractTopFour(beers);
 
 			jQuery.each(beers, function(i, beer) {
 				$("#QO-table tbody").append("<tr id='"+ i +"'><td id='beer_id' hidden>"+ beer.beer_id+"</td><td id='namn'>"+ beer.namn
@@ -200,10 +201,16 @@ function countBeer(data){
 
 		}
 	});
-
+/*
 	countList.sort(SortCount);
-	countList.splice(4, countList.length - 4);
+	countList.splice(4, countList.length - 4); */
 	return countList;
+}
+
+function extractTopFour(countlist){
+	countlist.sort(SortCount);
+	countlist.splice(4, countlist.length - 4);
+	return countlist;
 }
 
 function checkIfExist(value,arr){
@@ -227,20 +234,25 @@ function checkStock(username, pwd){
 	$.getJSON( url, {
 		format: "json"
 	}).done(function(data) {
+		if(sessionStorage.outOfstock !== JSON.stringify(data.payload)){
+			sessionStorage.setItem('outOfstock', JSON.stringify(data.payload));
+			//sessionStorage.outOfstock = data.payload;
+			jQuery.each(data.payload, function(i, beer) {
+				if(beer.namn != "" && parseInt(beer.count) < 10 ){
+					$('#stock-menu').append("<li>" + beer.namn + ((beer.namn2 != "") ? " - " + beer.namn2 +": ": ": ") + beer.count + ". </li>")
+				}
 
-		jQuery.each(data.payload, function(i, beer) {
-			if(beer.namn != "" && parseInt(beer.count) < 10 ){
-				$('#stock-menu').append("<li>" + beer.namn + ((beer.namn2 != "") ? " - " + beer.namn2 +": ": ": ") + beer.count + ". </li>")
+			});
+			if (!$('#stock-menu').is(':empty')){
+
+				$('#tooltip-stock').animate({height:'500px'},2000);
+			}else{
+				$('#tooltip-stock').animate({height:'toggle'},500);
 			}
+		}
 
-		});
 	});
-	if (!$('#stock-menu').is(':empty')){
 
-		$('#tooltip-stock').animate({height:'500px'},2000);
-	}else{
-		$('#tooltip-stock').animate({height:'toggle'},500);
-	}
 } 
 
 function getQuickCredit(username, pwd){

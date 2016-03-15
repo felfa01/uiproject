@@ -21,24 +21,26 @@ $("input[name=stat]:radio").change(function () {
 
 
 function getInventory(username, pwd, choice){
-	url = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+pwd+"&action=inventory_get";
+	url = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+pwd+"&action=purchases_get_all";
 	var beersToShow=[];
 	$.getJSON( url, {
 		format: "json"
 	}).done(function(data) {
+		if(data.type == "error"){
+			alert(data.payload[0].msg)
+		}else{
 		var totalCount = 0; // Count the total amount of the beers choosen, used to create graphs later on
 		var coloArr =[]; // Color for each beer.
-		jQuery.each(data.payload, function(i, beer) {
+		var beers = countBeer(data.payload);
+		console.log(beers)
+		jQuery.each(beers, function(i, beer) {
 			//Only use beer with a higher count than 200 and that is named
 			//TODO: Use of parameter?
 			//
-			if(beer.count > 200 && beer.namn !=""){
 				var cpyBeer = beer; 
 				totalCount = totalCount + parseInt(beer.count); 
 				beersToShow.push(cpyBeer);
-			}else{
-				delete data.payload[i]
-			}
+			
 
 		});		
 		colorArr = distinctColors(beersToShow.length) // Get the colors
@@ -52,7 +54,7 @@ function getInventory(username, pwd, choice){
 		default:
 		alert("No choice taken!");
 		break;
-
+}
 	}
 	});
 }

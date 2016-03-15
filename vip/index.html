@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Proj Test</title>
-	<link rel="stylesheet" href="../css/styles.css">
+	<link type="text/css" rel="stylesheet" media="all" href="../css/styles.css" id="theme_css" />
 
 	<link rel="stylesheet" href="../css/font-awesome.min.css">
 	<script src="../jquery/jquery-1.12.0.min.js"></script>
@@ -12,22 +12,21 @@
 	<script src="../node_modules/undo-manager/lib/undomanager.js"></script>
 	<script src="../javascript/order_page.js"></script>
 	<script src="../javascript/drag_and_drop.js"></script>
+	<script src="../javascript/theme.js"></script>
 
 </head>
 <body>
-	<nav class="fixed-navbar">
+	<nav class=" fixed-navbar">
 		<div class="container-fluid">
 			<div class="col-offset-1 col-1">TEST - PUB</div>
 			<div class="col-offset-1 col-7">
 				<a> Order</a>
 			</div>
 			<div class="col-2">
-				<span class="collapse-sidebar" id="collapse-qo">
-					<i class="fa fa-beer fa-2x"></i>
-				</span>
-				<span class="collapse-sidebar" id="collapse-credit">
-					<i class="fa fa-credit-card fa-2x"></i>
-				</span>
+				<form class="myform theme-form">
+					<input type="radio" name="theme" value="../css/styles.css" checked>Default
+					<input type="radio" name="theme" value="../css/alternative.css" >Alternative
+				</form>
 			</div>
 		</div>
 
