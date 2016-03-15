@@ -32,11 +32,11 @@ $( document ).ready(function() {
 // Close the modals when the close button is clicked and reset the form on the modals
 //
 
-/*setInterval(function(){
+setInterval(function(){
 if($(".tooltip-panel").is(":hidden")){
 checkStock(urlParams["username"], urlParams["password"])
 }
-}, 3000); */
+}, 3000); 
 
 
 $(".close").on("click", function(){
