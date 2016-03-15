@@ -266,6 +266,11 @@ figcaption{
   border-collapse: collapse;
 }
 
+td, th{
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
 #stock-table td, #stock-table th{
   max-width: 100px;
   word-break: keep-all;

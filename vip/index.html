@@ -7,6 +7,9 @@
 
 	<link rel="stylesheet" href="../css/font-awesome.min.css">
 	<script src="../jquery/jquery-1.12.0.min.js"></script>
+	<script src="../javascript/url_parameters.js"></script>	
+	<script src="../javascript/super_shared.js"></script>	
+	<script src="../javascript/shared_usr.js"></script>	
 	<script src="../javascript/translate.js"></script>
 	<script src="../javascript/shared.js"></script>	
 	<script src="../node_modules/undo-manager/lib/undomanager.js"></script>
@@ -19,7 +22,7 @@
 	<nav class=" fixed-navbar">
 		<div class="container-fluid">
 			<div class="col-offset-1 col-1">TEST - PUB</div>
-			<div class="col-offset-1 col-7">
+			<div class="col-offset-1 col-4">
 				<a> Order</a>
 			</div>
 			<div class="col-2">
@@ -27,6 +30,18 @@
 					<input type="radio" name="theme" value="../css/styles.css" checked>Default
 					<input type="radio" name="theme" value="../css/alternative.css" >Alternative
 				</form>
+
+			</div>
+			<div class="col-2">
+			<form class="myform language-form">
+						<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
+						<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
+					</form>
+			</div>
+			<div class="col-1">
+				<span class="collapse-sidebar" id="collapse-order">
+				<i class="fa fa-shopping-basket fa-2x"></i>
+			</span>
 			</div>
 		</div>
 
@@ -137,4 +152,40 @@
 		</div>
 	</div>
 </section>
+<div class="sidebar" id="sidebar-order">
+		<div class="panel">
+			<div class="panel-heading">
+				Current Orders
+			</div>
+			<div class="panel-content">
+				<div class="col-12">
+					<table id="order-table">
+						<thead>
+							<tr>
+								<th hidden>
+									ID
+								</th>
+								<th>
+									Brand
+								</th>
+								<th>
+									Name
+								</th>											
+								<th>
+									Price
+								</th>	
+								<th>
+									#
+								</th>										
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+						<tfoot></tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
