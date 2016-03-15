@@ -4,9 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Proj Test</title>
 	<link rel="stylesheet" href="../css/styles.css">
+
+	<link rel="stylesheet" href="../css/font-awesome.min.css">
 	<script src="../jquery/jquery-1.12.0.min.js"></script>
 	<script src="../javascript/translate.js"></script>
-	<script src="../javascript/shared.js"></script>
+	<script src="../javascript/shared.js"></script>	
+	<script src="../node_modules/undo-manager/lib/undomanager.js"></script>
 	<script src="../javascript/order_page.js"></script>
 	<script src="../javascript/drag_and_drop.js"></script>
 
@@ -14,8 +17,20 @@
 <body>
 	<nav class="fixed-navbar">
 		<div class="container-fluid">
-			<div class="col-3">TEST - PUB</div>
+			<div class="col-offset-1 col-1">TEST - PUB</div>
+			<div class="col-offset-1 col-7">
+				<a> Order</a>
+			</div>
+			<div class="col-2">
+				<span class="collapse-sidebar" id="collapse-qo">
+					<i class="fa fa-beer fa-2x"></i>
+				</span>
+				<span class="collapse-sidebar" id="collapse-credit">
+					<i class="fa fa-credit-card fa-2x"></i>
+				</span>
+			</div>
 		</div>
+
 	</nav>
 	<section class="content">
 		<div class=" content-main">
@@ -29,54 +44,99 @@
 							<table id="beer-table" class="list-table">
 								<thead>
 									<tr>
-									<th>
-										<input type="text" name="brand_search" placeholder="Brand">
-									</th>
+										<th>
+											<input type="text" name="brand_search" placeholder="Brand">
+										</th>
 									</tr>
 								</thead>
 								<tbody>
-
 								</tbody>
 							</table>
-
-<!--					<ul id = "beer-list" class="beer-list">
-
-
-						<li id = "beer1" draggable="true" ondragstart="drag(event)">Item 1</li>
-						<li id = "beer2" draggable="true" ondragstart="drag(event)">Item 2</li>
-						<li id = "beer3" draggable="true" ondragstart="drag(event)">Item 3</li>
-						<li id = "beer4" draggable="true" ondragstart="drag(event)">Item 4</li>
-						<li id = "beer5" draggable="true" ondragstart="drag(event)">Item 5</li>
-
-
-					</ul>
-				-->
-
-			</div>
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="panel">
-			<div class="panel-heading">
-				Panel-Test-Shopping List
-			</div>
-			
-				<div class="panel-content">
-				<ul id="order-list" class="order-list" ondragover="allowDrop(event)" ondrop="drop(event)">
-
-					</ul>
+						</div>
+					</div>
 				</div>
-			
+				<div class="col-4">
+					<div class="fixed-panels">
+						<div class="panel order-table-wrapper droptarget">
+							<div class="panel-heading">
+								Order
+							</div>			
+							<div class="panel-content  ">
+								<table id="order-list">
+									<thead>
+										<tr>
+											<th>
+												Brand
+											</th>
+											<th>
+												Price
+											</th>
+											<th>
+												#
+											</th>
+										</tr>
+									</thead>
+									<tbody >
+									</tbody>
+									<tfoot>
+										<tr>
+											<th>Total :</th>
+											<td id="total" colspan="2">0</td>
+										</tr>
+									</tfoot>
+								</table>
+								<div class="col-12">
+									<div class="button-group">		
+										<button id="orderBtn"><i class="fa fa-plus fa-1x"> Add</i></button>
+										<button id="redoBtn"><i class="fa fa-repeat fa-1x"></i></button>
+										<button id="undoBtn"><i class="fa fa-undo fa-1x"></i></button>
+										<button id="clearBtn"><i class="fa fa-times fa-1x"> Clear</i></button>
+									</div>
+								</div>
+							</div>				
+						</div>
+						<div class="panel order-table-wrapper">
+							<div class="panel-heading">
+								Current
+							</div>			
+							<div class="panel-content  ">
+								<table id="confirm-table">
+									<thead>
+										<tr>
+											<th>
+												Brand
+											</th>
+											<th>
+												Price
+											</th>
+											<th>
+												#
+											</th>
+										</tr>
+									</thead>
+									<tbody >
+									</tbody>
+									<tfoot>
+										<tr>
+											<th>Total :</th>
+											<td id="total" colspan="2">0</td>
+										</tr>
+									</tfoot>
+								</table>
+								<div class="col-12">
+									<div class="button-group">		
+									<button id="confirmBtn"><i class="fa fa-check fa-1x"> Confirm</i></button>
+										<button id="cancelBtn"><i class="fa fa-times fa-1x"> Cancel</i></button>
+										<span id="orderTimer">0.00</span>
+									</div>
+								</div>
+							</div>				
+						</div>
+					</div>
 
-
-		</div>
-		<div class="button-group">
-			<div class="col-offset-9 col-3">
-				<button >Order</button>
-			</div>
+				</div>
+			</div>		
 		</div>
 	</div>
-</div>
-</div>
 </section>
 </body>
