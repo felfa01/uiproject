@@ -4,77 +4,51 @@
 	<meta charset="UTF-8">
 	<title>Proj Test</title>
 	<link rel="stylesheet" href="../css/styles.css">
+
+	<link rel="stylesheet" href="../css/font-awesome.min.css">
 	<script src="../jquery/jquery-1.12.0.min.js"></script>
 	<script src="../javascript/translate.js"></script>
 	<script src="../javascript/shared.js"></script>
+	<script src="../node_modules/undo-manager/lib/undomanager.js"></script>
 	<script src="../javascript/order_page.js"></script>
 	<script src="../javascript/drag_and_drop.js"></script>
 
 </head>
 <body>
-	<on  class="fixed-navbar">
+<nav class="fixed-navbar">
+	<div class="container-fluid">
+		<div class="col-offset-1 col-1">TEST - PUB</div>
+		<div class="col-offset-1 col-7">
+			<a> Order</a>
+		</div>
+
+	</div>
+
+</nav>
+<section class="content">
+	<div class=" content-main">
 		<div class="container-fluid">
-			<div class="col-3">TEST - PUB</div>
-		</div>
-		<div class="nav" class="navhover">
-		<ul>
-			<a href="#beer">Beer</a>
-			<a href="#wine">Wine</a>
-			<a href="#whiskey">Whiskey</a>
-		</ul>
-		</div>
-	</nav>
-	<section class="content">
-		<div class=" content-main container ">
-			<div class="col-7">
+			<div class="col-8">
 				<div class="panel">
-					<div class="panel-heading">
-						Panel-Test-Beer List
+					<div class="panel-heading translateInner" data-translate="BeerList">
+						Beer List
 					</div>
 					<div class="panel-content">
-					<ul id = "beer-list" class="beer-list">
-<!--
-
-						<li id = "beer1" draggable="true" ondragstart="drag(event)">Item 1</li>
-						<li id = "beer2" draggable="true" ondragstart="drag(event)">Item 2</li>
-						<li id = "beer3" draggable="true" ondragstart="drag(event)">Item 3</li>
-						<li id = "beer4" draggable="true" ondragstart="drag(event)">Item 4</li>
-						<li id = "beer5" draggable="true" ondragstart="drag(event)">Item 5</li>
--->
-
-					</ul>
-
-
-					</div>
-				</div>
-			</div>
-			<div class="col-5">
-				<div class="panel">
-					<div class="panel-heading">
-						Panel-Test-Shopping List
-					</div>
-					<div class="col-8">
-					<div class="panel-content" style="min-height: 200px;"id="bartable1">
-						<ul id = "order-list" class="beer-list" ondragover="allowDrop(event)" ondrop="drop(event)" style="min-height: 200px;">
-
-						</ul>
-					</div>
-					</div>
-					<div class = "col-offset-8">
-					<div class="panel-content" style="min-height: 200px;">
-						<ul id = "counterList" class ="connectedSortable">
-
-						</ul>
-					</div>
-					</div>
-
-				</div>
-				<div class="button-group">
-				<div class="col-offset-9 col-3">
-						<button >Order</button>
+						<table id="beer-table" class="list-table">
+							<thead>
+							<tr>
+								<th>
+									<input type="text" name="brand_search" placeholder="Brand">
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+
+</section>
 </body>
