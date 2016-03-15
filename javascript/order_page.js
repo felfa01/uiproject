@@ -28,16 +28,53 @@ function getBeers(username, pwd){
 				return false;
 			}
 		}); 
+		$("input[name='leverantor_search']").prop('disabled', true);
+		$("input[name='brand_search']").prop('disabled', true);
 		$(document).ajaxStop(function () { 
+			$("input[name='brand_search']").prop('disabled', false);
+			$("input[name='leverantor_search']").prop('disabled', false);
 			fillBeertable(extendedData);
 			$(".beer-element").focus(function() {
 				fillCollapse($(this), $(this).attr("id"))
+			});
+			$("input[name='brand_search']").bind('input', function() { 	
+				var beers = searchBeers(extendedData, $("input[name='brand_search']").val(), $("input[name='leverantor_search']").val());
+				if(beers.length > 0)
+					fillBeertable(beers);
+			});
+			$("input[name='leverantor_search']").bind('input', function() { 				
+				var beers = searchBeers(extendedData, $("input[name='brand_search']").val(), $("input[name='leverantor_search']").val());
+				if(beers.length > 0)
+					fillBeertable(beers);	
 			});
 		});
 
 		//makeDragable();
 	});
 
+}
+
+function searchBeers(beers, brand, leverantor, price, alco){
+	var result = []
+	for (i in beers) {
+		if(brand != "" && leverantor != "" && price != "" && alco != ""){
+			if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()))
+				result.push(beers[i]);
+		}else if(brand != "" && leverantor != "" && price != ""){
+			if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()))
+				result.push(beers[i]);
+		}else if(brand != "" && leverantor != ""){
+			if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()))
+				result.push(beers[i]);
+		}else if(brand != ""){
+			if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()))
+				result.push(beers[i]);
+		}else if(leverantor != "" && price != "" && alco != ""){
+			if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()))
+				result.push(beers[i]);
+		}
+	}
+	return result;
 }
 
 function fillBeertable(beers){
@@ -58,17 +95,19 @@ function fillBeertable(beers){
 					((beer.namn2 != "")? beer.namn + ", " + beer.namn2: beer.namn) +"</li><li><span id='price'>"+ beer.prisinklmoms + "</span> SEK</li></ul></td>");
 			}
 			$('#beer-table tbody').find("#"+beer.beer_id).data("extendData", {"namn": ((beer.namn2 != "")? beer.namn + ", " + beer.namn2: beer.namn),
-				"price": beer.prisinklmoms, "alkoholhalt": beer.alkoholhalt});
+				"price": beer.prisinklmoms, "alkoholhalt": beer.alkoholhalt, "leverantor": beer.leverantor});
 		}
 	});
 }
+
+
 
 function fillCollapse($target, beer_id){
 	$(".beer-collapse").remove();
 	var value = $('#beer-table tbody').find("#"+beer_id).data("extendData");
 	$target.parents('tr').after("<tr class='beer-collapse'><td><img src='../images/beer.png'></img></td><td><ul><li>"+ 
 		value["namn"] + "</li><li>"+ 
-		value["alkoholhalt"]  + "</li><li>"+ value["price"] +" SEK</li></ul></td></tr>");
+		value["alkoholhalt"]  + "</li><li>"+ value["price"] +" SEK</li><li>"+value["leverantor"]+"</li></ul></td></tr>");
 }
 
 function getExtended(beer_id){

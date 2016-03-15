@@ -46,7 +46,7 @@ function getUsers(username, pwd){
 		jQuery.each(data.payload, function(i, usr) {
 			$("#user-table tbody").append("<tr id='"+ i +"'><td id='username'>"+ usr.username +"</td><td id='firstname'>"+ usr.first_name
 				+"</td><td id='lastname'>"+ usr.last_name +"</td><td id='assets'>"+ usr.assets 
-				+"</td><td><i class='editUsr fa fa-pencil-square-o'></i><i class='addCredit fa fa-credit-card-alt'></i><i class='deleteUsr fa fa-user-times'></i></td></tr>");
+				+"</td><td><i class='editUsr fa fa-pencil-square-o fa-2x'></i>  <i class='addCredit fa fa-credit-card-alt fa-2x'></i>  <i class='deleteUsr fa fa-user-times fa-2x'></i></td></tr>");
 		});
 		$(".editUsr").on("click", function(){
 			$("input[name='new_username']").attr("value",$(this).closest("tr").children("#username").html());

@@ -22,44 +22,53 @@ stock.js
 <head>
 	<meta charset="UTF-8">
 	<title>Proj Test</title>
-	<link rel="stylesheet" href="../css/styles.css">
+	<link type="text/css" rel="stylesheet" media="all" href="../css/styles.css" id="theme_css" />
 	<link rel="stylesheet" href="../css/font-awesome.min.css">
 	<script src="../jquery/jquery-1.12.0.min.js"></script>
-		<script src="../javascript/url_parameters.js"></script>	
-		<script src="../javascript/super_shared.js"></script>	
+	<script src="../javascript/url_parameters.js"></script>	
+	<script src="../javascript/super_shared.js"></script>	
 	<script src="../javascript/translate.js"></script>
 	<script src="../javascript/shared.js"></script>
-	<script src="../javascript/stock.js"></script>
+	<script src="../javascript/stock.js"></script>		
+	<script src="../javascript/theme.js"></script>
+	<script src="../javascript/navigation.js"></script>
 	
 </head>
 <body>
 	<nav class="fixed-navbar">
 		<div class="container-fluid">
-			<div class="container-fluid">
-				<div class="col-offset-3 col-3">TEST - PUB</div>
-					<div class="col-3">
-				<div class="tooltip">Stock
-					<div class="tooltip-panel" id="tooltip-stock">
-						<div class="tooltip-content"><p>These beers are (running) out of stock: </p><ul id="stock-menu"></ul></div>
-
-					</div>
-				</div>
+			<div class=" col-1">TEST - PUB</div>
+			<div class="col-offset-1 col-5">
+				<a class="navbar-link" data-href="admins/order.html"><i class="fa fa-beer"> Order</i></a>
+				<a class="navbar-link" data-href="admins/stock.html"><i class="fa fa-list"> Stock</i></a>
+				<a class="navbar-link" data-href="admins/accounts.html"><i class="fa fa-users"> Accounts</i></a>
+				<a class="navbar-link" data-href="admins/statistics.html"><i class="fa fa-bar-chart"> Statistics</i></a>
 			</div>
+			<div class="col-3">
+				<form class="myform theme-form">
+					<input class="translateInner" type="radio" name="theme" value="../css/styles.css" data-translate="Default">Default
+					<input class="translateInner" type="radio" name="theme" value="../css/alternative.css" data-translate="Alternative">Alternative
+				</form>
+				<form class="myform language-form">
+					<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
+					<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
+				</form>
 			</div>
-			
-			<span class="collapse-sidebar" id="collapse-qo">
-				<i class="fa fa-beer fa-2x"></i>
-			</span>
-			<span class="collapse-sidebar" id="collapse-credit">
-				<i class="fa fa-credit-card fa-2x"></i>
-			</span>
+			<div class="col-2">
+				<span class="collapse-sidebar" id="collapse-qo">
+					<i class="fa fa-beer fa-2x"></i>
+				</span>
+				<span class="collapse-sidebar" id="collapse-credit">
+					<i class="fa fa-credit-card fa-2x"></i>
+				</span>
+			</div>
 		</div>
 	</nav>
 	<section class="content">
 		<div class=" content-main">
 			<div class="container-fluid">
 				<div class="col-12">
-					<div class="panel borderimg">
+					<div class="panel">
 						<div class="panel-heading">
 							Stock
 						</div>
@@ -68,7 +77,7 @@ stock.js
 							<!-- This table shows the stock (the nameless beers are filtered out)
 								 and edit options for each one.
 								-->
-								<table id="stock-table">
+								<table class="default-table" id="stock-table">
 									<thead>
 										<tr>
 											<th hidden>
@@ -193,7 +202,7 @@ stock.js
 			</div>
 		</div>
 	</div>
-		<div class="sidebar" id="sidebar-credit">
+	<div class="sidebar" id="sidebar-credit">
 		<div class="panel">
 			<div class="panel-heading">
 				Add Credit
@@ -201,43 +210,43 @@ stock.js
 			<div class="panel-content">
 				<div class="col-12">					
 					<form class="quick_creditForm">
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="Usr">
-							User Name
+						<div class="col-12 form-group" >
+							<div class="translateInner form-label col-5" data-translate="Usr">
+								User Name
+							</div>
+							<div class="col-6">
+								<input class="form-text" type="text" name="quick_username_credit" required>
+							</div>
 						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="quick_username_credit" required>
+						<div class="col-12 form-group" >
+							<div class="translateInner form-label col-5" data-translate="Pwd">
+								Password
+							</div>
+							<div class="col-6">
+								<input class="form-text" type="text" name="quick_pwd_credit" required>
+							</div>
 						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="Pwd">
-							Password
+						<div class="col-12 form-group" >
+							<div class="translateInner form-label col-5" data-translate="credit">
+								Add Credit
+							</div>
+							<div class="col-6">
+								<input class="form-text" type="text" name="quick_add_credit" required>
+							</div>
 						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="quick_pwd_credit" required>
+						<div class="col-12 form-group" >
+							<div class="translateInner form-label col-5" data-translate="curent_credit">
+								New Credit
+							</div>
+							<div class="col-6">
+								<input class="form-text" type="text" name="quick_new_credit" disabled required>
+							</div>
 						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="credit">
-							Add Credit
+						<div class="col-offset-5 col-8 form-group">
+							<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
+							<button type="reset" value="Reset">Reset</button>
 						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="quick_add_credit" required>
-						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="curent_credit">
-							New Credit
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="quick_new_credit" disabled required>
-						</div>
-					</div>
-					<div class="col-offset-5 col-8 form-group">
-						<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
-						<button type="reset" value="Reset">Reset</button>
-					</div>
-				</form>
+					</form>
 				</div>
 			</div>
 		</div>

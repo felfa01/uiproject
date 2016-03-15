@@ -11,7 +11,6 @@
 	<script src="../javascript/super_shared.js"></script>	
 	<script src="../javascript/shared_usr.js"></script>	
 	<script src="../javascript/translate.js"></script>
-	<script src="../javascript/shared.js"></script>	
 	<script src="../node_modules/undo-manager/lib/undomanager.js"></script>
 	<script src="../javascript/order_page.js"></script>
 	<script src="../javascript/drag_and_drop.js"></script>
@@ -22,12 +21,10 @@
 	<nav class=" fixed-navbar">
 		<div class="container-fluid">
 			<div class="col-offset-1 col-1">TEST - PUB</div>
-			<div class="col-offset-1 col-4">
-				<a> Order</a>
-			</div>
-			<div class="col-2">
+		
+			<div class="col-offset-5 col-2">
 				<form class="myform theme-form">
-					<input class="translateInner" type="radio" name="theme" value="../css/styles.css" data-translate="Default" checked>Default
+					<input class="translateInner" type="radio" name="theme" value="../css/styles.css" data-translate="Default">Default
 					<input class="translateInner" type="radio" name="theme" value="../css/alternative.css" data-translate="Alternative">Alternative
 				</form>
 
@@ -56,10 +53,13 @@
 						</div>
 						<div class="panel-content">
 							<table id="beer-table" class="list-table">
-								<thead>
+									<thead>
 									<tr>
 										<th>
 											<input type="text" name="brand_search" placeholder="Brand">
+										</th>
+										<th>
+											<input type="text" name="leverantor_search" placeholder="Brewery">
 										</th>
 									</tr>
 								</thead>
@@ -76,7 +76,7 @@
 						<div class="panel-heading translateInner" data-translate="Order">
 							Order
 						</div>			
-						<div class="panel-content  ">
+						<div class="panel-content">
 							<table id="order-list">
 								<thead>
 									<tr>
@@ -103,8 +103,8 @@
 							<div class="col-12">
 								<div class="button-group">		
 									<button id="orderBtn"><i class="fa fa-plus fa-1x translateInner" data-translate="Add"> Add</i></button>
-									<button id="redoBtn"><i class="fa fa-repeat fa-1x"></i></button>
-									<button id="undoBtn"><i class="fa fa-undo fa-1x"></i></button>
+									<button id="redoBtn" disabled=""><i class="fa fa-repeat fa-1x"></i></button>
+									<button id="undoBtn" disabled=""><i class="fa fa-undo fa-1x"></i></button>
 									<button id="clearBtn"><i class="fa fa-times fa-1x translateInner" data-translate="Clear"> Clear</i></button>
 								</div>
 							</div>
@@ -142,7 +142,7 @@
 								<div class="button-group">		
 									<button id="confirmBtn"><i class="fa fa-check fa-1x translateInner" data-translate="Confirm"> Confirm</i></button>
 									<button id="cancelBtn"><i class="fa fa-times fa-1x translateInner" data-translate="Cancel"> Cancel</i></button>
-									<span id="orderTimer">0.00</span>
+									<span id="orderTimer"></span>
 								</div>
 							</div>
 						</div>				

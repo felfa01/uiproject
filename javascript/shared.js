@@ -138,7 +138,6 @@ function checkStock(username, pwd){
 } 
 
 function getQuickCredit(username, pwd){
-	$('.quick_creditForm').trigger("reset");
 	quick_creditAdd = 0;
 	$.ajax({
 		url: "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+pwd+"&action=iou_get",
@@ -148,7 +147,8 @@ function getQuickCredit(username, pwd){
 			if(data.type != "error"){
 				quick_creditAdd = data.payload[0].assets;
 				$("input[name='quick_new_credit']").attr("value", data.payload[0].assets);
-
+			}else{
+				alert(data.payload[0]["msg"])
 			}
 		}	
 	});

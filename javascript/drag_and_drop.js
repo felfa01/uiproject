@@ -144,7 +144,7 @@ function createOrderList($list){
 function checkToAdd(beer_id, maxQuantity, element){	
 	if(Object.keys(beers_order).length < maxQuantity){
 		createBeer(Math.floor((Math.random() * 10) + 1), beer_id, $(element).find('#brand').html(), $(element).find('#price').html());
-		
+		updateUI();
 	}
 	console.log("checkToAdd done")
 }
@@ -156,6 +156,19 @@ function calcSum(){
 		
 	});
 	$('#order-list tfoot #total').html(sumPrice.toFixed(2));
+}
+
+function checkCount(){
+	var count = 0;
+	$('#order-list tbody tr').each(function(){
+		count = count + parseInt($(this).find("#counter").html());
+		
+	});
+	$('#confirm-table tbody tr').each(function(){
+		count = count + parseInt($(this).find("#counter").html());
+		
+	});
+	return count;
 }
 
 function sendOrder(beer_id){
@@ -173,23 +186,68 @@ function sendOrder(beer_id){
 	});
 }
 
+var startT;
+var startH;
+var startM;
+var startS;
+
+function initializeTime() {
+	startT = new Date();
+	startH = startT.getHours();
+	startM = startT.getMinutes();
+	startS = startT.getSeconds();
+	startM = checkTime(startM);
+	startS = checkTime(startS);
+}
+
+function startTime() {
+	var today = new Date();
+	var h = today.getHours();
+	var m = today.getMinutes();
+	var s = today.getSeconds();
+	m = checkTime(m);
+	s = checkTime(s);
+	document.getElementById('orderTimer').innerHTML =
+	(h - startH)  + ":" + (m - startM) + ":" + (s - startS);
+	var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+
+btnUndo = document.getElementById("undoBtn");
+btnRedo = document.getElementById("redoBtn");
+
+function updateUI() {
+	btnUndo.disabled = !undoManager.hasUndo();
+	btnRedo.disabled = !undoManager.hasRedo();
+}
+
+
 $("#undoBtn").click(function() {
 	undoManager.undo();
 	console.log("UNDO: " + beers_order);
 	createOrderList($('#order-list'));
+	updateUI();
+
 });
 
 $("#redoBtn").click(function() {
 	undoManager.redo();
 	console.log("REDO: " + beers_order);
 	createOrderList($('#order-list'));
+	updateUI();
 });
 
+
 $("#orderBtn").click(function() {
-	if(($('#confirm-table tbody tr').length + $('#order-list tbody tr').length) > 5){
+	if(checkCount() > 5){
 		alert("The number of beers exceds maximum limit of 5.")
 	}else{
 		$('#confirm-table tbody').append($('#order-list tbody').html());
+		initializeTime();
+		startTime();
 	}
 });
 
@@ -198,6 +256,7 @@ $("#clearBtn").click(function() {
 	beers_order = [];
 	console.log("Clear: " + beers_order);
 	createOrderList($('#order-list'));
+	updateUI();
 });
 
 $("#cancelBtn").click(function() {
@@ -212,4 +271,13 @@ $("#confirmBtn").click(function() {
 	});
 	$('#confirm-table tbody').html("");
 });
+
+$("#orderBtn").click(function() {
+	$('#order-list tbody tr').each(function(){
+		for(var i=0;parseInt($(this).find("#counter").html()) < i; i++){
+			sendOrder($(this).find("#id").html());
+		}
+	});
+});
+
 }

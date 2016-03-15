@@ -25,18 +25,15 @@ Author: Mikael Holmberg
 
 }
 
-.alternative-theme.fixed-navbar{
-  color:black;
-}
-
 .fixed-navbar a{
-  display: block;
-  padding: 2px 10px 2px 10px;
+  display: inline;
+  padding: 2px 8px 2px 8px;
   width: 100px;
   height:100%;
   text-decoration: none;
   text-align: center;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .navbar-home{
@@ -172,6 +169,7 @@ figcaption{
 
 
 .myform{
+  display: inline-block;
   font-size: 15px;
 }
 
@@ -232,11 +230,10 @@ figcaption{
   margin-left: 5px;
 }
 .panel{
-  background-color: white;
   border: 1px solid black;
   padding: 10px;
   margin: 10px;
-  background-color: #F0BD84;
+  background-color: #FFEDC6;
 }
 
 .panel-heading{
@@ -257,6 +254,24 @@ figcaption{
   font-size: 10px;
   overflow: auto;
   background-color: #FFEDC6;
+}
+
+table.default-table  {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 15px;
+}
+
+.default-table th, .default-table td {
+    text-align: left;
+    padding: 8px;
+}
+
+.default-table tr:nth-child(even){background-color: #F7B988}
+
+.default-table th {
+    background-color: #261100;
+    color: white;
 }
 
 
@@ -668,9 +683,20 @@ td, th{
     width: 320px;
 }
 
+.order-table-wrapper table {
+    width: 100%; /* Optional */
+    table-layout: fixed;
+}
+
+.order-table-wrapper tbody td:first-child,.order-table-wrapper thead th:first-child {
+    width: 70%;  /* Optional */
+}
+
 .order-table-wrapper table{
   font-size: 15px;
   font-weight: bold;
+  display: block;
+   height: 170px;
   width: 100%;
 }
 
@@ -678,17 +704,17 @@ td, th{
    text-align: left;
 }
 .order-table-wrapper table tbody{
-  height: 130px;
-
-  display: block;
-  overflow: auto;
+ 
+  overflow: auto; 
 }
 
-.order-table-wrapper thead, .order-table-wrapper tbody tr {
-    display:table;
-    width:100%;
-    table-layout:fixed;/* even columns width , fix width of table too*/
+
+.order-table-wrapper tbody td,.order-table-wrapper thead th {
+    width: 33%;  /* Optional */
 }
+
+
+
 
 .order-table-wrapper table tfoot th, .order-table-wrapper table tfoot td{
  border-style: dotted;
