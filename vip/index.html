@@ -27,8 +27,8 @@
 			</div>
 			<div class="col-2">
 				<form class="myform theme-form">
-					<input type="radio" name="theme" value="../css/styles.css" checked>Default
-					<input type="radio" name="theme" value="../css/alternative.css" >Alternative
+					<input class="translateInner" type="radio" name="theme" value="../css/styles.css" data-translate="Default" checked>Default
+					<input class="translateInner" type="radio" name="theme" value="../css/alternative.css" data-translate="Alternative">Alternative
 				</form>
 
 			</div>
@@ -73,17 +73,17 @@
 			<div class="col-4">
 				<div class="fixed-panels">
 					<div class="panel order-table-wrapper droptarget">
-						<div class="panel-heading">
+						<div class="panel-heading translateInner" data-translate="Order">
 							Order
 						</div>			
 						<div class="panel-content  ">
 							<table id="order-list">
 								<thead>
 									<tr>
-										<th>
+										<th class="translateInner" data-translate="Brand">
 											Brand
 										</th>
-										<th>
+										<th class="translateInner" data-translate="Price">
 											Price
 										</th>
 										<th>
@@ -102,26 +102,26 @@
 							</table>
 							<div class="col-12">
 								<div class="button-group">		
-									<button id="orderBtn"><i class="fa fa-plus fa-1x"> Add</i></button>
+									<button id="orderBtn"><i class="fa fa-plus fa-1x translateInner" data-translate="Add"> Add</i></button>
 									<button id="redoBtn"><i class="fa fa-repeat fa-1x"></i></button>
 									<button id="undoBtn"><i class="fa fa-undo fa-1x"></i></button>
-									<button id="clearBtn"><i class="fa fa-times fa-1x"> Clear</i></button>
+									<button id="clearBtn"><i class="fa fa-times fa-1x translateInner" data-translate="Clear"> Clear</i></button>
 								</div>
 							</div>
 						</div>				
 					</div>
 					<div class="panel order-table-wrapper">
-						<div class="panel-heading">
+						<div class="panel-heading translateInner" data-translate="Current">
 							Current
 						</div>			
 						<div class="panel-content  ">
 							<table id="confirm-table">
 								<thead>
 									<tr>
-										<th>
+										<th class="translateInner" data-translate="Brand">
 											Brand
 										</th>
-										<th>
+										<th class="translateInner" data-translate="Price">
 											Price
 										</th>
 										<th>
@@ -140,8 +140,8 @@
 							</table>
 							<div class="col-12">
 								<div class="button-group">		
-									<button id="confirmBtn"><i class="fa fa-check fa-1x"> Confirm</i></button>
-									<button id="cancelBtn"><i class="fa fa-times fa-1x"> Cancel</i></button>
+									<button id="confirmBtn"><i class="fa fa-check fa-1x translateInner" data-translate="Confirm"> Confirm</i></button>
+									<button id="cancelBtn"><i class="fa fa-times fa-1x translateInner" data-translate="Cancel"> Cancel</i></button>
 									<span id="orderTimer">0.00</span>
 								</div>
 							</div>
