@@ -53,7 +53,19 @@ var jsonObject = {
 		"Pwd": "Password",
 		"Submit": "Submit",
 		"UsrPwd": "Please enter user name and password.",	
-		"PirateGuest":"../images/Pirate_Guest.png"
+		"PirateGuest":"../images/Pirate_Guest.png",
+		"BeerList":"Beer List",
+		"Order":"Order",
+		"Brand":"Brand",
+		"Price":"Price",
+		"Current":"Current",
+		"Confirm":"Confirm",
+		"Cancel":"Cancel",
+		"Add":"Add",
+		"Clear":"Clear",
+		"Default":"Default",
+		"Alternative":"Alternative"
+
 	},
 	"swe":{
 		"test": "Fungerar!",
@@ -62,7 +74,19 @@ var jsonObject = {
 		"Pwd": "Lösenord",
 		"Submit": "Gå vidare",
 		"UsrPwd": "Var god ange dit användarnamn och lösenord.",
-		"PirateGuest": "../images/Pirate_Guest_Swe.png"
+		"PirateGuest": "../images/Pirate_Guest_Swe.png",
+		"BeerList": "Öllista",
+		"Order":"Beställning",
+		"Brand":"Märke",
+		"Price":"Pris",
+		"Current":"Nuvarande",
+		"Confirm":"Bekräfta",
+		"Cancel":"Avbryt",
+		"Add":"Lägg till",
+		"Clear":"Rensa",
+		"Default":"Standard",
+		"Alternative":"Alternativ"
+
 	}
 }
 
