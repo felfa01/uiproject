@@ -83,7 +83,7 @@ var jsonObject = {
 		"Confirm":"Bekräfta",
 		"Cancel":"Avbryt",
 		"Add":"Lägg till",
-		"Clear":"Rensa,",
+		"Clear":"Rensa",
 		"Default":"Standard",
 		"Alternative":"Alternativ"
 
