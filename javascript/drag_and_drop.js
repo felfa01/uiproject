@@ -180,7 +180,6 @@ function sendOrder(beer_id){
 			if(data.type === "error"){
 				alert(data.payload[0].msg);
 			}else{
-
 			}
 		}	
 	});
@@ -207,8 +206,7 @@ function startTime() {
 	var s = today.getSeconds();
 	m = checkTime(m);
 	s = checkTime(s);
-	document.getElementById('orderTimer').innerHTML =
-	Math.abs(m - startM) + ":" + Math.abs(s - startS);
+	document.getElementById('orderTimer').innerHTML = Math.abs(m - startM) + ":" + Math.abs(s - startS);
 	var t = setTimeout(startTime, 500);
 }
 function checkTime(i) {
@@ -248,7 +246,7 @@ $("#orderBtn").click(function() {
 		$('#confirm-table tbody').append($('#order-list tbody').html());
 		calcSum($('#confirm-table tbody tr'), $('#confirm-table tfoot #total'));
 		initializeTime();
-		startTime();
+		//startTime();
 	}
 });
 
@@ -266,8 +264,9 @@ $("#cancelBtn").click(function() {
 
 $("#confirmBtn").click(function() {
 	$('#confirm-table tbody tr').each(function(){
-		for(var i=0;parseInt($(this).find("#counter").html()) < i; i++){
-			sendOrder($(this).find("#id").html());
+
+		for(var i=0;i < parseInt($(this).find("#counter").html()); i++){
+			sendOrder($(this).attr("id"));
 		}
 	});
 	$('#confirm-table tbody').html("");
@@ -275,8 +274,8 @@ $("#confirmBtn").click(function() {
 
 $("#orderBtn").click(function() {
 	$('#order-list tbody tr').each(function(){
-		for(var i=0;parseInt($(this).find("#counter").html()) < i; i++){
-			sendOrder($(this).find("#id").html());
+		for(var i=0;i < parseInt($(this).find("#counter").html()); i++){
+			sendOrder($(this).attr("id"));
 		}
 	});
 });
