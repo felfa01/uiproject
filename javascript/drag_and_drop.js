@@ -138,7 +138,7 @@ function createOrderList($list){
 			}
 		}
 	});
-	calcSum();
+	calcSum($('#order-list tbody tr'), $('#order-list tfoot #total'));
 }
 
 function checkToAdd(beer_id, maxQuantity, element){	
@@ -149,13 +149,13 @@ function checkToAdd(beer_id, maxQuantity, element){
 	console.log("checkToAdd done")
 }
 
-function calcSum(){
+function calcSum($target, $footer){
 	var sumPrice = 0;
-	$('#order-list tbody tr').each(function(){
+	$target.each(function(){
 		sumPrice = sumPrice + (parseInt($(this).find("#counter").html()) * parseFloat($(this).find("#price").html()));
 		
 	});
-	$('#order-list tfoot #total').html(sumPrice.toFixed(2));
+	$footer.html(sumPrice.toFixed(2));
 }
 
 function checkCount(){
@@ -246,6 +246,7 @@ $("#orderBtn").click(function() {
 		alert("The number of beers exceds maximum limit of 5.")
 	}else{
 		$('#confirm-table tbody').append($('#order-list tbody').html());
+		calcSum($('#confirm-table tbody tr'), $('#confirm-table tfoot #total'));
 		initializeTime();
 		startTime();
 	}
