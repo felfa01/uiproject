@@ -667,6 +667,17 @@ td, th{
  padding-top: 20px;
 }
 
+.list-table th{
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+ width: 18%;
+}
+
+.list-table th input{
+width: 100%;
+}
+
 .fixed-panels{
   position: fixed;
   margin-top: -10px;

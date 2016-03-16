@@ -34,12 +34,16 @@ statistics.js
 <body>
 	<nav class="fixed-navbar">
 		<div class="container-fluid">
-			<div class=" col-1">TEST - PUB</div>
+			<div class=" col-1">
+				<a class="translateInner" data-translate="LgOut" style="text-decoration:none; color:white; margin-left:2px; font-size:15px;" href="../home/home.html">
+					<img style="margin-top:-15px" border="0" alt="W3Schools" src="../images/Pirate-1.png" width="40" height="40">  Log Out
+				</a>
+			</div>
 			<div class="col-offset-1 col-5">
-				<a class="navbar-link" data-href="admins/order.html"><i class="fa fa-beer"> Order</i></a>
-				<a class="navbar-link" data-href="admins/stock.html"><i class="fa fa-list"> Stock</i></a>
-				<a class="navbar-link" data-href="admins/accounts.html"><i class="fa fa-users"> Accounts</i></a>
-				<a class="navbar-link" data-href="admins/statistics.html"><i class="fa fa-bar-chart"> Statistics</i></a>
+				<a class="navbar-link " data-href="admins/order.html"><i class="fa fa-beer translateInner" data-translate="Order2"> Order</i></a>
+				<a class="navbar-link " data-href="admins/stock.html"><i class="fa fa-list translateInner" data-translate="Stock"> Stock</i></a>
+				<a class="navbar-link " data-href="admins/accounts.html"><i class="fa fa-users translateInner" data-translate="Accs"> Accounts</i></a>
+				<a class="navbar-link " data-href="admins/statistics.html"><i class="fa fa-bar-chart translateInner" data-translate="Stats"> Statistics</i></a>
 			</div>
 			<div class="col-3">
 				<form class="myform theme-form">
@@ -66,12 +70,8 @@ statistics.js
 			<div class="container-fluid">
 				<div class="col-12">
 					<div class="panel ">
-						<div class="panel-heading">
-							<div class="col-9">
-								Stock
-							</div>
-
-
+						<div class="panel-heading translateInner" data-translate="CurrSales">
+							Current Sales
 						</div>
 						<div class="panel-content">
 							<div class="col-offset-9 col-3">
@@ -108,101 +108,98 @@ statistics.js
 		</div>		
 	</div>
 </div>
-
-
-
 </section>
-	<div class="sidebar" id="sidebar-qo">
-		<div class="panel">
-			<div class="panel-heading">
-				Quick Order
-			</div>
-			<div class="panel-content">
-				<div class="col-12">
-					<table id="QO-table">
-						<thead>
-							<tr>
-								<th hidden>
-									ID
-								</th>
-								<th>
-									Brand
-								</th>
-								<th>
-									Name
-								</th>											
-								<th>
-									Price
-								</th>	
-								<th>
-									#
-								</th>										
-							</tr>
-						</thead>
-						<tbody>
+<div class="sidebar" id="sidebar-qo">
+	<div class="panel">
+		<div class="panel-heading translateInner" data-translate="QO">
+			Quick Order
+		</div>
+		<div class="panel-content">
+			<div class="col-12">
+				<table class="default-table" id="QO-table">
+					<thead>
+						<tr>
+							<th hidden>
+								ID
+							</th>
+							<th class="translateInner" data-translate="Brand">
+								Brand
+							</th>
+							<th class="translateInner" data-translate="Name">
+								Name
+							</th>											
+							<th class="translateInner" data-translate="Price">
+								Price
+							</th>	
+							<th>
+								#
+							</th>										
+						</tr>
+					</thead>
+					<tbody>
 
-						</tbody>
-						<tfoot></tfoot>
-					</table>
-					<div class="col-12">
-						<div class="button-group">
-							<button id="qo-submit" class="translateInner form-submit" >Order</button>
-							<button id="qo-reset" class="translateInner form-submit" >Reset</button>
-						</div>
+					</tbody>
+					<tfoot></tfoot>
+				</table>
+				<div class="col-12">
+					<div class="button-group">
+						<button id="qo-submit" class="translateInner form-submit" data-translate="Order2">Order</button>
+						<button id="qo-reset" class="translateInner form-submit" data-translate="Rst">Reset</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="sidebar" id="sidebar-credit">
-		<div class="panel">
-			<div class="panel-heading">
-				Add Credit
-			</div>
-			<div class="panel-content">
-				<div class="col-12">					
-					<form class="quick_creditForm">
-						<div class="col-12 form-group" >
-							<div class="translateInner form-label col-5" data-translate="Usr">
-								User Name
-							</div>
-							<div class="col-6">
-								<input class="form-text" type="text" name="quick_username_credit" required>
-							</div>
+</div>
+<div class="sidebar" id="sidebar-credit">
+	<div class="panel">
+		<div class="panel-heading">
+			Add Credit
+		</div>
+		<div class="panel-content">
+			<div class="col-12">					
+				<form class="quick_creditForm">
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="Usr">
+							User Name
 						</div>
-						<div class="col-12 form-group" >
-							<div class="translateInner form-label col-5" data-translate="Pwd">
-								Password
-							</div>
-							<div class="col-6">
-								<input class="form-text" type="text" name="quick_pwd_credit" required>
-							</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_username_credit" required>
 						</div>
-						<div class="col-12 form-group" >
-							<div class="translateInner form-label col-5" data-translate="credit">
-								Add Credit
-							</div>
-							<div class="col-6">
-								<input class="form-text" type="text" name="quick_add_credit" required>
-							</div>
+					</div>
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="Pwd">
+							Password
 						</div>
-						<div class="col-12 form-group" >
-							<div class="translateInner form-label col-5" data-translate="curent_credit">
-								New Credit
-							</div>
-							<div class="col-6">
-								<input class="form-text" type="text" name="quick_new_credit" disabled required>
-							</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_pwd_credit" required>
 						</div>
-						<div class="col-offset-5 col-8 form-group">
-							<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
-							<button type="reset" value="Reset">Reset</button>
+					</div>
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="Addcredit">
+							Add Credit
 						</div>
-					</form>
-				</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_add_credit" required>
+						</div>
+					</div>
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="currcredit">
+							New Credit
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="quick_new_credit" disabled required>
+						</div>
+					</div>
+					<div class="col-offset-5 col-8 form-group">
+						<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
+						<button class="translateInner" data-translate="Rst" type="reset" value="Reset">Reset</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 
 <!---

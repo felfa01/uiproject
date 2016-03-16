@@ -19,45 +19,60 @@
 
 </head>
 <body>
-<nav class=" fixed-navbar">
-	<div class="container-fluid">
-		<div class="col-offset-1 col-1">TEST - PUB</div>
-		<div class="col-offset-1 col-4">
-			<a> Order</a>
-		</div>
-		<div class="col-2">
-			<form class="myform theme-form">
-				<input class="translateInner" type="radio" name="theme" value="../css/styles.css" data-translate="Default" checked>Default
-				<input class="translateInner" type="radio" name="theme" value="../css/alternative.css" data-translate="Alternative">Alternative
-			</form>
-
-		</div>
-		<div class="col-2">
-			<form class="myform language-form">
-				<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
-				<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
-			</form>
-		</div>
-
-	</div>
-
-</nav>
-<section class="content">
-	<div class=" content-main">
+	<nav class=" fixed-navbar">
 		<div class="container-fluid">
-			<div class="col-8">
-				<div class="panel">
-					<div class="panel-heading translateInner" data-translate="BeerList">
-						Beer List
-					</div>
-					<div class="panel-content">
-						<table id="beer-table" class="list-table">
-							<thead>
-							<tr>
-								<th>
-									<input type="text" name="brand_search" placeholder="Brand">
-								</th>
-							</tr>
+			<div class="col-offset-1 col-1">
+				<a class="translateInner" data-translate="Leave" style="text-decoration:none; color:white; margin-left:2px; font-size:15px;" href="../home/home.html">
+					<img style="margin-top:-15px" border="0" alt="W3Schools" src="../images/Pirate-1.png" width="40" height="40">  Leave
+				</a>
+			</div>
+			<div class="col-offset-5 col-2">
+				<form class="myform theme-form">
+					<input class="translateInner" type="radio" name="theme" value="../css/styles.css" data-translate="Default">Default
+					<input class="translateInner" type="radio" name="theme" value="../css/alternative.css" data-translate="Alternative">Alternative
+				</form>
+
+			</div>
+			<div class="col-2">
+				<form class="myform language-form">
+					<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
+					<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
+				</form>
+			</div>
+		</div>
+	</nav>
+	<section class="content">
+		<div class=" content-main">
+			<div class="container-fluid">
+				<div class="col-12">
+					<div class="panel">
+						<div class="panel-heading translateInner" data-translate="BeerList">
+							Beer List
+						</div>
+						<div class="panel-content">
+							<table id="beer-table" class="list-table">
+								<thead>
+									<tr>
+										<th>
+											<input class="translatePlaceHolder" data-translate="Name" type="text" name="brand_search" placeholder="Name">
+										</th>
+										<th>
+											<input class="translatePlaceHolder" data-translate="Brew" type="text" name="leverantor_search" placeholder="Brewery">
+										</th>
+										<th>
+											<input class="translatePlaceHolder" data-translate="Price2" type="text" name="price_search" placeholder="Price <">
+										</th>
+										<th>
+											<input class="translatePlaceHolder" data-translate="Alco" type="text" name="alco_search" placeholder="Alcohol <">
+										</th>
+										<th>
+											<label>
+												Allergy Free
+												<input type="checkbox" name="allergies"> 
+											</label>
+										</th>
+									</th>										
+								</tr>
 							</thead>
 							<tbody>
 							</tbody>
@@ -66,7 +81,5 @@
 				</div>
 			</div>
 		</div>
-
-	</div>
 	</div>
 </section>

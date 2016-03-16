@@ -4,11 +4,13 @@ $( document ).ready(function() {
 		translateInner(sessionStorage.language);
 		translateImages(sessionStorage.language);
 		translateInputs(sessionStorage.language);
+		translatePlaceHolder(sessionStorage.language);
 
 	}else{
 		translateInner("eng");
 		translateImages("eng");
 		translateInputs("eng");
+		translatePlaceHolder("eng");
 		sessionStorage.language="eng";
 		$("input[name=lang][value='eng']").prop("checked",true);
 	}
@@ -20,6 +22,13 @@ $( document ).ready(function() {
 	});
 
 });
+
+function translatePlaceHolder(lang){
+	$(".translatePlaceHolder").each(function(){
+		var translated = transl($(this).data("translate"), lang);
+		$(this).attr("placeholder", translated);
+	});
+}
 
 function translateInner(lang){
 	$( ".translateInner" ).each(function() {
@@ -56,16 +65,30 @@ var jsonObject = {
 		"PirateGuest":"../images/Pirate_Guest.png",
 		"BeerList":"Beer List",
 		"Order":"Order",
-		"Order2":"Order",
+		"Order2":" Order",
 		"Brand":"Brand",
 		"Price":"Price",
+		"Price2":"Price <",
 		"Current":"Current",
-		"Confirm":"Confirm",
+		"Confirm":" Confirm",
 		"Cancel":"Cancel",
-		"Add":"Add",
-		"Clear":"Clear",
-		"Default":"Default",
-		"Alternative":"Alternative"
+		"Add":" Add",
+		"Clear":" Clear",
+		"Default":" Default",
+		"Alternative":" Alternative",
+		"LgOut": " Log Out",
+		"Leave": " Leave",
+		"Stock": " Stock",
+		"Accs": " Accounts",
+		"Stats": " Statistics",
+		"Name": "Name",
+		"Brew": "Brewery",
+		"Alco": "Alcohol <",
+		"Rst": "Reset",
+		"CurrSales": "Current Sales",
+		"QO": "Quick Order",
+		"Addcredit": "Add Credit",
+		"currcredit": "New Credit"
 
 	},
 	"swe":{
@@ -78,17 +101,30 @@ var jsonObject = {
 		"PirateGuest": "../images/Pirate_Guest_Swe.png",
 		"BeerList": "Öllista",
 		"Order":"Beställning",
-		"Order":"Beställ",
+		"Order2":" Beställ",
 		"Brand":"Märke",
 		"Price":"Pris",
+		"Price2":"Pris <",
 		"Current":"Nuvarande",
-		"Confirm":"Bekräfta",
-		"Cancel":"Avbryt",
-		"Add":"Lägg till",
-		"Clear":"Rensa",
-		"Default":"Standard",
-		"Alternative":"Alternativ"
-
+		"Confirm":" Bekräfta",
+		"Cancel":" Avbryt",
+		"Add":" Lägg till",
+		"Clear":" Rensa",
+		"Default":" Standard",
+		"Alternative":" Alternativ",
+		"LgOut": " Logga Ut",
+		"Leave": " Lämna",
+		"Stock": " Lager",
+		"Accs": " Konton",
+		"Stats": " Statistik",
+		"Name": "Namn",
+		"Brew": "Tillverkare",
+		"Alco": "Alkohol <",
+		"Rst": "Återställ",
+		"CurrSales": "Nuvarande Försäljning",
+		"QO": "Snabb Beställning",
+		"Addcredit": "Lägg till kredit",
+		"currcredit": "Ny kredit"
 	}
 }
 

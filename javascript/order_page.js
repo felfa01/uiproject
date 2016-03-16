@@ -30,50 +30,110 @@ function getBeers(username, pwd){
 		}); 
 		$("input[name='leverantor_search']").prop('disabled', true);
 		$("input[name='brand_search']").prop('disabled', true);
+		$("input[name='price_search']").prop('disabled', true);
+		$("input[name='alco_search']").prop('disabled', true);
 		$(document).ajaxStop(function () { 
 			$("input[name='brand_search']").prop('disabled', false);
 			$("input[name='leverantor_search']").prop('disabled', false);
+			$("input[name='price_search']").prop('disabled', false);
+			$("input[name='alco_search']").prop('disabled', false);
 			fillBeertable(extendedData);
-			$(".beer-element").focus(function() {
-				fillCollapse($(this), $(this).attr("id"))
-			});
 			$("input[name='brand_search']").bind('input', function() { 	
-				var beers = searchBeers(extendedData, $("input[name='brand_search']").val(), $("input[name='leverantor_search']").val());
+				var beers = searchBeers(extendedData, $("input[name='brand_search']").val(), $("input[name='leverantor_search']").val(),
+					$("input[name='price_search']").val(), $("input[name='alco_search']").val(), $("input[name='allergies']").is(":checked"));
 				if(beers.length > 0)
 					fillBeertable(beers);
 			});
 			$("input[name='leverantor_search']").bind('input', function() { 				
-				var beers = searchBeers(extendedData, $("input[name='brand_search']").val(), $("input[name='leverantor_search']").val());
+				var beers = searchBeers(extendedData, $("input[name='brand_search']").val(), $("input[name='leverantor_search']").val(),
+					$("input[name='price_search']").val(), $("input[name='alco_search']").val(), $("input[name='allergies']").is(":checked"));
 				if(beers.length > 0)
 					fillBeertable(beers);	
 			});
+			$("input[name='price_search']").bind('input', function() { 	
+				var beers = searchBeers(extendedData, $("input[name='brand_search']").val(), $("input[name='leverantor_search']").val(),
+					$("input[name='price_search']").val(), $("input[name='alco_search']").val(), $("input[name='allergies']").is(":checked"));
+				if(beers.length > 0)
+					fillBeertable(beers);
+			});
+			$("input[name='alco_search']").bind('input', function() { 				
+				var beers = searchBeers(extendedData, $("input[name='brand_search']").val(), $("input[name='leverantor_search']").val(),
+					$("input[name='price_search']").val(), $("input[name='alco_search']").val(), $("input[name='allergies']").is(":checked"));
+				if(beers.length > 0)
+					fillBeertable(beers);	
+			});
+			$("input[name='allergies']").change(function() {
+				var beers = searchBeers(extendedData, $("input[name='brand_search']").val(), $("input[name='leverantor_search']").val(),
+					$("input[name='price_search']").val(), $("input[name='alco_search']").val(), $("input[name='allergies']").is(":checked"));
+				if(beers.length > 0)
+					fillBeertable(beers);
+			});
 		});
-
-		//makeDragable();
-	});
+});
 
 }
 
-function searchBeers(beers, brand, leverantor, price, alco){
+function searchBeers(beers, brand, leverantor, price, alco, allergies){
 	var result = []
-	for (i in beers) {
-		if(brand != "" && leverantor != "" && price != "" && alco != ""){
-			if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()))
+	for (i = 0; i < beers.length; i++) {
+		if(allergies && ((i%10)!==0)){
+			console.log("MODOOOOOLOUOU")
+		}else{
+			if(brand != "" && leverantor != "" && price != "" && alco != ""){
+				if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["leverantor"].toLowerCase().includes(leverantor.toLowerCase())
+					&& parseFloat(beers[i]["prisinklmoms"]) < parseFloat(price) && parseFloat(beers[i]["alkoholhalt"]) < parseFloat(alco))
+					result.push(beers[i]);
+			}else if(brand != "" && leverantor != "" && price != ""){
+				if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["leverantor"].toLowerCase().includes(leverantor.toLowerCase())
+					&& parseFloat(beers[i]["prisinklmoms"]) < parseFloat(price))
+					result.push(beers[i]);
+			}else if(brand != "" && leverantor != "" && alco != ""){
+				if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["leverantor"].toLowerCase().includes(leverantor.toLowerCase())
+					&& parseFloat(beers[i]["alkoholhalt"]) < parseFloat(alco))
+					result.push(beers[i]);
+			}else if(brand != "" && price != "" && alco != ""){	
+				if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && parseFloat(beers[i]["prisinklmoms"]) < parseFloat(price)
+					&& parseFloat(beers[i]["alkoholhalt"]) < parseFloat(alco))
+					result.push(beers[i]);				
+			}else if(brand != "" && leverantor != ""){
+				if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["leverantor"].toLowerCase().includes(leverantor.toLowerCase()))
+					result.push(beers[i]);
+			}else if(brand != "" && price != ""){
+				if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase())&& parseFloat(beers[i]["prisinklmoms"]) < parseFloat(price))
+					result.push(beers[i]);
+			}else if(brand != "" && alco != ""){	
+				if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && parseFloat(beers[i]["alkoholhalt"]) < parseFloat(alco))
+					result.push(beers[i]);		
+			}else if(brand != ""){
+				if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()))
+					result.push(beers[i]);
+			}else if(leverantor != "" && price != "" && alco != ""){
+				if(beers[i]["leverantor"].toLowerCase().includes(leverantor.toLowerCase()) && parseFloat(beers[i]["prisinklmoms"]) < parseFloat(price) && parseFloat(beers[i]["alkoholhalt"]) < parseFloat(alco))
+					result.push(beers[i]);
+			}else if(leverantor != "" && price != ""){
+				if(beers[i]["leverantor"].toLowerCase().includes(leverantor.toLowerCase())&& parseFloat(beers[i]["prisinklmoms"]) < parseFloat(price))
+					result.push(beers[i]);
+			}else if(leverantor != "" && alco != ""){
+				if(beers[i]["leverantor"].toLowerCase().includes(leverantor.toLowerCase()) && parseFloat(beers[i]["alkoholhalt"]) < parseFloat(alco))
+					result.push(beers[i]);
+			}else if(leverantor != ""){
+				if(beers[i]["leverantor"].toLowerCase().includes(leverantor.toLowerCase()))
+					result.push(beers[i]);
+			}else if(price != "" && alco != ""){
+				if(parseFloat(beers[i]["prisinklmoms"]) < parseFloat(price) && parseFloat(beers[i]["alkoholhalt"]) < parseFloat(alco))
+					result.push(beers[i]);
+			}else if(price != ""){
+				if(parseFloat(beers[i]["prisinklmoms"]) < parseFloat(price))
+					result.push(beers[i]);
+			}else if(alco != ""){
+				if(parseFloat(beers[i]["alkoholhalt"]) < parseFloat(alco))
+					result.push(beers[i]);
+			}else{
 				result.push(beers[i]);
-		}else if(brand != "" && leverantor != "" && price != ""){
-			if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()))
-				result.push(beers[i]);
-		}else if(brand != "" && leverantor != ""){
-			if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()))
-				result.push(beers[i]);
-		}else if(brand != ""){
-			if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()))
-				result.push(beers[i]);
-		}else if(leverantor != "" && price != "" && alco != ""){
-			if(beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()) && beers[i]["namn"].toLowerCase().includes(brand.toLowerCase()))
-				result.push(beers[i]);
+			}
 		}
 	}
+	console.log(result);
 	return result;
 }
 
@@ -98,6 +158,9 @@ function fillBeertable(beers){
 				"price": beer.prisinklmoms, "alkoholhalt": beer.alkoholhalt, "leverantor": beer.leverantor});
 		}
 	});
+$(".beer-element").focus(function() {
+	fillCollapse($(this), $(this).attr("id"))
+});
 }
 
 

@@ -20,8 +20,11 @@
 <body>
 	<nav class=" fixed-navbar">
 		<div class="container-fluid">
-			<div class="col-offset-1 col-1">TEST - PUB</div>
-		
+			<div class="col-offset-1 col-1">
+				<a class="translateInner" data-translate="LgOut" style="text-decoration:none; color:white; margin-left:2px; font-size:15px;" href="../home/home.html">
+					<img style="margin-top:-15px" border="0" alt="W3Schools" src="../images/Pirate-1.png" width="40" height="40">  Log Out
+				</a>
+			</div>
 			<div class="col-offset-5 col-2">
 				<form class="myform theme-form">
 					<input class="translateInner" type="radio" name="theme" value="../css/styles.css" data-translate="Default">Default
@@ -30,15 +33,15 @@
 
 			</div>
 			<div class="col-2">
-			<form class="myform language-form">
-						<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
-						<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
-					</form>
+				<form class="myform language-form">
+					<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
+					<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
+				</form>
 			</div>
 			<div class="col-1">
 				<span class="collapse-sidebar" id="collapse-order">
-				<i class="fa fa-shopping-basket fa-2x"></i>
-			</span>
+					<i class="fa fa-shopping-basket fa-2x"></i>
+				</span>
 			</div>
 		</div>
 
@@ -53,14 +56,26 @@
 						</div>
 						<div class="panel-content">
 							<table id="beer-table" class="list-table">
-									<thead>
-									<tr>
+								<thead>
+									<tr>										
 										<th>
-											<input type="text" name="brand_search" placeholder="Brand">
+											<input class="translatePlaceHolder" data-translate="Name" type="text" name="brand_search" placeholder="Name">
 										</th>
 										<th>
-											<input type="text" name="leverantor_search" placeholder="Brewery">
+											<input class="translatePlaceHolder" data-translate="Brew" type="text" name="leverantor_search" placeholder="Brewery">
 										</th>
+										<th>
+											<input class="translatePlaceHolder" data-translate="Price2" type="text" name="price_search" placeholder="Price <">
+										</th>
+										<th>
+											<input class="translatePlaceHolder" data-translate="Alco" type="text" name="alco_search" placeholder="Alcohol <">
+										</th>
+										<th>
+											<label>
+												Allergy Free
+												<input type="checkbox" name="allergies"> 
+											</label>
+										</th>										
 									</tr>
 								</thead>
 								<tbody>
@@ -153,39 +168,39 @@
 	</div>
 </section>
 <div class="sidebar" id="sidebar-order">
-		<div class="panel">
-			<div class="panel-heading">
-				Current Orders
-			</div>
-			<div class="panel-content">
-				<div class="col-12">
-					<table id="order-table">
-						<thead>
-							<tr>
-								<th hidden>
-									ID
-								</th>
-								<th>
-									Brand
-								</th>
-								<th>
-									Name
-								</th>											
-								<th>
-									Price
-								</th>	
-								<th>
-									#
-								</th>										
-							</tr>
-						</thead>
-						<tbody>
+	<div class="panel">
+		<div class="panel-heading">
+			Current Orders
+		</div>
+		<div class="panel-content">
+			<div class="col-12">
+				<table class="default-table" id="order-table">
+					<thead>
+						<tr>
+							<th hidden>
+								ID
+							</th>
+							<th>
+								Brand
+							</th>
+							<th>
+								Name
+							</th>											
+							<th>
+								Price
+							</th>	
+							<th>
+								Date
+							</th>										
+						</tr>
+					</thead>
+					<tbody>
 
-						</tbody>
-						<tfoot></tfoot>
-					</table>
-				</div>
+					</tbody>
+					<tfoot></tfoot>
+				</table>
 			</div>
 		</div>
 	</div>
+</div>
 </body>

@@ -208,7 +208,7 @@ function startTime() {
 	m = checkTime(m);
 	s = checkTime(s);
 	document.getElementById('orderTimer').innerHTML =
-	(h - startH)  + ":" + (m - startM) + ":" + (s - startS);
+	Math.abs(m - startM) + ":" + Math.abs(s - startS);
 	var t = setTimeout(startTime, 500);
 }
 function checkTime(i) {
