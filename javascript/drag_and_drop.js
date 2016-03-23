@@ -22,64 +22,77 @@ window.onload = function () {
 		}
 	};
 
-	var removeAll = function(){
-		beers_order=[];
-	}
-
-	var createBeer = function(id, beer_id, namn, price) {
-
-		beers_order.push({"id": id, "beer_id": beer_id, "namn":namn, "price":price});
-		undoID = id + 1;
-
-		undoManager.add({
-			undo: function() {
-				removeBeer(id)
-			},
-			redo: function() {
-				createBeer(id, beer_id, namn, price);
-			},
-			clear: function() {
-				alert("HEJ")
+	var reorderBeer = function(id){
+		var currIndex = undoManager.getIndex();
+		var beer;
+		var i = 0, index = -1;
+		console.log(beers_order)
+		for (i = 0; i < beers_order.length; i += 1) {
+			if (beers_order[i].beer_id === id) {
+				index = i;
+				beer = beers_order[i];
 			}
+		}
+		if (index !== -1) {
+			beers_order.splice(index, 1);
+		}
+		beers_order[currIndex] = beer;
+		undoManager.undo();
+		//undoManager.decIndex();
+		console.log(beers_order);
+	//	undoManager.undo();
+}
+
+var removeAll = function(){
+	beers_order=[];
+}
+
+var createBeer = function(id, beer_id, namn, price) {
+
+	beers_order.push({"id": id, "beer_id": beer_id, "namn":namn, "price":price});
+	undoID = id + 1;
+
+	undoManager.add({
+		undo: function() {
+			removeBeer(id)
+		},
+		redo: function() {
+			createBeer(id, beer_id, namn, price);
+		},
+		clear: function() {
+			alert("HEJ")
+			} /*,
+			del: function(beer_id){
+				reorderBeer(beer_id);
+			} */
 		});
 
-	}
-
-
-	document.addEventListener("dragstart", function(event) {
-    // The dataTransfer.setData() method sets the data type and the value of the dragged data
-    if ( event.target.className == "draggable" || $(event.target).parents().hasClass("draggable") ) {
-    	($(event.target).hasClass("draggable")) ? event.dataTransfer.setData("text", event.target.id) : event.dataTransfer.setData("text", $(event.target).parents(".draggable").attr("id"));
-
-
-    // Change the opacity of the draggable element
-    event.target.style.opacity = "0.4";
 }
+
+
+document.addEventListener("dragstart", function(event) {
+	if ( event.target.className == "draggable" || $(event.target).parents().hasClass("draggable") ) {
+		($(event.target).hasClass("draggable")) ? event.dataTransfer.setData("text", event.target.id) : event.dataTransfer.setData("text", $(event.target).parents(".draggable").attr("id"));
+		event.target.style.opacity = "0.4";
+	}
 });
 
-// While dragging the p element, change the color of the output text
 document.addEventListener("drag", function(event) {
 	document.getElementById("order-list").style.outline = "1px dotted lightblue";
 });
 
-// Output some text when finished dragging the p element and reset the opacity
 document.addEventListener("dragend", function(event) {
 	if ( event.target.className == "draggable" || $(event.target).parents().hasClass("draggable") ) {
 		event.target.style.opacity = "1";
 	}
 });
 
-
-/* ----------------- Events fired on the drop target ----------------- */
-
-// When the draggable p element enters the droptarget, change the DIVS's border style
 document.addEventListener("dragenter", function(event) {
 	if ( event.target.className == "droptarget" || $(event.target).parents().hasClass("droptarget") ) {
 		
 	}
 });
 
-// By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element
 document.addEventListener("dragover", function(event) {
 	event.preventDefault();
 	if ( event.target.className == "droptarget" || $(event.target).parents().hasClass("droptarget") ) {
@@ -87,19 +100,12 @@ document.addEventListener("dragover", function(event) {
 	}
 });
 
-// When the draggable p element leaves the droptarget, reset the DIVS's border style
 document.addEventListener("dragleave", function(event) {
 	if ( event.target.className == "droptarget" || $(event.target).parents().hasClass("droptarget") ) {
 		event.target.style.border = "";
 	}
 });
 
-/* On drop - Prevent the browser default handling of the data (default is open as link on drop)
-Reset the color of the output text and DIV's border color
-Get the dragged data with the dataTransfer.getData() method
-The dragged data is the id of the dragged element ("drag1")
-Append the dragged element into the drop element
-*/
 document.addEventListener("drop", function(event) {
 	event.preventDefault();
 	document.getElementById("order-list").style.outline = "";
@@ -121,8 +127,6 @@ document.addEventListener("drop", function(event) {
 
 
 function createOrderList($list){
-	console.log("createOrderList started")
-	console.log(beers_order)
 	setTimeout(function(){}, 2000);
 	$list.find("tbody").html("");
 
@@ -130,13 +134,18 @@ function createOrderList($list){
 		if(beer){
 			console.log("index: " + index + " noticed. Beer: " + beer.namn)
 			if($list.find("#" + beer.beer_id).length == 0) {
-				$list.find("tbody").append("<tr id='" + beer.beer_id + "'><td>" + beer.namn + "</td><td id='price'>"+ beer.price +"</td><td id='counter'>1</td></li>");
+				$list.find("tbody").append("<tr id='" + beer.beer_id + "'><td>" + beer.namn + "</td><td id='price'>"+ beer.price +"</td><td id='counter'>1</td><td><i class='delBeer fa fa-times fa-1x'></i></td></tr>");
 			}else{
 				var $counter = $list.find("#"+  beer.beer_id).find("#counter");
 				$counter.html(parseInt(
 					$counter.html()) + 1)
 			}
 		}
+	});
+	$(".delBeer").on("click", function(){
+		reorderBeer($(this).parents("tr").attr("id"));
+		createOrderList($('#order-list'));
+		updateUI();
 	});
 	calcSum($('#order-list tbody tr'), $('#order-list tfoot #total'));
 }
@@ -245,7 +254,7 @@ $("#orderBtn").click(function() {
 	}else{
 		$('#confirm-table tbody').append($('#order-list tbody').html());
 		calcSum($('#confirm-table tbody tr'), $('#confirm-table tfoot #total'));
-		initializeTime();
+		//initializeTime();
 		//startTime();
 	}
 });
@@ -260,24 +269,43 @@ $("#clearBtn").click(function() {
 
 $("#cancelBtn").click(function() {
 	$('#confirm-table tbody').html("");
+	$('#confirm-table tfoot td').html(0);
 });
 
 $("#confirmBtn").click(function() {
-	$('#confirm-table tbody tr').each(function(){
-
-		for(var i=0;i < parseInt($(this).find("#counter").html()); i++){
-			sendOrder($(this).attr("id"));
+	url = "http://pub.jamaica-inn.net/fpdb/api.php?username="+urlParams["username"]+"&password="+urlParams["password"]+"&action=iou_get";
+	$.getJSON( url, {
+		format: "json"
+	}).done(function(data) {
+		if(data.type == "error"){
+			alert(data.payload[0].msg)
+		}else{
+			if(parseFloat($("#usrCredit").html()) > parseFloat($('#confirm-table tfoot td').html())){
+				$('#confirm-table tbody tr').each(function(){
+					for(var i=0;i < parseInt($(this).find("#counter").html()); i++){
+						sendOrder($(this).attr("id"));
+					}
+				});
+				$('#confirm-table tbody').html("");
+				$('#confirm-table tfoot td').html(0);
+				getCredit(urlParams["username"], urlParams["password"]);
+			}else{
+				alert("You do not have enough credits! Please refill.")
+			}
 		}
 	});
-	$('#confirm-table tbody').html("");
+	
 });
 
-$("#orderBtn").click(function() {
+$("#orderNowBtn").click(function() {
 	$('#order-list tbody tr').each(function(){
 		for(var i=0;i < parseInt($(this).find("#counter").html()); i++){
 			sendOrder($(this).attr("id"));
 		}
 	});
+	undoManager.clear();
+	beers_order = [];
+	createOrderList($('#order-list'));
 });
 
 }

@@ -1,7 +1,7 @@
 <!---
-File: stock.html
+File: orders.html
 
-This page gives information about the current stock for the bar. As well as the possibility to alter price and nr of stock.
+This page gives the bartender the possibility to see and alter the current orders in the system.
 
 Version 1.0
 Author: Mikael Holmberg
@@ -14,7 +14,7 @@ jquery-1.12.0.min.js
 super_shared.js
 shared.js
 translate.js
-stock.js
+orders.js
 theme.js
 navigation.js
 
@@ -32,16 +32,15 @@ navigation.js
 	<script src="../javascript/super_shared.js"></script>	
 	<script src="../javascript/translate.js"></script>
 	<script src="../javascript/shared.js"></script>
-	<script src="../javascript/stock.js"></script>		
+	<script src="../javascript/orders.js"></script>		
 	<script src="../javascript/theme.js"></script>
 	<script src="../javascript/navigation.js"></script>
 	
 </head>
 <body>
-	<!-- This navigation bar gives the opportunity to navigate through out
-		 the different admin pages. For now this section of code is duplicated in each
+<!--  For now this section of code is duplicated in each
 		 *admin*.html file, something that could be fixed if the project would run on a server
-		 and by the use of include
+		 and by the use of include. Comments found in stock.html
 		-->
 	<nav class="fixed-navbar">
 		<div class="container-fluid">
@@ -52,9 +51,6 @@ navigation.js
 			</div>
 			<div class=" col-6">
 				<a class="navbar-link " data-href="admins/order.html"><i class="fa fa-beer translateInner" data-translate="Order2"> Order</i></a>
-				<!-- Tooltip that is dynamically filled with beers that is out of stock. The element is shown on first load and when
-					 the data differs between loads.
-				-->
 				<div class="tooltip">
 					<a class="navbar-link " data-href="admins/stock.html"><i class="fa fa-list translateInner" data-translate="Stock"> Stock</i></a>
 					<div class="tooltip-panel" id="tooltip-stock">
@@ -68,27 +64,19 @@ navigation.js
 				<a class="navbar-link " data-href="admins/statistics.html"><i class="fa fa-bar-chart translateInner" data-translate="Stats"> Statistics</i></a>
 			</div>
 			<div class="col-3">
-			<!-- Radio buttons that gives users the possibility to change theme of the page. 
-			-->
 				<form class="myform theme-form">
 					<input class="translateInner" type="radio" name="theme" value="../css/styles.css" data-translate="Default">Default
 					<input class="translateInner" type="radio" name="theme" value="../css/alternative.css" data-translate="Alternative">Alternative
 				</form>
-				<!-- Radio buttons that gives users the possibility to change language of the page. 
-				-->
 				<form class="myform language-form">
 					<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
 					<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
 				</form>
 			</div>
 			<div class="col-2">
-				<!-- Button-like element that collapse sidebar for quick order.
-				-->
 				<span class="collapse-sidebar" id="collapse-qo">
 					<i class="fa fa-beer fa-2x"></i>
 				</span>
-				<!-- Button-like element tha collapse sidebar for user credit
-				-->
 				<span class="collapse-sidebar" id="collapse-credit">
 					<i class="fa fa-credit-card fa-2x"></i>
 				</span>
@@ -101,36 +89,29 @@ navigation.js
 				<div class="col-12">
 					<div class="panel">
 						<div class="panel-heading">
-							Stock
+							Orders
 						</div>
 						<div class="panel-content">
 							<div class="col-12">
-							<!-- This table shows the stock (the nameless beers are filtered out)
-								 and edit options for each one.
+							<!-- This table shows the current orders in the system. Orders can be cancelled directly from the table.
 								-->
-								<table class="default-table" id="stock-table">
+								<table class="default-table" id="orders-table">
 									<thead>
 										<tr>
 											<th hidden>
 												ID
 											</th>
 											<th>
-												<input type="text translatePlaceHolder" name="brand_search" placeholder="Brand">
+												Brand
 											</th>
 											<th>
-												<input type="text" name="name_search" placeholder="Name">
-											</th>
-											<th>
-												Supplier Price
-											</th>
-											<th>
-												Pub Price
-											</th>
+												Name
+											</th>											
 											<th>
 												Price
-											</th>
+											</th>	
 											<th>
-												# in stock
+												Date
 											</th>
 											<th>
 
@@ -147,55 +128,10 @@ navigation.js
 				</div>		
 			</div>
 		</div>
-		
-		
-
 	</section>
-	<div id="stockModal" class="modal">
-		<div class="modal-content">
-			<div class="modal-header">
-				<span class="close">×</span>
-			</div>
-			<p class="translateInner" id="beer_name"></p>
-			<div class="col-8">
-			<!-- Form that alter the stock and price for the choosen beer.
-			-->
-				<form class="stockForm">
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="beer_id">
-							Beer ID
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="beer_id" required disabled>
-						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div  class="translateInner form-label col-5" data-translate="price">
-							Price
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="price" required>
-						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="amount">
-							Amount
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="amount" required>
-						</div>
-					</div>
-					<div class="col-offset-5 col-8 form-group">
-						<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
-						<button type="reset" value="Reset">Reset</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- For now this section of code is duplicated in each
+	<!--  For now this section of code is duplicated in each
 		 *admin*.html file, something that could be fixed if the project would run on a server
-		 and by the use of include
+		 and by the use of include. Comments found in stock.html
 		-->
 	<div class="sidebar" id="sidebar-qo">
 		<div class="panel">
@@ -204,8 +140,6 @@ navigation.js
 			</div>
 			<div class="panel-content">
 				<div class="col-12">
-				<!-- Shows top 5 of the purchased beers. Ther is a possibility to order directly from the table.
-				-->
 					<table class="default-table" id="QO-table">
 						<thead>
 							<tr>
@@ -247,9 +181,7 @@ navigation.js
 				Add Credit
 			</div>
 			<div class="panel-content">
-				<div class="col-12">			
-				<!-- A form to increase or decrease the credit for the choosen user.
-				-->		
+				<div class="col-12">					
 					<form class="quick_creditForm">
 						<div class="col-12 form-group" >
 							<div class="translateInner form-label col-5" data-translate="Usr">

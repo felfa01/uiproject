@@ -37,6 +37,17 @@ Author: Mikael Holmberg
   cursor:pointer;
 }
 
+.fixed-navbar .tooltip{
+  display: inline;
+  padding: 2px 8px 2px 8px;
+  width: 100px;
+  height:100%;
+  text-decoration: none;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .navbar-home{
   min-height: 40px;
 }
@@ -619,7 +630,7 @@ table.default-table  {
   margin: auto;
   height:auto;
   overflow:auto;
-  max-height: 300px;
+  max-height: 450px;
   padding-right: 10px;
 }
 

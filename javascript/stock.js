@@ -10,7 +10,7 @@
 
 var creditAdd = 0;
 
-// When the document has been loaded and initialised, we get the bstock of the beers in the bar.
+// When the document has been loaded and initialised, we get the stock of the beers in the bar.
 //
 $( document ).ready(function() {
 	getStock(urlParams["username"], urlParams["password"], "","");

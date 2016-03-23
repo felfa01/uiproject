@@ -1,5 +1,5 @@
 <!---
-File: Spirograph.html
+File: statistics.html
 
 This page shows different statistics for the bar with different graphs choosen by the users.
 
@@ -8,11 +8,15 @@ Author: Mikael Holmberg
 
 Requires the following files:
 
-styles.css
+font-awesome.min.css
+url_parameters.js
 jquery-1.12.0.min.js
+super_shared.js
+shared.js
 translate.js
-shared.js"
 statistics.js
+theme.js
+navigation.js
 
 -->
 
@@ -33,6 +37,10 @@ statistics.js
 	<script src="../javascript/theme.js"></script>
 </head>
 <body>
+<!--  For now this section of code is duplicated in each
+		 *admin*.html file, something that could be fixed if the project would run on a server
+		 and by the use of include. Comments found in stock.html
+		-->
 	<nav class="fixed-navbar">
 		<div class="container-fluid">
 			<div class=" col-1">
@@ -40,9 +48,17 @@ statistics.js
 					<img style="margin-top:-15px" border="0" alt="W3Schools" src="../images/Pirate-1.png" width="40" height="40">  Log Out
 				</a>
 			</div>
-			<div class="col-offset-1 col-5">
+			<div class=" col-6">
 				<a class="navbar-link " data-href="admins/order.html"><i class="fa fa-beer translateInner" data-translate="Order2"> Order</i></a>
-				<a class="navbar-link " data-href="admins/stock.html"><i class="fa fa-list translateInner" data-translate="Stock"> Stock</i></a>
+				<div class="tooltip">
+					<a class="navbar-link " data-href="admins/stock.html"><i class="fa fa-list translateInner" data-translate="Stock"> Stock</i></a>
+					<div class="tooltip-panel" id="tooltip-stock">
+						<div class="tooltip-content">
+							<ul id="stock-menu"></ul>
+						</div>
+					</div>
+				</div>
+				<a class="navbar-link " data-href="admins/orders.html"><i class="fa fa-history translateInner" data-translate="Order3"> Orders</i></a>
 				<a class="navbar-link " data-href="admins/accounts.html"><i class="fa fa-users translateInner" data-translate="Accs"> Accounts</i></a>
 				<a class="navbar-link " data-href="admins/statistics.html"><i class="fa fa-bar-chart translateInner" data-translate="Stats"> Statistics</i></a>
 			</div>
@@ -88,8 +104,8 @@ statistics.js
 							<div class="col-12 canvas-wrapper">
 
 							<!---
-							This canvas is used to visualize different(pie chart, bar chart) statistics for the barm depended on choice
-							and parameters from the user. Generated through javascript and jquery. 
+							This canvas is used to visualize different(pie chart, bar chart) statistics for the purchased beers
+							in the system.
 						-->
 						<div class="col-12">
 							<div class="col-offset-1 col-6">
@@ -110,6 +126,10 @@ statistics.js
 	</div>
 </div>
 </section>
+<!--  For now this section of code is duplicated in each
+		 *admin*.html file, something that could be fixed if the project would run on a server
+		 and by the use of include. Comments found in stock.html
+		-->
 <div class="sidebar" id="sidebar-qo">
 	<div class="panel">
 		<div class="panel-heading translateInner" data-translate="QO">

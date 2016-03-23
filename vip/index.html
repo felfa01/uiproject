@@ -1,3 +1,26 @@
+<!---
+File: index.html
+
+This page gives the user the possibility to find, favorite and order beers. Sidebars for favorite (and order) beers and current orders is available.
+
+Version 1.0
+Author: Mikael Holmberg
+
+Requires the following files:
+
+font-awesome.min.css
+url_parameters.js
+jquery-1.12.0.min.js
+super_shared.js
+shared_usr.js
+translate.js
+undomanager.js
+order_page.js
+drag_and_drop.js
+theme.js
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +48,9 @@
 					<img style="margin-top:-15px" border="0" alt="W3Schools" src="../images/Pirate-1.png" width="40" height="40">  Log Out
 				</a>
 			</div>
-			<div class="col-offset-5 col-2">
+			<div class="col-offset-2 col-2">
+			<!-- Radio buttons that gives users the possibility to change theme of the page. 
+			-->
 				<form class="myform theme-form">
 					<input class="translateInner" type="radio" name="theme" value="../css/styles.css" data-translate="Default">Default
 					<input class="translateInner" type="radio" name="theme" value="../css/alternative.css" data-translate="Alternative">Alternative
@@ -33,12 +58,24 @@
 
 			</div>
 			<div class="col-2">
+			<!-- Radio buttons that gives users the possibility to change language of the page. 
+				-->
 				<form class="myform language-form">
 					<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
 					<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
 				</form>
 			</div>
-			<div class="col-1">
+						<div class="col-2">
+					<i class="fa  fa-2x" id="usrCredit"></i>
+			</div>
+			<div class="col-2">
+				<!-- Button-like element that collapse sidebar for favorite order.
+				-->
+				<span class="collapse-sidebar" id="collapse-fav">
+					<i class="fa fa-heart fa-2x"></i>
+				</span>
+				<!-- Button-like element that collapse sidebar for current orders.
+				-->
 				<span class="collapse-sidebar" id="collapse-order">
 					<i class="fa fa-shopping-basket fa-2x"></i>
 				</span>
@@ -55,6 +92,8 @@
 							Beer List
 						</div>
 						<div class="panel-content">
+						<!-- Table that shows all the beers in the systems, depending on if they are in stock the beer elements will be draggable.
+						-->
 							<table id="beer-table" class="list-table">
 								<thead>
 									<tr>										
@@ -92,6 +131,9 @@
 							Order
 						</div>			
 						<div class="panel-content">
+						<!-- Table that will keep the choosen (through drag and drop) beers that later on can be sent to the confirm table. 
+							 The table is available for drop.
+						-->
 							<table id="order-list">
 								<thead>
 									<tr>
@@ -104,6 +146,7 @@
 										<th>
 											#
 										</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody >
@@ -130,6 +173,8 @@
 							Current
 						</div>			
 						<div class="panel-content  ">
+							<!-- This table is used to shown the beers that are ready to be confirm for order.
+							-->
 							<table id="confirm-table">
 								<thead>
 									<tr>
@@ -142,6 +187,7 @@
 										<th>
 											#
 										</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody >
@@ -167,6 +213,50 @@
 		</div>
 	</div>
 </section>
+<div class="sidebar" id="sidebar-fav">
+	<div class="panel">
+		<div class="panel-heading translateInner" data-translate="Fav">
+			Favorites
+		</div>
+		<div class="panel-content">
+			<div class="col-12">
+			<!-- Table that contains the favorite beers choosen by the user, it is possible to order directly from the table.
+			-->
+				<table class="default-table" id="fav-table">
+					<thead>
+						<tr>
+							<th hidden>
+								ID
+							</th>
+							<th class="translateInner" data-translate="Brand">
+								Brand
+							</th>
+							<th class="translateInner" data-translate="Name">
+								Name
+							</th>											
+							<th class="translateInner" data-translate="Price">
+								Price
+							</th>	
+							<th>
+								#
+							</th>										
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+					<tfoot></tfoot>
+				</table>
+				<div class="col-12">
+					<div class="button-group">
+						<button id="fav-submit" class="translateInner form-submit" data-translate="Order2">Order</button>
+						<button id="fav-reset" class="translateInner form-submit" data-translate="Rst">Reset</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="sidebar" id="sidebar-order">
 	<div class="panel">
 		<div class="panel-heading">
@@ -174,6 +264,8 @@
 		</div>
 		<div class="panel-content">
 			<div class="col-12">
+			<!-- Table that shows the current orders made by the user.
+			-->
 				<table class="default-table" id="order-table">
 					<thead>
 						<tr>

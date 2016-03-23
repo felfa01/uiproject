@@ -1,7 +1,19 @@
+/**
+ * File: accounts.js
+ *
+ * This file contains the javaScript needed to show the users
+ * and handle alteration of the users.
+ *
+ * Version 1.0 
+ * Author: Mikael Holmberg
+ */
 
-
+// When the document has been loaded and initialised, we get the users of the system.
+//
 $( document ).ready(function() {
 	getUsers(urlParams["username"], urlParams["password"]);
+	//On submit, update the user with the requested inputs.
+	//
 	$( ".usrForm" ).submit(function( event ) {
 		event.preventDefault();
 		$.ajax({
@@ -24,6 +36,8 @@ $( document ).ready(function() {
 		});
 	});
 
+//On change, the new credit field will be updated automatically.
+//
 	$("input[name='add_credit']").bind('input', function() { 
 		if($(this).val() != ""){
 			$("input[name='new_credit']").val(parseFloat($(this).val()) + parseFloat(creditAdd));
@@ -35,7 +49,8 @@ $( document ).ready(function() {
 
 
 
-
+//Gets the users and fills out the table.
+//
 function getUsers(username, pwd){
 	$("#user-table tbody").html("")
 	url = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+pwd+"&action=iou_get_all";
@@ -48,6 +63,8 @@ function getUsers(username, pwd){
 				+"</td><td id='lastname'>"+ usr.last_name +"</td><td id='assets'>"+ usr.assets 
 				+"</td><td><i class='editUsr fa fa-pencil-square-o fa-2x'></i>  <i class='addCredit fa fa-credit-card-alt fa-2x'></i>  <i class='deleteUsr fa fa-user-times fa-2x'></i></td></tr>");
 		});
+		//Add defaults for the choosen user. Shows modal and form.
+		//
 		$(".editUsr").on("click", function(){
 			$("input[name='new_username']").attr("value",$(this).closest("tr").children("#username").html());
 			$("input[name='first_name']").attr("value",$(this).closest("tr").children("#firstname").html());
@@ -55,12 +72,16 @@ function getUsers(username, pwd){
 			
 			$('#usrModal').css('display','block');
 		});
+		//Add default for new credit and zero for add credit. Shows modal and form.
+		//
 		$(".addCredit").on("click", function(){
 			$("input[name='new_credit']").attr("value",$(this).closest("tr").children("#assets").html());
 			creditAdd =	$(this).closest("tr").children("#assets").html();
 			$("input[name='add_credit']").attr("value","0");		
 			$('#creditModal').css('display','block');
 		});
+		// Deletes the choosen user on confirm.
+		//
 		$(".deleteUsr").on("click", function(){
 			confirm("Arrr!! Are you sure you want to delete seaman " + $(this).closest("tr").children("#firstname").html() + " " +
 				$(this).closest("tr").children("#lastname").html() + "?")

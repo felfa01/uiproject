@@ -50,7 +50,6 @@ function translateInputs(lang){
 }
 
 function transl(translStr, lang){
-    console.log(jsonObject[lang][translStr]); // this will show the info it in firebug console
     return jsonObject[lang][translStr];
 }
 
@@ -88,7 +87,9 @@ var jsonObject = {
 		"CurrSales": "Current Sales",
 		"QO": "Quick Order",
 		"Addcredit": "Add Credit",
-		"currcredit": "New Credit"
+		"currcredit": "New Credit",
+		"Fav": "Favorites",
+		"Order3": " Orders"
 
 	},
 	"swe":{
@@ -124,7 +125,9 @@ var jsonObject = {
 		"CurrSales": "Nuvarande Försäljning",
 		"QO": "Snabb Beställning",
 		"Addcredit": "Lägg till kredit",
-		"currcredit": "Ny kredit"
+		"currcredit": "Ny kredit",
+		"Fav": "Favoriter",
+		"Order3": " Beställt"
 	}
 }
 

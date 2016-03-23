@@ -16,49 +16,76 @@
 	
 </head>
 <body>
-	<nav class="fixed-navbar">
-		<div class="container-fluid">
-			<div class=" col-1">
-				<a class="translateInner" data-translate="LgOut" style="text-decoration:none; color:white; margin-left:2px; font-size:15px;" href="../home/home.html">
-					<img style="margin-top:-15px" border="0" alt="W3Schools" src="../images/Pirate-1.png" width="40" height="40">  Log Out
-				</a>
-			</div>
-			<div class="col-offset-1 col-5">
-				<a class="navbar-link " data-href="admins/order.html"><i class="fa fa-beer translateInner" data-translate="Order2"> Order</i></a>
-				<a class="navbar-link " data-href="admins/stock.html"><i class="fa fa-list translateInner" data-translate="Stock"> Stock</i></a>
-				<a class="navbar-link " data-href="admins/accounts.html"><i class="fa fa-users translateInner" data-translate="Accs"> Accounts</i></a>
-				<a class="navbar-link " data-href="admins/statistics.html"><i class="fa fa-bar-chart translateInner" data-translate="Stats"> Statistics</i></a>
-			</div>
-			<div class="col-3">
-				<form class="myform theme-form">
-					<input class="translateInner" type="radio" name="theme" value="../css/styles.css" data-translate="Default">Default
-					<input class="translateInner" type="radio" name="theme" value="../css/alternative.css" data-translate="Alternative">Alternative
-				</form>
-				<form class="myform language-form">
-					<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
-					<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
-				</form>
-			</div>
-			<div class="col-2">
-				<span class="collapse-sidebar" id="collapse-qo">
-					<i class="fa fa-beer fa-2x"></i>
-				</span>
-				<span class="collapse-sidebar" id="collapse-credit">
-					<i class="fa fa-credit-card fa-2x"></i>
-				</span>
-			</div>
-		</div>
-	</nav>
-	<section class="content">
-		<div class=" content-main">
+	<!-- This navigation bars gives the opportunity to navigate through out
+		 the different admin pages. For now this section of code is duplicated in each
+		 *admin*.html file, something that could be fixed if the project would run on a server
+		 and by the use of include
+		-->
+		<nav class="fixed-navbar">
 			<div class="container-fluid">
-				<div class="col-12">
-					<div class="panel ">
-						<div class="panel-heading">
-							Users
+				<div class=" col-1">
+					<a class="translateInner" data-translate="LgOut" style="text-decoration:none; color:white; margin-left:2px; font-size:15px;" href="../home/home.html">
+						<img style="margin-top:-15px" border="0" alt="W3Schools" src="../images/Pirate-1.png" width="40" height="40">  Log Out
+					</a>
+				</div>
+				<div class=" col-6">
+					<a class="navbar-link " data-href="admins/order.html"><i class="fa fa-beer translateInner" data-translate="Order2"> Order</i></a>
+				<!-- Tooltip that is dynamically filled with beers that is out of stock. The element is shown on first load and when
+					 the data differs between loads.
+					-->
+					<div class="tooltip">
+						<a class="navbar-link " data-href="admins/stock.html"><i class="fa fa-list translateInner" data-translate="Stock"> Stock</i></a>
+						<div class="tooltip-panel" id="tooltip-stock">
+							<div class="tooltip-content">
+								<ul id="stock-menu"></ul>
+							</div>
 						</div>
-						<div class="panel-content">
-							<div class="col-12">
+					</div>
+					<a class="navbar-link " data-href="admins/orders.html"><i class="fa fa-history translateInner" data-translate="Order3"> Orders</i></a>
+					<a class="navbar-link " data-href="admins/accounts.html"><i class="fa fa-users translateInner" data-translate="Accs"> Accounts</i></a>
+					<a class="navbar-link " data-href="admins/statistics.html"><i class="fa fa-bar-chart translateInner" data-translate="Stats"> Statistics</i></a>
+				</div>
+				<div class="col-3">
+			<!-- Radio buttons that gives users the possibility to change theme of the page. 
+		-->
+		<form class="myform theme-form">
+			<input class="translateInner" type="radio" name="theme" value="../css/styles.css" data-translate="Default">Default
+			<input class="translateInner" type="radio" name="theme" value="../css/alternative.css" data-translate="Alternative">Alternative
+		</form>
+				<!-- Radio buttons that gives users the possibility to change language of the page. 
+			-->
+			<form class="myform language-form">
+				<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
+				<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
+			</form>
+		</div>
+		<div class="col-2">
+			<!-- Button-like element tha collapse sidebar for quick order.
+		-->
+		<span class="collapse-sidebar" id="collapse-qo">
+			<i class="fa fa-beer fa-2x"></i>
+		</span>
+				<!-- Button-like element tha collapse sidebar for user credit
+			-->
+			<span class="collapse-sidebar" id="collapse-credit">
+				<i class="fa fa-credit-card fa-2x"></i>
+			</span>
+		</div>
+	</div>
+</nav>
+<section class="content">
+	<div class=" content-main">
+		<div class="container-fluid">
+			<div class="col-12">
+				<div class="panel ">
+					<div class="panel-heading">
+						Users
+					</div>
+					<div class="panel-content">
+						<div class="col-12">
+							<!-- This table shows the vip users of th system
+								 and edit options for each one.
+								-->
 								<table class="default-table" id="user-table">
 									<thead>
 										<tr>
@@ -98,185 +125,194 @@
 			</div>
 			<p class="translateInner" data-translate="UsrPwd">Edit user</p>
 			<div class="col-8">
-				<form class="usrForm">
+			<!-- Form that alter the user information for the choosen user.
+		-->
+		<form class="usrForm">
 
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="Usr">
-							User Name
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="new_username" required>
-						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div  class="translateInner form-label col-5" data-translate="Pwd">
-							Password
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="new_password" required>
-						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="firstname">
-							First Name
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="first_name" required>
-						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div  class="translateInner form-label col-5" data-translate="lastname">
-							Last Name
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="last_name" required>
-						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div  class="translateInner form-label col-5" data-translate="email">
-							Email
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="email" required>
-						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div  class="translateInner form-label col-5" data-translate="pnumber">
-							Phone Number
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="phone" placeholder="XXX-XXXXXXXX" required>
-						</div>
-					</div>
-					<div class="col-offset-5 col-8 form-group">
-						<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
-						<button type="reset" value="Reset">Reset</button>
-					</div>
-				</form>
+			<div class="col-12 form-group" >
+				<div class="translateInner form-label col-5" data-translate="Usr">
+					User Name
+				</div>
+				<div class="col-6">
+					<input class="form-text" type="text" name="new_username" required>
+				</div>
 			</div>
-		</div>
+			<div class="col-12 form-group" >
+				<div  class="translateInner form-label col-5" data-translate="Pwd">
+					Password
+				</div>
+				<div class="col-6">
+					<input class="form-text" type="text" name="new_password" required>
+				</div>
+			</div>
+			<div class="col-12 form-group" >
+				<div class="translateInner form-label col-5" data-translate="firstname">
+					First Name
+				</div>
+				<div class="col-6">
+					<input class="form-text" type="text" name="first_name" required>
+				</div>
+			</div>
+			<div class="col-12 form-group" >
+				<div  class="translateInner form-label col-5" data-translate="lastname">
+					Last Name
+				</div>
+				<div class="col-6">
+					<input class="form-text" type="text" name="last_name" required>
+				</div>
+			</div>
+			<div class="col-12 form-group" >
+				<div  class="translateInner form-label col-5" data-translate="email">
+					Email
+				</div>
+				<div class="col-6">
+					<input class="form-text" type="text" name="email" required>
+				</div>
+			</div>
+			<div class="col-12 form-group" >
+				<div  class="translateInner form-label col-5" data-translate="pnumber">
+					Phone Number
+				</div>
+				<div class="col-6">
+					<input class="form-text" type="text" name="phone" placeholder="XXX-XXXXXXXX" required>
+				</div>
+			</div>
+			<div class="col-offset-5 col-8 form-group">
+				<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
+				<button type="reset" value="Reset">Reset</button>
+			</div>
+		</form>
 	</div>
-	<div id="creditModal" class="modal">
-		<div class="modal-content">
-			<div class="modal-header">
-				<span class="close">×</span>
-			</div>
-			<p class="translateInner" data-translate="UsrPwd">Edit user</p>
-			<div class="col-8">
-				<form class="creditForm">
-
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="credit">
-							Add Credit
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="add_credit" required>
-						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="curent_credit">
-							New Credit
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="new_credit" disabled required>
-						</div>
-					</div>
-					<div class="col-offset-5 col-8 form-group">
-						<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
-						<button type="reset" value="Reset">Reset</button>
-					</div>
-				</form>
-			</div>
+</div>
+</div>
+<div id="creditModal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close">×</span>
 		</div>
-	</div><div class="sidebar" id="sidebar-qo">
-	<div class="panel">
-		<div class="panel-heading translateInner" data-translate="QO">
-			Quick Order
-		</div>
-		<div class="panel-content">
-			<div class="col-12">
-				<table class="default-table" id="QO-table">
-					<thead>
-						<tr>
-							<th hidden>
-								ID
-							</th>
-							<th class="translateInner" data-translate="Brand">
-								Brand
-							</th>
-							<th class="translateInner" data-translate="Name">
-								Name
-							</th>											
-							<th class="translateInner" data-translate="Price">
-								Price
-							</th>	
-							<th>
-								#
-							</th>										
-						</tr>
-					</thead>
-					<tbody>
+		<p class="translateInner" data-translate="UsrPwd">Edit user</p>
+		<div class="col-8">
+			<!-- Form that increase the credit for the choosen user.
+		-->
+		<form class="creditForm">
 
-					</tbody>
-					<tfoot></tfoot>
-				</table>
-				<div class="col-12">
-					<div class="button-group">
-						<button id="qo-submit" class="translateInner form-submit" data-translate="Order2">Order</button>
-						<button id="qo-reset" class="translateInner form-submit" data-translate="Rst">Reset</button>
+			<div class="col-12 form-group" >
+				<div class="translateInner form-label col-5" data-translate="credit">
+					Add Credit
+				</div>
+				<div class="col-6">
+					<input class="form-text" type="text" name="add_credit" required>
+				</div>
+			</div>
+			<div class="col-12 form-group" >
+				<div class="translateInner form-label col-5" data-translate="curent_credit">
+					New Credit
+				</div>
+				<div class="col-6">
+					<input class="form-text" type="text" name="new_credit" disabled required>
+				</div>
+			</div>
+			<div class="col-offset-5 col-8 form-group">
+				<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
+				<button type="reset" value="Reset">Reset</button>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+		<!-- For now this section of code is duplicated in each
+		 *admin*.html file, something that could be fixed if the project would run on a server
+		 and by the use of include. Comments in stock.html
+		-->
+		<div class="sidebar" id="sidebar-qo">
+			<div class="panel">
+				<div class="panel-heading translateInner" data-translate="QO">
+					Quick Order
+				</div>
+				<div class="panel-content">
+					<div class="col-12">
+						<table class="default-table" id="QO-table">
+							<thead>
+								<tr>
+									<th hidden>
+										ID
+									</th>
+									<th class="translateInner" data-translate="Brand">
+										Brand
+									</th>
+									<th class="translateInner" data-translate="Name">
+										Name
+									</th>											
+									<th class="translateInner" data-translate="Price">
+										Price
+									</th>	
+									<th>
+										#
+									</th>										
+								</tr>
+							</thead>
+							<tbody>
+
+							</tbody>
+							<tfoot></tfoot>
+						</table>
+						<div class="col-12">
+							<div class="button-group">
+								<button id="qo-submit" class="translateInner form-submit" data-translate="Order2">Order</button>
+								<button id="qo-reset" class="translateInner form-submit" data-translate="Rst">Reset</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<div class="sidebar" id="sidebar-credit">
-	<div class="panel">
-		<div class="panel-heading">
-			Add Credit
-		</div>
-		<div class="panel-content">
-			<div class="col-12">					
-				<form class="quick_creditForm">
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="Usr">
-							User Name
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="quick_username_credit" required>
-						</div>
+		<div class="sidebar" id="sidebar-credit">
+			<div class="panel">
+				<div class="panel-heading">
+					Add Credit
+				</div>
+				<div class="panel-content">
+					<div class="col-12">					
+						<form class="quick_creditForm">
+							<div class="col-12 form-group" >
+								<div class="translateInner form-label col-5" data-translate="Usr">
+									User Name
+								</div>
+								<div class="col-6">
+									<input class="form-text" type="text" name="quick_username_credit" required>
+								</div>
+							</div>
+							<div class="col-12 form-group" >
+								<div class="translateInner form-label col-5" data-translate="Pwd">
+									Password
+								</div>
+								<div class="col-6">
+									<input class="form-text" type="text" name="quick_pwd_credit" required>
+								</div>
+							</div>
+							<div class="col-12 form-group" >
+								<div class="translateInner form-label col-5" data-translate="Addcredit">
+									Add Credit
+								</div>
+								<div class="col-6">
+									<input class="form-text" type="text" name="quick_add_credit" required>
+								</div>
+							</div>
+							<div class="col-12 form-group" >
+								<div class="translateInner form-label col-5" data-translate="currcredit">
+									New Credit
+								</div>
+								<div class="col-6">
+									<input class="form-text" type="text" name="quick_new_credit" disabled required>
+								</div>
+							</div>
+							<div class="col-offset-5 col-8 form-group">
+								<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
+								<button class="translateInner" data-translate="Rst" type="reset" value="Reset">Reset</button>
+							</div>
+						</form>
 					</div>
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="Pwd">
-							Password
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="quick_pwd_credit" required>
-						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="Addcredit">
-							Add Credit
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="quick_add_credit" required>
-						</div>
-					</div>
-					<div class="col-12 form-group" >
-						<div class="translateInner form-label col-5" data-translate="currcredit">
-							New Credit
-						</div>
-						<div class="col-6">
-							<input class="form-text" type="text" name="quick_new_credit" disabled required>
-						</div>
-					</div>
-					<div class="col-offset-5 col-8 form-group">
-						<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
-						<button class="translateInner" data-translate="Rst" type="reset" value="Reset">Reset</button>
-					</div>
-				</form>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</body>
+	</body>

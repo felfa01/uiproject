@@ -1,129 +1,157 @@
-	<!DOCTYPE html>
-	<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Proj Test</title>
-		<link rel="stylesheet" href="../css/styles.css">
-		
-		<script src="../jquery/jquery-1.12.0.min.js"></script>
-		<script src="../javascript/functions.js"></script>
-		<script src="../javascript/translate.js"></script>
-	</head>
-	<body>
-		<nav class="fixed-navbar navbar-home">
-			<div class="container-fluid">
-				<div class="col-offset-9 col-3">
-					<form class="myform language-form">
-						<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
-						<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
-					</form>
-				</div>
+<!---
+File: home.html
+
+Home page with the opportunities to login to either vip or admin.
+
+Version 1.0
+Author: Mikael Holmberg
+
+Requires the following files:
+
+styles.css
+jquery-1.12.0.min.js
+translate.js
+
+-->	
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Proj Test</title>
+	<link rel="stylesheet" href="../css/styles.css">
+
+	<script src="../jquery/jquery-1.12.0.min.js"></script>
+	<script src="../javascript/functions.js"></script>
+	<script src="../javascript/translate.js"></script>
+</head>
+<body>
+	<nav class="fixed-navbar navbar-home">
+		<div class="container-fluid">
+			<div class="col-offset-9 col-3">
+			<!-- Radio buttons that gives users the possibility to change language of the page. 
+				-->
+				<form class="myform language-form">
+					<input type="radio" name="lang" value="eng" checked><img class="radio-img" src="../images/Flag_Eng.png" alt="portrait">
+					<input type="radio" name="lang" value="swe" ><img class="radio-img" src="../images/Flag_Swe.png" alt="portrait">
+				</form>
 			</div>
-		</nav>
-		<section class="content-homepage">
-			<div class="container">
-				<center>
-					<div class="col-12">
-						<div class="title-home">
-							<img src="../images/Title.png" alt="portrait">
-						</div>
-					</div>
-				</center>
-				<div id="choice">
-					<div class="col-12">
-						<div class="col-6">
-							<center>
-								<div class="grow pic">
-									<img  id="admBtn" src="../images/Pirate_Admin.png" alt="portrait">
-								</div>
-							</center>
-						</div>
-						<div class="col-6">
-							<center>
-								<div class="grow pic">
-									<img id="vipBtn" src="../images/Pirate_VIP.png" alt="portrait">
-								</div>
-							</center>
-						</div>
-						<div class="col-12">
-							<center>
-								<div class="grow pic">
-									<a href="../users/index.html">
-										<img class="translateImg" data-translate="PirateGuest" src="../images/Pirate_Guest.png" alt="portrait">
-									</a>
-								</div>
-							</center>
-						</div>
+		</div>
+	</nav>
+	<section class="content-homepage">
+		<div class="container">
+			<center>
+				<div class="col-12">
+					<div class="title-home">
+						<img src="../images/Title.png" alt="portrait">
 					</div>
 				</div>
-			</div>
-		</section>
-		<div id="vipModal" class="modal">
-			<div class="modal-content">
-				<div class="modal-header">
-					<span class="close">×</span>
-				</div>
-				<p class="translateInner" data-translate="UsrPwd">Please enter user name and password</p>
-				<div class="col-8">
-					<form class="myform" action="../vip/index.html">
-						<div class="col-12 form-group" >
-							<div class="translateInner form-label col-5" data-translate="Usr">
-								User Name:
+			</center>
+			<div id="choice">
+				<div class="col-12">
+					<div class="col-6">
+						<center>
+						<!-- Image that on click will open the admin login form.
+						-->
+							<div class="grow pic">
+								<img  id="admBtn" src="../images/Pirate_Admin.png" alt="portrait">
 							</div>
-							<div class="col-6">
-								<input class="form-text" type="text" name="username" value="">
+						</center>
+					</div>
+					<div class="col-6">
+						<center>
+						<!-- Image that on click will open the vip login form.
+						-->
+							<div class="grow pic">
+								<img id="vipBtn" src="../images/Pirate_VIP.png" alt="portrait">
 							</div>
-						</div>
-						<div class="col-12 form-group" >
-							<div  class="translateInner form-label col-5" data-translate="Pwd">
-								Password:
+						</center>
+					</div>
+					<div class="col-12">
+						<center>
+						<!-- Image that on click will redirect to the guest user page.
+						-->
+							<div class="grow pic">
+								<a href="../users/index.html">
+									<img class="translateImg" data-translate="PirateGuest" src="../images/Pirate_Guest.png" alt="portrait">
+								</a>
 							</div>
-							<div class="col-6">
-								<input class="form-text" type="text" name="password" value="">
-							</div>
-						</div>
-						<div class="col-offset-5 col-8 form-group">
-							<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
-						</div>
-					</form>
-				</div>
-				<div class="col-4">
-					<img src="../images/Pirate_VIP.png" class="form-picture-admin">
+						</center>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div id="admModal" class="modal">
-			<div class="modal-content">
-				<div class="modal-header">
-					<span class="close">×</span>
-				</div>
-				<p class="translateInner" data-translate="UsrPwd">Please enter user name and password</p>
-				<div class="col-8">
-					<form class="myform" action="../admins/order.html" >
-						<div class="col-12 form-group" >
-							<div class="translateInner form-label col-5" data-translate="Usr">
-								User Name:
-							</div>
-							<div class="col-6">
-								<input class="form-text" type="text" name="username" value="">
-							</div>
+	</section>
+	<div id="vipModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">×</span>
+			</div>
+			<p class="translateInner" data-translate="UsrPwd">Please enter user name and password</p>
+			<div class="col-8">
+			<!-- Login form for Vip users, redirects to vip page on submit.
+			-->
+				<form class="myform" action="../vip/index.html">
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="Usr">
+							User Name:
 						</div>
-						<div class="col-12 form-group" >
-							<div  class="translateInner form-label col-5" data-translate="Pwd">
-								Password:
-							</div>
-							<div class="col-6">
-								<input class="form-text" type="text" name="password" value="">
-							</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="username" value="">
 						</div>
-						<div class="col-offset-5 col-8 form-group">
-							<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
+					</div>
+					<div class="col-12 form-group" >
+						<div  class="translateInner form-label col-5" data-translate="Pwd">
+							Password:
 						</div>
-					</form>
-				</div>
-				<div class="col-4">
-					<img src="../images/Pirate_Admin.png" class="form-picture-admin">
-				</div>
+						<div class="col-6">
+							<input class="form-text" type="password" name="password" value="">
+						</div>
+					</div>
+					<div class="col-offset-5 col-8 form-group">
+						<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
+					</div>
+				</form>
+			</div>
+			<div class="col-4">
+				<img src="../images/Pirate_VIP.png" class="form-picture-admin">
 			</div>
 		</div>
-	</body>
+	</div>
+	<div id="admModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">×</span>
+			</div>
+			<p class="translateInner" data-translate="UsrPwd">Please enter user name and password</p>
+			<div class="col-8">
+			<!-- Login form for Admins, redirects to admin page on submit.
+			-->
+				<form class="myform" action="../admins/order.html" >
+					<div class="col-12 form-group" >
+						<div class="translateInner form-label col-5" data-translate="Usr">
+							User Name:
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="text" name="username" value="">
+						</div>
+					</div>
+					<div class="col-12 form-group" >
+						<div  class="translateInner form-label col-5" data-translate="Pwd">
+							Password:
+						</div>
+						<div class="col-6">
+							<input class="form-text" type="password" name="password" value="">
+						</div>
+					</div>
+					<div class="col-offset-5 col-8 form-group">
+						<input class="translateInputs form-submit" type="submit" value="Submit" data-translate="Submit">
+					</div>
+				</form>
+			</div>
+			<div class="col-4">
+				<img src="../images/Pirate_Admin.png" class="form-picture-admin">
+			</div>
+		</div>
+	</div>
+</body>
