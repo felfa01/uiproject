@@ -1,3 +1,14 @@
+/**
+ * File: drag_and_drop.js
+ *
+ * This file contains the javaScript needed for drag and drop functionality
+ * as well as the order lists.
+ *
+ * Version 1.0
+ * Author: Mikael Holmberg
+ */
+
+// On web page load, an initial order list is created with undomanager.
 window.onload = function () {
 	var undoID = 0;
 	var start = new Date;
@@ -9,7 +20,7 @@ window.onload = function () {
 	removeAll,
 	createBeer; 
 	undoManager = new UndoManager();
-
+	// function for removing a beer from order list
 	var removeBeer = function(id) {
 		var i = 0, index = -1;
 		for (i = 0; i < beers_order.length; i += 1) {
@@ -21,7 +32,7 @@ window.onload = function () {
 			beers_order.splice(index, 1);
 		}
 	};
-
+	//function for reordering the order list.
 	var reorderBeer = function(id){
 		var currIndex = undoManager.getIndex();
 		var beer;
@@ -46,7 +57,7 @@ window.onload = function () {
 var removeAll = function(){
 	beers_order=[];
 }
-
+// Creates entry in order list with parameters id, beer_id, namn and price taken from database
 var createBeer = function(id, beer_id, namn, price) {
 
 	beers_order.push({"id": id, "beer_id": beer_id, "namn":namn, "price":price});
@@ -69,7 +80,7 @@ var createBeer = function(id, beer_id, namn, price) {
 
 }
 
-
+// Below is various events that can happen during the process of drag and dropping, along with what should happen when an event has been "heard"
 document.addEventListener("dragstart", function(event) {
 	if ( event.target.className == "draggable" || $(event.target).parents().hasClass("draggable") ) {
 		($(event.target).hasClass("draggable")) ? event.dataTransfer.setData("text", event.target.id) : event.dataTransfer.setData("text", $(event.target).parents(".draggable").attr("id"));
@@ -125,7 +136,8 @@ document.addEventListener("drop", function(event) {
 });
 
 
-
+// Along with the order list, there is another list which acts as a summary of orders before committing to the purchase.
+// createOrderList function takes the orderlist entries into this new list, along with sum of beer costs.
 function createOrderList($list){
 	setTimeout(function(){}, 2000);
 	$list.find("tbody").html("");
@@ -179,7 +191,7 @@ function checkCount(){
 	});
 	return count;
 }
-
+// Modifies the pubs database for newly purchased beers from customer.
 function sendOrder(beer_id){
 	$.ajax({
 		url: "http://pub.jamaica-inn.net/fpdb/api.php?username="+urlParams["username"]

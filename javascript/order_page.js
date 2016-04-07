@@ -1,4 +1,12 @@
-
+/**
+ * File: order_page.js
+ *
+ * This file contains the javaScript needed to import beverages from given database, storing them locally
+ * as well as give the opportunity to search the imported beers.
+ *
+ * Version 1.0
+ * Author: Mikael Holmberg
+ */
 var extendedData = [];
 
 $( document ).ready(function() {

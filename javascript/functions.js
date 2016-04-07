@@ -2,15 +2,117 @@
 * Created by User on 2016-02-05.
 */
 
-
-
-function counter() {
-
-}
+//$(function() {
+//	$( "#sortable1, #sortable2" ).sortable({
+//		connectWith: ".connectedSortable",
+//		helper: "clone"
+//	})
+//});
 
 function allowDrop(ev) {
 	ev.preventDefault();
 }
+function dropCopy(ev) {
+	ev.preventDefault();
+	var data = ev.dataTransfer.getData("text");
+
+	var nodeCopy = document.getElementById(data).cloneNode(true);
+
+	nodeCopy.id = data.concat("new")
+
+	ev.target.appendChild(nodeCopy);
+
+}
+function discardDrop(ev) {
+	ev.preventDefault()
+	var data1 = ev.dataTransfer.getData("text");
+	var el = document.getElementById(data1);
+	el.parentNode.removeChild(el);
+
+}
+function duplCheck(node) {
+
+	var nums = document.getElementById("sortable2");
+	var items = nums.getElementsByTagName("li");
+	for (var i = 0; i < items.length; ++i) {
+		if (node.isEqualNode(items[i])) {
+			alert("we are in loop");
+
+
+
+			//var cList = document.getElementsById("counterList");
+			//var cListItems = cList.getElementsByTagName("li");
+
+			//cListNode = cListItems[i];
+
+			//cListNode.nodeValue ="2";
+
+
+			//cListItems[i].nodeValue="2";
+
+			//var beerInt = parseInt(cListItems[i]);
+			//var beerInt2 = beerInt+1;
+
+
+
+			//var counternode = document.createTextNode("0");
+
+
+
+
+			//var nr = 1;
+			//var node1 = document.createElement("LI");                 // Create a <li> node
+			//var textnode1 = document.createTextNode(nr);
+			//node1.appendChild(textnode1);
+			//document.getElementById("counterList").appendChild(node1);
+
+		}
+		alert(items[i]);
+		var counternode = document.createElement("LI");
+		var countertext = document.createTextNode("1");
+		counternode.appendChild(countertext);
+		document.getElementById("counterList").appendChild(counternode);
+	}
+}
+function listDrop(ev) {
+	var data = ev.dataTransfer.getData("text");
+	var node = document.createElement("LI");                 // Create a <li> node
+	var textnode = document.createTextNode(data);         // Create a text node
+
+	node.appendChild(textnode);                              // Append the text to <li>
+
+	duplCheck(node);
+	document.getElementById("sortable2").appendChild(node);	// Append <li> to <ul> with id="myList"
+
+
+
+	}
+
+
+function deleteBeer(ev) {
+	ev.dataTransfer.setData("text", ev.target.id);
+	var data1 = ev.dataTransfer.getData("text");
+	var el = document.getElementById(data1);
+	el.parentNode.removeChild(el);
+
+}
+function dragCopy(ev) {
+	ev.preventDefault();
+	var data = ev.dataTransfer.getData("text");
+
+	var nodeCopy = document.getElementById(data).cloneNode(true);
+
+	nodeCopy.id = data.concat("new")
+
+	ev.target.appendChild(nodeCopy);
+
+}
+
+
+
+
+
+
 
 function drag(ev) {
 	ev.dataTransfer.setData("text", ev.target.id);
