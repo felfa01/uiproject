@@ -21,7 +21,7 @@ $( document ).ready(function() {
 
 });
 
-
+// Returns credit of a user
 function getCredit(username, pwd){
 		$("#usrCredit").html("");
 	url = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+pwd+"&action=iou_get";

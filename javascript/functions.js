@@ -8,7 +8,7 @@
 //		helper: "clone"
 //	})
 //});
-
+//tells the browser to not issue default actions when trying to drop
 function allowDrop(ev) {
 	ev.preventDefault();
 }
@@ -113,11 +113,11 @@ function dragCopy(ev) {
 
 
 
-
+// Sets the drag operation's drag data to the specified data and type. Holds the data we drag until we want to drop
 function drag(ev) {
 	ev.dataTransfer.setData("text", ev.target.id);
 }
-
+// Receives the data and appends it to the target
 function drop(ev) {
 	ev.preventDefault();
 	var data = ev.dataTransfer.getData("text");

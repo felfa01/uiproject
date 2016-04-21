@@ -16,7 +16,7 @@ $( document ).ready(function() {
 });
 
 
-
+//getBeers reads JSON from database, puts in on local machine for use. Also adds searchability to the items imported.
 function getBeers(username, pwd){
 	
 	$("#beer-table tbody").html("")
@@ -80,7 +80,7 @@ function getBeers(username, pwd){
 });
 
 }
-
+//searchBeers function returns a list of beers that fulfil the search criterias.
 function searchBeers(beers, brand, leverantor, price, alco, allergies){
 	var result = []
 	for (i = 0; i < beers.length; i++) {

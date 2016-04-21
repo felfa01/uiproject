@@ -210,7 +210,7 @@ var startT;
 var startH;
 var startM;
 var startS;
-
+// a function for setting time variables
 function initializeTime() {
 	startT = new Date();
 	startH = startT.getHours();
@@ -219,7 +219,7 @@ function initializeTime() {
 	startM = checkTime(startM);
 	startS = checkTime(startS);
 }
-
+//timer function for order, there is a timer on an order and when time is reached the order will be cancelled.
 function startTime() {
 	var today = new Date();
 	var h = today.getHours();
@@ -270,7 +270,7 @@ $("#orderBtn").click(function() {
 		//startTime();
 	}
 });
-
+// The following are button structs for the order page.
 $("#clearBtn").click(function() {
 	undoManager.clear()
 	beers_order = [];
