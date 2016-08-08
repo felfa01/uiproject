@@ -3,7 +3,7 @@ $( document ).ready(function() {
 
 
 });
-
+//Retrieves information on the user signed in
 function getOrders(username, pwd){
 	$("#order-table tbody").html("")
 	url = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+pwd+"&action=purchases_get_all";

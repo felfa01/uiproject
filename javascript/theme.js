@@ -1,3 +1,4 @@
+// Functionality for switching between the themes for the website much like the language functions
 $( document ).ready(function() {
 	if(sessionStorage.theme != null){
 		$("input[name=theme][value='"+sessionStorage.theme+"']").prop("checked",true);

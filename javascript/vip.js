@@ -1,4 +1,4 @@
-
+// get credit of VIP user, as they are the users able to have credit.
 
 $( document ).ready(function() {
 	getCredit(urlParams["username"], urlParams["password"]);

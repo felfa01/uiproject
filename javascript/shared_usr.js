@@ -35,7 +35,7 @@ function getCredit(username, pwd){
 		}
 	});
 }
-
+//Returns orders of a user
 function getOrders(username, pwd){
 	$("#order-table tbody").html("")
 	url = "http://pub.jamaica-inn.net/fpdb/api.php?username="+username+"&password="+pwd+"&action=purchases_get";
@@ -54,7 +54,7 @@ function getOrders(username, pwd){
 		}
 	});
 }
-
+// Returns users favorite beverages
 function getFavorites(username, pwd){
 	var favs = JSON.parse(sessionStorage.getItem("favorites"));
 	$("#fav-table tbody").html("")

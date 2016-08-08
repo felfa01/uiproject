@@ -1,3 +1,5 @@
+
+//The following is a dictionary js file for interchanging between english and swedish words in the webpage. The dictionary contains a english and a swedish json object with underlying keys and values.
 $( document ).ready(function() {
 	if(sessionStorage.language != null){
 		$("input[name=lang][value='"+sessionStorage.language+"']").prop("checked",true);

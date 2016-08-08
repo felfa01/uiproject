@@ -161,7 +161,7 @@ function createOrderList($list){
 	});
 	calcSum($('#order-list tbody tr'), $('#order-list tfoot #total'));
 }
-
+// Check-function for avoiding cluttering in orderlist. If our orderlist has less than max quantity we can add more
 function checkToAdd(beer_id, maxQuantity, element){	
 	if(Object.keys(beers_order).length < maxQuantity){
 		createBeer(Math.floor((Math.random() * 10) + 1), beer_id, $(element).find('#brand').html(), $(element).find('#price').html());
@@ -169,7 +169,7 @@ function checkToAdd(beer_id, maxQuantity, element){
 	}
 	console.log("checkToAdd done")
 }
-
+// Function for calculating the sum of ordered beers for display in orderlist
 function calcSum($target, $footer){
 	var sumPrice = 0;
 	$target.each(function(){
@@ -178,7 +178,7 @@ function calcSum($target, $footer){
 	});
 	$footer.html(sumPrice.toFixed(2));
 }
-
+// Count number of beers in orderlist
 function checkCount(){
 	var count = 0;
 	$('#order-list tbody tr').each(function(){
@@ -234,7 +234,7 @@ function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
 }
-
+// The following is undo redo functionality, calls are made to the undomanager function in my_undomanager.js
 btnUndo = document.getElementById("undoBtn");
 btnRedo = document.getElementById("redoBtn");
 
@@ -243,7 +243,7 @@ function updateUI() {
 	btnRedo.disabled = !undoManager.hasRedo();
 }
 
-
+// orderlists are updated after undo button is clicked
 $("#undoBtn").click(function() {
 	undoManager.undo();
 	console.log("UNDO: " + beers_order);
@@ -251,7 +251,7 @@ $("#undoBtn").click(function() {
 	updateUI();
 
 });
-
+// orderlists are updated after redo button is clicked
 $("#redoBtn").click(function() {
 	undoManager.redo();
 	console.log("REDO: " + beers_order);
@@ -259,7 +259,7 @@ $("#redoBtn").click(function() {
 	updateUI();
 });
 
-
+// button for finalizing order. 
 $("#orderBtn").click(function() {
 	if(checkCount() > 5){
 		alert("The number of beers exceds maximum limit of 5.")
@@ -270,7 +270,7 @@ $("#orderBtn").click(function() {
 		//startTime();
 	}
 });
-// The following are button structs for the order page.
+// The following are button structs for the order page such as cancel and confirmation of order buttons.
 $("#clearBtn").click(function() {
 	undoManager.clear()
 	beers_order = [];
