@@ -1,4 +1,12 @@
-
+/**
+ * File: navigation.js
+ *
+ * This file contains some basic javascript for navigation.
+ * 
+ *
+ * Version 1.0
+ * Author: Group FD
+ */
 
 $( document ).ready(function() {
 $(".navbar-link").click(function() {

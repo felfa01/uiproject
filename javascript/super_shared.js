@@ -1,4 +1,12 @@
-
+/**
+ * File: super_shared.js
+ *
+ * This file contains javascript for sorting of beers in lists.
+ * 
+ *
+ * Version 1.0
+ * Author: Group FD
+ */
 
 
 

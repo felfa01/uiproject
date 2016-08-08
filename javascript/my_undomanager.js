@@ -1,5 +1,13 @@
 /*jslint browser: true */
-
+/**
+ * File: my_undomanager.js
+ *
+ * This file contains the javaScript needed for undo-redo functionality.
+ * 
+ *
+ * Version 1.0
+ * Author: Mikael Holmberg
+ */
 window.onload = function () {
     "use strict";
 

@@ -1,3 +1,13 @@
+/**
+ * File: theme.js
+ *
+ * This file contains javascript for switching between themes on webpage.
+ * 
+ *
+ * Version 1.0
+ * Author: Group FD
+ */
+
 // Functionality for switching between the themes for the website much like the language functions
 $( document ).ready(function() {
 	if(sessionStorage.theme != null){

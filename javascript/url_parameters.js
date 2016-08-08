@@ -1,3 +1,13 @@
+/**
+ * File: url_parameters.js
+ *
+ * This file contains some basic javascript for checking url.
+ * 
+ *
+ * Version 1.0
+ * Author: Group FD
+ */
+
 var urlParams;
 
 // Function calls every time the history of the page changes and creates parameters from the url

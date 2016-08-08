@@ -1,3 +1,13 @@
+/**
+ * File: vip.js
+ *
+ * This file contains javascript for retreiving credit of a VIP user.
+ * 
+ *
+ * Version 1.0
+ * Author: Group FD
+ */
+
 // get credit of VIP user, as they are the users able to have credit.
 
 $( document ).ready(function() {

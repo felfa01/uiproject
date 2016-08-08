@@ -1,3 +1,13 @@
+/**
+ * File: navigation.js
+ *
+ * This file contains javascript for getting information on beverages connected to a specific user, such as favorite beverage.
+ * 
+ *
+ * Version 1.0
+ * Author: Group FD
+ */
+
 $( document ).ready(function() {
 	$("#collapse-order").on("click", function(){
 		if(!$('#sidebar-order').is(':visible'))

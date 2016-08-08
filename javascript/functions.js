@@ -1,6 +1,11 @@
 /**
-* Created by User on 2016-02-05.
-*/
+ * File: functions.js
+ *
+ * This file contains first version of drag and drop functionality. Is not used in final product.
+ *
+ * Version 1.0
+ * Author: Felix Färjsjö
+ */
 
 //$(function() {
 //	$( "#sortable1, #sortable2" ).sortable({

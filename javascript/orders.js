@@ -1,3 +1,13 @@
+/**
+ * File: orders.js
+ *
+ * This file contains javascript for retreiving and cancelling orders for a specific VIP guest.
+ * 
+ *
+ * Version 1.0
+ * Author: Group FD
+ */
+
 $( document ).ready(function() {
 	getOrders(urlParams["username"], urlParams["password"]);
 

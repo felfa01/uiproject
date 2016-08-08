@@ -1,4 +1,12 @@
-
+/**
+ * File: translate.js
+ *
+ * This file contains javascript for multilingiual webpage. Various function for translating between english and swedish with a dictionary for their respective counterparts. 
+ * 
+ *
+ * Version 1.0
+ * Author: Group FD
+ */
 //The following is a dictionary js file for interchanging between english and swedish words in the webpage. The dictionary contains a english and a swedish json object with underlying keys and values.
 $( document ).ready(function() {
 	if(sessionStorage.language != null){
